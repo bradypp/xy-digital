@@ -1,0 +1,45 @@
+# Normalize all files detected as text automatically
+* text=auto
+
+# The following overrides the above
+
+# These files are text and should be normalized
+*.php text
+*.css text
+*.cs text
+*.js text
+*.jsx text
+*.ts text
+*.tsx text
+*.json text
+*.htm text
+*.html text
+*.xml text
+*.txt text
+*.ini text
+*.inc text
+*.pl text
+*.rb text
+*.py text
+*.scm text
+*.sql text
+*.htaccess text
+*.sh text
+
+# These files are binary and should be left untouched
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.pyc binary
