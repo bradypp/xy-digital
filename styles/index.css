@@ -1,13 +1,15 @@
+@import './variables.css';
+
 @import 'tailwindcss/base';
 
 /* Global Styles  */
-@import './global.css';
 @import './fonts.css';
+@import './global.css';
 
 @import 'tailwindcss/components';
 
 /* Custom Components  */
-@import './components.css';
+@import './components/index.css';
 
 @import 'tailwindcss/utilities';
 

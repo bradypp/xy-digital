@@ -1,13 +1,17 @@
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
     theme: {
+        corePlugins: {
+            container: false,
+        },
         screens: {
-            xs: { max: '440px' },
-            sm: { max: '640px' },
-            md: { max: '768px' },
-            lg: { max: '1024px' },
-            xl: { max: '1280px' },
             '2xl': { max: '1440px' },
+            xl: { max: '1280px' },
+            lg: { max: '1024px' },
+            md: { max: '768px' },
+            sm: { max: '640px' },
+            xs: { max: '440px' },
+            '2xs': { max: '384px' },
         },
         extend: {
             fontFamily: {
@@ -16,9 +20,6 @@ module.exports = {
             },
             spacing: {
                 28: '7rem',
-            },
-            lineHeight: {
-                tight: 1.2,
             },
             fontSize: {
                 '5xl': '2.5rem',
@@ -29,6 +30,10 @@ module.exports = {
             boxShadow: {
                 small: '0 5px 10px rgba(0, 0, 0, 0.12)',
                 medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+            },
+            maxWidth: {
+                content: '1500px',
+                inner: '1070px',
             },
         },
     },
