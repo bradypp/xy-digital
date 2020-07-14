@@ -4,7 +4,7 @@
 
 /* Global Styles  */
 @import './fonts.css';
-@import './global.css';
+@import './base.css';
 
 @import 'tailwindcss/components';
 
@@ -15,3 +15,5 @@
 
 /* Custom Utilities */
 @import './utilities.css';
+
+@import 'tailwindcss/screens';

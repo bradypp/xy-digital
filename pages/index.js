@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Layout } from 'components';
+import { Layout, Header } from 'components';
 
 const Home = () => {
     return (
@@ -7,6 +7,7 @@ const Home = () => {
             <Head>
                 <title>Digital Agency</title>
             </Head>
+            <Header />
         </Layout>
     );
 };

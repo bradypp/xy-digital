@@ -2,10 +2,10 @@ import { Meta } from 'components';
 import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => (
-    <div className="container">
+    <>
         <Meta />
-        <main>{children}</main>
-    </div>
+        <main className="container-outer">{children}</main>
+    </>
 );
 
 Layout.propTypes = {

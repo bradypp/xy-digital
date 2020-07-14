@@ -1,3 +1,17 @@
-.container {
-    @apply mx-auto max-w-content;
+.container-common {
+    @apply mx-auto overflow-hidden;
+}
+
+.container-outer {
+    @apply container-common max-w-1500px;
+}
+
+.container-inner {
+    @apply container-common max-w-1340px;
+}
+
+@screen 2xl {
+    .container-inner {
+        @apply max-w-1070px;
+    }
 }

@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+const { colors } = require('tailwindcss/defaultTheme');
+
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
     theme: {
@@ -13,27 +16,98 @@ module.exports = {
             xs: { max: '440px' },
             '2xs': { max: '384px' },
         },
-        extend: {
-            fontFamily: {
-                sans:
-                    '-apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+        fontFamily: {
+            primary:
+                'Oswald, -apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+            secondary: 'Domine, Georgia, Cambria, "Times New Roman", Times, serif',
+        },
+        colors: {
+            black: colors.black,
+            white: colors.white,
+            grey: {
+                '100': '#f5f5f5',
+                '200': '#eeeeee',
+                '300': '#e0e0e0',
+                '400': '#bdbdbd',
+                '500': '#9e9e9e',
+                '600': '#757575',
+                '700': '#616161',
+                '800': '#424242',
+                '900': '#212121',
             },
+            red: colors.red,
+            yellow: colors.yellow,
+            green: colors.green,
+            teal: colors.teal,
+            blue: colors.blue,
+            indigo: colors.indigo,
+            purple: colors.purple,
+            pink: colors.pink,
+        },
+        extend: {
             spacing: {
                 28: '7rem',
+                '72': '18rem',
+                '84': '21rem',
+                '96': '24rem',
+                '240px': '240px',
             },
             fontSize: {
-                '5xl': '2.5rem',
+                xs: '.75rem',
+                sm: '.875rem',
+                md: '1rem',
+                lg: '1.125rem',
+                xl: '1.25rem',
+                '2xl': '1.5rem',
+                '3xl': '1.75rem',
+                '4xl': '2rem',
+                '5xl': '2.25rem',
                 '6xl': '2.75rem',
-                '7xl': '4.5rem',
-                '8xl': '6.25rem',
+                '7xl': '3.25rem',
+                title: '6rem',
             },
             boxShadow: {
                 small: '0 5px 10px rgba(0, 0, 0, 0.12)',
                 medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
             },
             maxWidth: {
-                content: '1500px',
-                inner: '1070px',
+                '1500px': '1500px',
+                '1070px': '1070px',
+                '1340px': '1340px',
+            },
+            width: {
+                '1/7': '14.2857143%',
+                '2/7': '28.5714286%',
+                '3/7': '42.8571429%',
+                '4/7': '57.1428571%',
+                '5/7': '71.4285714%',
+                '6/7': '85.7142857%',
+                'min-content': 'min-content',
+                'max-content': 'max-content',
+            },
+            height: {
+                '900px': '900px',
+                '510px': '510px',
+            },
+            backgroundSize: {
+                'auto-100%': 'auto 100%',
+            },
+            inset: {
+                '10px': '10px',
+                '20px': '20px',
+                '30px': '30px',
+                '40px': '40px',
+                '50px': '50px',
+                '60px': '60px',
+                '70px': '70px',
+                '80px': '80px',
+                '90px': '90px',
+                '100px': '100px',
+                '1/4': '25%',
+                '1/3': '33%',
+                '1/2': '50%',
+                '2/3': '66%',
+                '3/4': '75%',
             },
         },
     },
