@@ -17,7 +17,7 @@ const Home = ({ heroData }) => {
             <Head>
                 <title>Digital Agency</title>
             </Head>
-            <Hero />
+            <Hero data={heroData[0].node} />
         </Layout>
     );
 };
