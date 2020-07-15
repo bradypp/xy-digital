@@ -35,7 +35,7 @@ const aboutVariants = {
         y: 0,
         transition: {
             type: 'tween',
-            delay: 1.2,
+            delay: 1.5,
             duration: 0.8,
             ease: 'easeOut',
         },
@@ -51,7 +51,7 @@ const rightImageVariants = {
         y: 0,
         transition: {
             type: 'tween',
-            delay: 1.4,
+            delay: 1.7,
             duration: 0.8,
             ease: 'easeOut',
         },
@@ -67,7 +67,7 @@ const navVariants = {
         y: 0,
         transition: {
             type: 'tween',
-            delay: 1.6,
+            delay: 2,
             duration: 0.8,
             ease: 'easeOut',
         },
@@ -83,7 +83,7 @@ const blogVariants = {
         y: 0,
         transition: {
             type: 'tween',
-            delay: 1.7,
+            delay: 2.1,
             duration: 0.8,
             ease: 'easeOut',
         },
@@ -107,10 +107,6 @@ const Header = () => {
     const [leftElOffsetTop, setLeftElOffsetTop] = useState(0);
     const leftElY = useTransform(scrollY, [leftElOffsetTop, leftElOffsetTop + 500], ['0%', '-12%']);
 
-    const vidElRef = useRef();
-    const [vidElOffsetTop, setVidElOffsetTop] = useState(0);
-    const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 500], ['-20%', '0%']);
-
     const rightElRef = useRef();
     const [rightElOffsetTop, setRightElOffsetTop] = useState(0);
     const rightElY = useTransform(
@@ -122,12 +118,12 @@ const Header = () => {
     useLayoutEffect(() => {
         if (bgElRef.current) setBgElOffsetTop(bgElRef.current.offsetTop);
         if (leftElRef.current) setLeftElOffsetTop(leftElRef.current.offsetTop);
-        if (vidElRef.current) setVidElOffsetTop(vidElRef.current.offsetTop);
         if (rightElRef.current) setRightElOffsetTop(rightElRef.current.offsetTop);
-    }, [leftElRef, rightElRef, vidElRef, bgElRef]);
+    }, [leftElRef, rightElRef, bgElRef]);
 
     return (
         <header id="#header" className="relative">
+            {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
                 ref={bgElRef}
@@ -138,13 +134,15 @@ const Header = () => {
                     style={{ backgroundImage: 'url(/img/hero.jpg)' }}
                 />
             </motion.div>
+
+            {/*  Content */}
             <div className="container-inner flex">
                 <motion.div
                     className="flex flex-col w-2/3 z-10"
                     ref={leftElRef}
                     initial={{ y: 0 }}
                     style={{ y: leftElY }}>
-                    {/* Title section */}
+                    {/* Title Section */}
                     <motion.h1
                         className="title px-20 pt-240px relative"
                         initial="hidden"
@@ -173,11 +171,12 @@ const Header = () => {
                         <span className="inline-block overflow-hidden">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
                                 Brand
+                                {/* Business, Reach */}
                             </motion.span>
                         </span>
                     </motion.h1>
-                    {/* Scroll section */}
-                    {/* Video section */}
+
+                    {/* Scroll Section */}
                     <motion.div
                         className="px-20 pt-32 pb-4 text-white mb-4"
                         initial={{ x: '-100%' }}
@@ -189,6 +188,8 @@ const Header = () => {
                         }}>
                         scroll
                     </motion.div>
+
+                    {/* Video Section */}
                     <div className="px-20 z-20 mb-4">
                         <motion.div initial="hidden" animate="visible" variants={aboutVariants}>
                             <img className="w-2/3 " src="/img/hero.jpg" alt="" />
@@ -199,7 +200,8 @@ const Header = () => {
                             </h2>
                         </motion.div>
                     </div>
-                    {/* About section */}
+
+                    {/* About Section */}
                     <motion.div initial="hidden" animate="visible" variants={aboutVariants}>
                         <div className="about bg-white p-20 pt-64 -mt-64">
                             <p className="pl-4">
@@ -223,12 +225,13 @@ const Header = () => {
                         </div>
                     </motion.div>
                 </motion.div>
+
+                {/* Nav Section */}
                 <motion.div
                     className="w-1/3 z-10"
                     ref={rightElRef}
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>
-                    {/* Nav section */}
                     <motion.div
                         className="flex flex-col justify-end h-510px bg-pink-600 relative"
                         initial="hidden"
@@ -244,7 +247,8 @@ const Header = () => {
                             </ul>
                         </nav>
                     </motion.div>
-                    {/* Latest blog post */}
+
+                    {/* Latest Post */}
                     <motion.div
                         className="p-20"
                         initial="hidden"
@@ -258,7 +262,8 @@ const Header = () => {
                             obcaecati.
                         </p>
                     </motion.div>
-                    {/* Company image with thick border? */}
+
+                    {/* Company image with thick border? Steps of animated words in/out with a new color for each - have final frame with all and gradient */}
                     <motion.div
                         className="h-510px bg-yellow-400"
                         initial="hidden"
