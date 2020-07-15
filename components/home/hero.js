@@ -1,4 +1,4 @@
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useViewportScroll, useTransform, motion } from 'framer-motion';
 
 const titleContainerVariants = {
@@ -96,7 +96,7 @@ const blogVariants = {
 // TODO: alt text
 // TODO: nav functionality and animation
 
-const Header = () => {
+const Hero = () => {
     const { scrollY } = useViewportScroll();
 
     const bgElRef = useRef();
@@ -115,7 +115,7 @@ const Header = () => {
         ['0%', '-16%'],
     );
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (bgElRef.current) setBgElOffsetTop(bgElRef.current.offsetTop);
         if (leftElRef.current) setLeftElOffsetTop(leftElRef.current.offsetTop);
         if (rightElRef.current) setRightElOffsetTop(rightElRef.current.offsetTop);
@@ -277,4 +277,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Hero;
