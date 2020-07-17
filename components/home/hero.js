@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useViewportScroll, useTransform, motion } from 'framer-motion';
+import { RichText } from 'prismic-reactjs';
 
 const titleContainerVariants = {
     visible: {
@@ -95,8 +97,9 @@ const blogVariants = {
 // TODO: add/edit scroll svg
 // TODO: alt text
 // TODO: nav functionality and animation
-
-const Hero = () => {
+// TODO: tweak parallax so it's greater than + 500
+const Hero = ({ data }) => {
+    const { about, background_image, featured_video } = data[0].node;
     const { scrollY } = useViewportScroll();
 
     const bgElRef = useRef();
@@ -106,6 +109,10 @@ const Hero = () => {
     const leftElRef = useRef();
     const [leftElOffsetTop, setLeftElOffsetTop] = useState(0);
     const leftElY = useTransform(scrollY, [leftElOffsetTop, leftElOffsetTop + 500], ['0%', '-12%']);
+
+    const vidElRef = useRef();
+    const [vidElOffsetTop, setVidElOffsetTop] = useState(0);
+    const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 800], ['-8px', '10%']);
 
     const rightElRef = useRef();
     const [rightElOffsetTop, setRightElOffsetTop] = useState(0);
@@ -118,8 +125,9 @@ const Hero = () => {
     useEffect(() => {
         if (bgElRef.current) setBgElOffsetTop(bgElRef.current.offsetTop);
         if (leftElRef.current) setLeftElOffsetTop(leftElRef.current.offsetTop);
+        if (vidElRef.current) setVidElOffsetTop(vidElRef.current.offsetTop);
         if (rightElRef.current) setRightElOffsetTop(rightElRef.current.offsetTop);
-    }, [leftElRef, rightElRef, bgElRef]);
+    }, [leftElRef, rightElRef, bgElRef, vidElRef]);
 
     return (
         <header id="#header" className="relative">
@@ -130,8 +138,8 @@ const Hero = () => {
                 initial={{ y: 0 }}
                 style={{ y: bgElY }}>
                 <div
-                    className="absolute overflow-hidden w-full h-full bg-center bg-no-repeat bg-auto-100%"
-                    style={{ backgroundImage: 'url(/img/hero.jpg)' }}
+                    className="absolute bg-image bg-auto-100%"
+                    style={{ backgroundImage: `url(${background_image.url})` }}
                 />
             </motion.div>
 
@@ -144,7 +152,7 @@ const Hero = () => {
                     style={{ y: leftElY }}>
                     {/* Title Section */}
                     <motion.h1
-                        className="title px-20 pt-240px relative"
+                        className="title px-24 pt-220px relative"
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
@@ -171,14 +179,14 @@ const Hero = () => {
                         <span className="inline-block overflow-hidden">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
                                 Brand
-                                {/* Business, Reach */}
+                                {/* Business, Reach, Earnings, Future */}
                             </motion.span>
                         </span>
                     </motion.h1>
 
                     {/* Scroll Section */}
                     <motion.div
-                        className="px-20 pt-32 pb-4 text-white mb-4"
+                        className="px-24 pt-32 pb-4 text-white mb-4"
                         initial={{ x: '-100%' }}
                         animate={{ x: 0 }}
                         transition={{
@@ -190,39 +198,26 @@ const Hero = () => {
                     </motion.div>
 
                     {/* Video Section */}
-                    <div className="px-20 z-20 mb-4">
-                        <motion.div initial="hidden" animate="visible" variants={aboutVariants}>
-                            <img className="w-2/3 " src="/img/hero.jpg" alt="" />
-                            <h2 className="pt-4 pl-4 uppercase leading-6">
-                                <span className="text-xs font-bold text-grey-500">Overline</span>
-                                <br />
-                                <span className="text-2xl font-bold">Video Title</span>
-                            </h2>
-                        </motion.div>
-                    </div>
-
+                    <motion.div
+                        className="home__hero__video px-24 z-20 mb-4"
+                        initial="hidden"
+                        animate="visible"
+                        variants={aboutVariants}>
+                        <motion.div
+                            ref={vidElRef}
+                            initial={{ y: -8 }}
+                            style={{ y: vidElY }}
+                            // eslint-disable-next-line react/no-danger
+                            dangerouslySetInnerHTML={{ __html: featured_video.html }}
+                        />
+                    </motion.div>
                     {/* About Section */}
-                    <motion.div initial="hidden" animate="visible" variants={aboutVariants}>
-                        <div className="about bg-white p-20 pt-64 -mt-64">
-                            <p className="pl-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-                                natus, magnam praesentium dolorem temporibus fuga illo soluta
-                                laborum. Sit maiores fugit fugiat suscipit obcaecati! Dolor illum
-                                eveniet ad! Assumenda, laboriosam?
-                            </p>
-                            <p className="pl-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-                                natus, magnam praesentium dolorem temporibus fuga illo soluta
-                                laborum. Sit maiores fugit fugiat suscipit obcaecati! Dolor illum
-                                eveniet ad! Assumenda, laboriosam?
-                            </p>
-                            <p className="pl-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-                                natus, magnam praesentium dolorem temporibus fuga illo soluta
-                                laborum. Sit maiores fugit fugiat suscipit obcaecati! Dolor illum
-                                eveniet ad! Assumenda, laboriosam?
-                            </p>
-                        </div>
+                    <motion.div
+                        className="home__hero__about bg-white px-24 pb-20 pt-64 -mt-56 prose max-w-none sm:prose-sm"
+                        initial="hidden"
+                        animate="visible"
+                        variants={aboutVariants}>
+                        <RichText render={about} />
                     </motion.div>
                 </motion.div>
 
@@ -250,7 +245,7 @@ const Hero = () => {
 
                     {/* Latest Post */}
                     <motion.div
-                        className="p-20"
+                        className="p-20 pb-32"
                         initial="hidden"
                         animate="visible"
                         variants={blogVariants}>
@@ -275,6 +270,10 @@ const Hero = () => {
             </div>
         </header>
     );
+};
+
+Hero.propTypes = {
+    data: PropTypes.array.isRequired,
 };
 
 export default Hero;

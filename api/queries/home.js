@@ -10,7 +10,11 @@ export const getHeroData = async previewData => {
                         ... on Home {
                             background_image
                             featured_video
+                            video_url
                             about
+                        }
+                        ... on Project {
+                            title
                         }
                     }
                 }
@@ -21,4 +25,31 @@ export const getHeroData = async previewData => {
     );
 
     return data?._allDocuments?.edges;
+};
+
+export const getProjectData = async previewData => {
+    const data = await fetchAPI(
+        `
+        query {
+            allProjects {
+                edges {
+                    node {
+                      featured_image
+                      title
+                      subtitle
+                      tags {
+                        tag
+                      }
+                      _meta {
+                        uid
+                      }
+                    }
+                }
+            }
+        }
+        `,
+        { previewData },
+    );
+
+    return data?.allProjects?.edges;
 };
