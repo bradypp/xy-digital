@@ -1,0 +1,19 @@
+.home {
+    &__hero {
+        &__video {
+            iframe {
+                height: 320px;
+                width: 568.88888889px;
+            }
+        }
+        &__about {
+            h2 {
+                @apply uppercase;
+            }
+
+            p {
+                @apply text-grey-700;
+            }
+        }
+    }
+}

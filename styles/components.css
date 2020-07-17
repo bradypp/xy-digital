@@ -1,0 +1,34 @@
+.container-common {
+    @apply mx-auto overflow-hidden;
+}
+
+.container-outer {
+    @apply container-common max-w-1500px;
+}
+
+.container-inner {
+    @apply container-common max-w-1340px;
+}
+
+@screen 2xl {
+    .container-inner {
+        @apply max-w-1070px;
+    }
+}
+
+/* TODO: change title font? */
+.title {
+    @apply font-bold text-title text-white tracking-tight leading-tight;
+}
+
+.bg-image {
+    @apply overflow-hidden w-full h-full bg-center bg-no-repeat;
+}
+
+.tag {
+    @apply border border-white py-5px px-6px uppercase text-2xs text-white opacity-95;
+
+    &:not(:last-of-type) {
+        margin-right: 0.2rem;
+    }
+}
