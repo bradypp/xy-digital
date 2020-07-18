@@ -50,14 +50,14 @@ const timerVariants = {
     hidden: {
         y: '-100%',
         transition: {
-            duration: 0,
+            duration: 0.8,
         },
     },
     animated: {
         y: 0,
         transition: {
-            duration: 7.8,
-            ease: 'easeInOut',
+            duration: 7,
+            ease: 'easeOut',
         },
     },
 };
@@ -73,7 +73,7 @@ const Slideshow = ({ data }) => {
 
     const imgY = useTransform(
         scrollY,
-        [slideshowOffsetTop - 1000, slideshowOffsetTop + 1000],
+        [slideshowOffsetTop - 1200, slideshowOffsetTop + 1200],
         ['-15%', '15%'],
     );
 

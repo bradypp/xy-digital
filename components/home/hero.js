@@ -104,22 +104,26 @@ const Hero = ({ data }) => {
 
     const bgRef = useRef();
     const [bgElOffsetTop, setBgElOffsetTop] = useState(0);
-    const bgElY = useTransform(scrollY, [bgElOffsetTop, bgElOffsetTop + 500], ['0%', '10%']);
+    const bgElY = useTransform(scrollY, [bgElOffsetTop, bgElOffsetTop + 1200], ['0%', '16%']);
 
     const leftRef = useRef();
     const [leftElOffsetTop, setLeftElOffsetTop] = useState(0);
-    const leftElY = useTransform(scrollY, [leftElOffsetTop, leftElOffsetTop + 500], ['0%', '-12%']);
+    const leftElY = useTransform(
+        scrollY,
+        [leftElOffsetTop, leftElOffsetTop + 1200],
+        ['0%', '-16%'],
+    );
 
     const vidRef = useRef();
     const [vidElOffsetTop, setVidElOffsetTop] = useState(0);
-    const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 800], ['-8px', '10%']);
+    const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 1200], ['-8px', '22%']);
 
     const rightRef = useRef();
     const [rightElOffsetTop, setRightElOffsetTop] = useState(0);
     const rightElY = useTransform(
         scrollY,
-        [rightElOffsetTop, rightElOffsetTop + 500],
-        ['0%', '-16%'],
+        [rightElOffsetTop, rightElOffsetTop + 1200],
+        ['0%', '-28%'],
     );
 
     useEffect(() => {
@@ -130,7 +134,7 @@ const Hero = ({ data }) => {
     }, [leftRef, rightRef, bgRef, vidRef]);
 
     return (
-        <header id="#header" className="relative">
+        <header id="#header" className="relative -mb-16">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
@@ -178,8 +182,7 @@ const Hero = ({ data }) => {
                         </span>
                         <span className="inline-block overflow-hidden">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
-                                Brand
-                                {/* Business, Reach, Earnings, Future */}
+                                Business
                             </motion.span>
                         </span>
                     </motion.h1>

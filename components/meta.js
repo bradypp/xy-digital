@@ -15,16 +15,12 @@ const Meta = () => (
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Oswald:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Open+Sans&family=Oswald:wght@400;700&display=swap"
             rel="stylesheet"
         />
         <meta
             name="description"
-            content="A statically generated digital agency website using Next.js, Tailwind CSS, GraphQL and Strapi.js."
+            content="A statically generated digital agency website using Next.js, Tailwind CSS, GraphQL and Prismic"
         />
     </Head>
 );

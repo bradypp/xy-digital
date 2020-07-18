@@ -3,7 +3,6 @@
 @import 'tailwindcss/base';
 
 /* Global Styles  */
-@import './fonts.css';
 @import './base.css';
 
 @import 'tailwindcss/components';
