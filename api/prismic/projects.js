@@ -1,7 +1,7 @@
-import { fetchAPI } from 'api';
+import { fetchPrismicAPI } from 'api/prismic';
 
 export const getAllProjects = async previewData => {
-    const data = await fetchAPI(
+    const data = await fetchPrismicAPI(
         `
         query {
             allProjects {

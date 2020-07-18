@@ -102,19 +102,19 @@ const Hero = ({ data }) => {
     const { about, background_image, featured_video } = data[0].node;
     const { scrollY } = useViewportScroll();
 
-    const bgElRef = useRef();
+    const bgRef = useRef();
     const [bgElOffsetTop, setBgElOffsetTop] = useState(0);
     const bgElY = useTransform(scrollY, [bgElOffsetTop, bgElOffsetTop + 500], ['0%', '10%']);
 
-    const leftElRef = useRef();
+    const leftRef = useRef();
     const [leftElOffsetTop, setLeftElOffsetTop] = useState(0);
     const leftElY = useTransform(scrollY, [leftElOffsetTop, leftElOffsetTop + 500], ['0%', '-12%']);
 
-    const vidElRef = useRef();
+    const vidRef = useRef();
     const [vidElOffsetTop, setVidElOffsetTop] = useState(0);
     const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 800], ['-8px', '10%']);
 
-    const rightElRef = useRef();
+    const rightRef = useRef();
     const [rightElOffsetTop, setRightElOffsetTop] = useState(0);
     const rightElY = useTransform(
         scrollY,
@@ -123,18 +123,18 @@ const Hero = ({ data }) => {
     );
 
     useEffect(() => {
-        if (bgElRef.current) setBgElOffsetTop(bgElRef.current.offsetTop);
-        if (leftElRef.current) setLeftElOffsetTop(leftElRef.current.offsetTop);
-        if (vidElRef.current) setVidElOffsetTop(vidElRef.current.offsetTop);
-        if (rightElRef.current) setRightElOffsetTop(rightElRef.current.offsetTop);
-    }, [leftElRef, rightElRef, bgElRef, vidElRef]);
+        if (bgRef.current) setBgElOffsetTop(bgRef.current.offsetTop);
+        if (leftRef.current) setLeftElOffsetTop(leftRef.current.offsetTop);
+        if (vidRef.current) setVidElOffsetTop(vidRef.current.offsetTop);
+        if (rightRef.current) setRightElOffsetTop(rightRef.current.offsetTop);
+    }, [leftRef, rightRef, bgRef, vidRef]);
 
     return (
         <header id="#header" className="relative">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
-                ref={bgElRef}
+                ref={bgRef}
                 initial={{ y: 0 }}
                 style={{ y: bgElY }}>
                 <div
@@ -147,7 +147,7 @@ const Hero = ({ data }) => {
             <div className="container-inner flex">
                 <motion.div
                     className="flex flex-col w-2/3 z-10"
-                    ref={leftElRef}
+                    ref={leftRef}
                     initial={{ y: 0 }}
                     style={{ y: leftElY }}>
                     {/* Title Section */}
@@ -204,7 +204,7 @@ const Hero = ({ data }) => {
                         animate="visible"
                         variants={aboutVariants}>
                         <motion.div
-                            ref={vidElRef}
+                            ref={vidRef}
                             initial={{ y: -8 }}
                             style={{ y: vidElY }}
                             // eslint-disable-next-line react/no-danger
@@ -224,7 +224,7 @@ const Hero = ({ data }) => {
                 {/* Nav Section */}
                 <motion.div
                     className="w-1/3 z-10"
-                    ref={rightElRef}
+                    ref={rightRef}
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>
                     <motion.div
@@ -263,9 +263,8 @@ const Hero = ({ data }) => {
                         className="h-510px bg-yellow-400"
                         initial="hidden"
                         animate="visible"
-                        variants={rightImageVariants}>
-                        &nbsp;
-                    </motion.div>
+                        variants={rightImageVariants}
+                    />
                 </motion.div>
             </div>
         </header>

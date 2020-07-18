@@ -26,7 +26,7 @@
 }
 
 .tag {
-    @apply border border-white py-5px px-6px uppercase text-2xs text-white opacity-95;
+    @apply border border-white p-2 uppercase text-2xs text-white opacity-95 leading-none;
 
     &:not(:last-of-type) {
         margin-right: 0.2rem;

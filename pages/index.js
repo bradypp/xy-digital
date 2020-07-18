@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-import { getHeroData, getProjectData } from 'api/queries/home';
+import { getHeroData, getProjectData } from 'api/prismic/home';
 import { Layout, Hero, Slideshow } from 'components';
 
 export async function getStaticProps({ preview = false, previewData }) {

@@ -1,4 +1,4 @@
-import { PrismicClient } from 'api';
+import { PrismicClient } from 'api/prismic';
 
 const linkResolver = doc => {
     // Pretty URLs for known types

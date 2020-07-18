@@ -1,13 +1,20 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { motion, AnimatePresence, useViewportScroll, useTransform } from 'framer-motion';
+import cn from 'classnames';
+import {
+    motion,
+    AnimatePresence,
+    useViewportScroll,
+    useTransform,
+    useAnimation,
+} from 'framer-motion';
 
 import { Button } from 'components';
 
-const variants = {
+const slideshowVariants = {
     enter: {
         opacity: 0,
-        scale: 1.1,
+        scale: 1.14,
     },
     center: {
         zIndex: 1,
@@ -25,7 +32,7 @@ const variants = {
     },
     exit: {
         zIndex: 0,
-        opacity: 0.2,
+        opacity: 0,
         z: 1,
         scale: 1.14,
         transition: {
@@ -39,8 +46,25 @@ const variants = {
     },
 };
 
+const timerVariants = {
+    hidden: {
+        y: '-100%',
+        transition: {
+            duration: 0,
+        },
+    },
+    animated: {
+        y: 0,
+        transition: {
+            duration: 7.8,
+            ease: 'easeInOut',
+        },
+    },
+};
+
 const Slideshow = ({ data }) => {
     const [page, setPage] = useState(0);
+    const timerControls = useAnimation();
 
     const { scrollY } = useViewportScroll();
 
@@ -53,71 +77,90 @@ const Slideshow = ({ data }) => {
         ['-15%', '15%'],
     );
 
+    const timerSequence = useCallback(async () => {
+        await timerControls.start('hidden');
+        return timerControls.start('animated');
+    }, [timerControls]);
+
     const paginate = useCallback(
         (nextPage = page + 1) => {
             setPage(nextPage % data.length);
+            timerSequence();
         },
-        [data.length, page],
+        [data.length, page, timerSequence],
     );
 
+    useEffect(() => {
+        timerSequence();
+    }, [timerSequence]);
     useEffect(() => {
         const interval = setTimeout(() => {
             paginate();
         }, 8000);
         return () => clearTimeout(interval);
-    }, [page, paginate]);
+    }, [page, paginate, timerControls]);
 
-    // TODO: Make general parallax component
     useEffect(() => {
         if (slideshowRef.current) setSlideshowOffsetTop(slideshowRef.current.offsetTop);
     }, []);
 
+    const colors = ['blue-400', 'purple-400', 'yellow-400', 'pink-400', 'red-400', 'teal-400'];
+
+    const timerClass = cn(`absolute top-0 left-0 w-2 h-full z-10 opacity-90 bg-${[colors[page]]}`);
+
     return (
-        <section id="slideshow" className="h-800px mb-96" ref={slideshowRef}>
-            <div className="flex h-full relative overflow-hidden bg-black">
-                <AnimatePresence>
-                    <motion.div
-                        className="flex flex-col justify-center items-center engulf"
-                        key={page}
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit">
-                        <motion.img
-                            className="engulf object-cover"
-                            src={data[page].node.featured_image.url}
-                            alt={data[page].node.featured_image.alt}
-                            style={{ y: imgY }}
-                        />
-                        <motion.div className="engulf bg-grey-900 opacity-50 z-10">
-                            &nbsp;
-                        </motion.div>
-                        <h3 className="text-white text-5xl font-bold mb-8 z-20">
-                            {data[page].node.title[0].text}
-                        </h3>
-                        <p className="text-white text-2xl font-secondary mb-8 z-20">
-                            {data[page].node.subtitle}
-                        </p>
-                        <ul className="flex justify-center items-center mb-8 z-20">
-                            {data[page].node.tags.map(el => (
-                                <li className="tag">{el.tag}</li>
-                            ))}
-                        </ul>
-                        <Button
-                            className="z-20"
-                            href={data[page].node._meta.uid}
-                            icon="arrow-right"
-                            variants={variants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit">
-                            Explore more
-                        </Button>
-                    </motion.div>
-                </AnimatePresence>
+        <section
+            id="slideshow"
+            className="flex relative overflow-hidden h-800px bg-black"
+            ref={slideshowRef}>
+            <motion.div className={timerClass} animate={timerControls} variants={timerVariants} />
+            <div className="absolute top-0 left-20px z-10 flex flex-col justify-center items-center h-full">
+                {data.map((el, i) => {
+                    const paginationClass = cn(
+                        'w-3 h-3 mb-1 border-2 border-white rounded-full opacity-80 clickable transition-ease',
+                        {
+                            [`opacity-100 bg-${[colors[page]]} border-${[colors[page]]}`]:
+                                page === i,
+                        },
+                    );
+                    return (
+                        <>
+                            <div className={paginationClass} onClick={() => paginate(i)} />
+                        </>
+                    );
+                })}
             </div>
-            {/* <div>pagination</div>
-            <div>progress bar</div> */}
+            <AnimatePresence>
+                <motion.div
+                    className="flex flex-col justify-center items-center engulf"
+                    key={page}
+                    variants={slideshowVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit">
+                    <motion.img
+                        className="engulf object-cover"
+                        src={data[page].node.featured_image.url}
+                        alt={data[page].node.featured_image.alt}
+                        style={{ y: imgY }}
+                    />
+                    <motion.div className="engulf bg-grey-900 opacity-50 z-10" />
+                    <h3 className="text-white text-5xl font-bold mb-8 z-20">
+                        {data[page].node.title[0].text}
+                    </h3>
+                    <p className="text-white text-2xl font-secondary mb-8 z-20">
+                        {data[page].node.subtitle}
+                    </p>
+                    <ul className="flex justify-center items-center mb-8 z-20">
+                        {data[page].node.tags.map(el => (
+                            <li className="tag">{el.tag}</li>
+                        ))}
+                    </ul>
+                    <Button className="z-20" href={data[page].node._meta.uid} icon="arrow-right">
+                        Learn more
+                    </Button>
+                </motion.div>
+            </AnimatePresence>
         </section>
     );
 };
@@ -127,71 +170,3 @@ Slideshow.propTypes = {
 };
 
 export default Slideshow;
-// import { useEffect } from 'react';
-// import PropTypes from 'prop-types';
-// import { v4 as uuidv4 } from 'uuid';
-// import { motion, useAnimation, AnimatePresence } from 'framer-motion';
-
-// import { Button } from 'components';
-
-// const Slideshow = ({ data }) => {
-//     const controls = useAnimation();
-
-//     useEffect(() => {
-//         controls.start(i => ({
-//             opacity: 0,
-//             x: 100,
-//             transition: { delay: i * 0.3 },
-//         }));
-//     }, []);
-
-//     return (
-//         <section id="slideshow" className="h-800px">
-//             <ul className="flex h-full relative overflow-hidden">
-//                 {data.map(el => {
-//                     const { _meta, featured_image, tags, title, subtitle } = el.node;
-//                     return (
-//                         <AnimatePresence initial={false}>
-//                             <motion.li
-//                                 className="flex flex-col justify-center items-center engulf"
-//                                 key={uuidv4()}
-//                                 initial={{ opacity: 0 }}
-//                                 animate={{ opacity: 1 }}
-//                                 transition={{ duration: 2 }}
-//                                 exit={{ opacity: 0 }}>
-//                                 <img
-//                                     className="engulf object-cover"
-//                                     src={featured_image.url}
-//                                     alt=""
-//                                 />
-//                                 <div className="engulf bg-grey-900 opacity-20 z-10">&nbsp;</div>
-//                                 <h3 className="text-white text-5xl font-bold mb-8 z-20">
-//                                     {title[0].text}
-//                                 </h3>
-//                                 <p className="text-white text-2xl font-secondary mb-8 z-20">
-//                                     {subtitle}
-//                                 </p>
-//                                 <ul className="flex justify-center items-center mb-8 z-20">
-//                                     {tags.map(el => (
-//                                         <li className="tag">{el.tag}</li>
-//                                     ))}
-//                                 </ul>
-//                                 <Button className="z-20" href={_meta.uid} icon="arrow-right">
-//                                     Explore more
-//                                 </Button>
-//                             </motion.li>
-//                         </AnimatePresence>
-//                     );
-//                 })}
-//             </ul>
-//             {/* <div>pagination</div>
-//             <div>progress bar</div> */}
-//         </section>
-//     );
-// };
-
-// Slideshow.propTypes = {
-//     data: PropTypes.array.isRequired,
-// };
-
-// export default Slideshow;
