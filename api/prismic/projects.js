@@ -4,7 +4,7 @@ export const getAllProjects = async previewData => {
     const data = await fetchPrismicAPI(
         `
         query {
-            allProjects {
+            allProjects(sortBy:meta_firstPublicationDate_DESC) {
                 edges {
                     node {
                       featured_image

@@ -33,3 +33,9 @@
 .transition-ease {
     transition: all 0.25s ease;
 }
+
+@variants group-hover {
+    .blur {
+        filter: blur(5px);
+    }
+}

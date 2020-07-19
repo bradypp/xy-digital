@@ -36,33 +36,9 @@ export const throttle = (func, wait = 100) => {
     };
 };
 
-function Timer(fn, t) {
-    var timerObj = setInterval(fn, t);
-
-    this.stop = function () {
-        if (timerObj) {
-            clearInterval(timerObj);
-            timerObj = null;
-        }
-        return this;
-    };
-
-    // start timer using current settings (if it's not already running)
-    this.start = function () {
-        if (!timerObj) {
-            this.stop();
-            timerObj = setInterval(fn, t);
-        }
-        return this;
-    };
-
-    // start with new or original interval, stop current interval
-    this.reset = function (newFn, newT) {
-        fn = newFn;
-        t = newT;
-        return this.stop().start();
-    };
-}
+const generateRandomInteger = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+};
 
 export default {
     moveItemWithinArray,
@@ -70,5 +46,5 @@ export default {
     updateArrayItemById,
     sortByNewest,
     throttle,
-    Timer,
+    generateRandomInteger,
 };

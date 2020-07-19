@@ -41,6 +41,7 @@ module.exports = {
 
         // Next.js Rules
         'react/react-in-jsx-scope': 0,
+        'jsx-a11y/anchor-is-valid': 0,
     },
     // For Next.js
     globals: {

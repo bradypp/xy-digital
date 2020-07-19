@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useViewportScroll, useTransform, motion } from 'framer-motion';
+import { useTransform, motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
+
+import { Button } from 'components';
 
 const titleContainerVariants = {
     visible: {
@@ -75,22 +77,6 @@ const navVariants = {
         },
     },
 };
-const blogVariants = {
-    hidden: {
-        opacity: 0,
-        y: -50,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: 'tween',
-            delay: 2.1,
-            duration: 0.8,
-            ease: 'easeOut',
-        },
-    },
-};
 
 // TODO: change all images
 // TODO: replace image placeholder with video
@@ -98,9 +84,9 @@ const blogVariants = {
 // TODO: alt text
 // TODO: nav functionality and animation
 // TODO: tweak parallax so it's greater than + 500
-const Hero = ({ data }) => {
+// TODO: overlap slideshow slightly
+const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data[0].node;
-    const { scrollY } = useViewportScroll();
 
     const bgRef = useRef();
     const [bgElOffsetTop, setBgElOffsetTop] = useState(0);
@@ -127,24 +113,21 @@ const Hero = ({ data }) => {
     );
 
     useEffect(() => {
-        if (bgRef.current) setBgElOffsetTop(bgRef.current.offsetTop);
-        if (leftRef.current) setLeftElOffsetTop(leftRef.current.offsetTop);
-        if (vidRef.current) setVidElOffsetTop(vidRef.current.offsetTop);
-        if (rightRef.current) setRightElOffsetTop(rightRef.current.offsetTop);
-    }, [leftRef, rightRef, bgRef, vidRef]);
+        setBgElOffsetTop(bgRef.current.offsetTop);
+        setLeftElOffsetTop(leftRef.current.offsetTop);
+        setVidElOffsetTop(vidRef.current.offsetTop);
+        setRightElOffsetTop(rightRef.current.offsetTop);
+    }, []);
 
     return (
-        <header id="#header" className="relative -mb-16">
+        <section id="#hero" className="relative -mb-16">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
                 ref={bgRef}
                 initial={{ y: 0 }}
                 style={{ y: bgElY }}>
-                <div
-                    className="absolute bg-image bg-auto-100%"
-                    style={{ backgroundImage: `url(${background_image.url})` }}
-                />
+                <img className="engulf" src={background_image.url} alt={background_image.alt} />
             </motion.div>
 
             {/*  Content */}
@@ -156,7 +139,7 @@ const Hero = ({ data }) => {
                     style={{ y: leftElY }}>
                     {/* Title Section */}
                     <motion.h1
-                        className="title px-24 pt-220px relative"
+                        className="title-heading px-24 pt-220px relative"
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
@@ -214,13 +197,19 @@ const Hero = ({ data }) => {
                             dangerouslySetInnerHTML={{ __html: featured_video.html }}
                         />
                     </motion.div>
+
                     {/* About Section */}
                     <motion.div
-                        className="home__hero__about bg-white px-24 pb-20 pt-64 -mt-56 prose max-w-none sm:prose-sm"
+                        className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 "
                         initial="hidden"
                         animate="visible"
                         variants={aboutVariants}>
-                        <RichText render={about} />
+                        <div className="prose max-w-none sm:prose-sm mb-6">
+                            <RichText render={about} />
+                        </div>
+                        <Button href="#contact-us" icon="arrow-right">
+                            Get In Touch
+                        </Button>
                     </motion.div>
                 </motion.div>
 
@@ -231,7 +220,7 @@ const Hero = ({ data }) => {
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>
                     <motion.div
-                        className="flex flex-col justify-end h-510px bg-pink-600 relative"
+                        className="flex flex-col justify-end h-510px bg-pink-600 relative mb-390px"
                         initial="hidden"
                         animate="visible"
                         variants={navVariants}>
@@ -241,27 +230,12 @@ const Hero = ({ data }) => {
                                 <li>Our Work</li>
                                 <li>Team</li>
                                 <li>Blog</li>
-                                <li>Find Us</li>
+                                <li>Contact Us</li>
                             </ul>
                         </nav>
                     </motion.div>
 
-                    {/* Latest Post */}
-                    <motion.div
-                        className="p-20 pb-32"
-                        initial="hidden"
-                        animate="visible"
-                        variants={blogVariants}>
-                        <h3 className="text-grey-200 text-md font-bold uppercase">Title</h3>
-                        <p className="text-grey-300 text-sm font-secondary">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam
-                            voluptatem nulla minus laudantium amet, dicta ratione! Animi, magni
-                            impedit sed a tempora natus, maxime unde id laborum voluptatem neque
-                            obcaecati.
-                        </p>
-                    </motion.div>
-
-                    {/* Company image with thick border? Steps of animated words in/out with a new color for each - have final frame with all and gradient */}
+                    {/* Blog section */}
                     <motion.div
                         className="h-510px bg-yellow-400"
                         initial="hidden"
@@ -270,12 +244,13 @@ const Hero = ({ data }) => {
                     />
                 </motion.div>
             </div>
-        </header>
+        </section>
     );
 };
 
 Hero.propTypes = {
     data: PropTypes.array.isRequired,
+    scrollY: PropTypes.object.isRequired,
 };
 
 export default Hero;

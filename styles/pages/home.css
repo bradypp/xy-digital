@@ -8,11 +8,11 @@
         }
         &__about {
             h2 {
-                @apply uppercase;
+                @apply title-primary;
             }
 
             p {
-                @apply text-grey-700;
+                @apply text-gray-700;
             }
         }
     }

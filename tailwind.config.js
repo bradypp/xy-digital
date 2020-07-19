@@ -1,6 +1,5 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
-const { colors } = require('tailwindcss/defaultTheme');
 
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
@@ -23,29 +22,6 @@ module.exports = {
             secondary: 'Domine, Georgia, Cambria, "Times New Roman", Times, serif',
             tertiary:
                 'Open Sans, -apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
-        },
-        colors: {
-            black: colors.black,
-            white: colors.white,
-            grey: {
-                '100': '#f5f5f5',
-                '200': '#eeeeee',
-                '300': '#e0e0e0',
-                '400': '#bdbdbd',
-                '500': '#9e9e9e',
-                '600': '#757575',
-                '700': '#616161',
-                '800': '#424242',
-                '900': '#212121',
-            },
-            red: colors.red,
-            yellow: colors.yellow,
-            green: colors.green,
-            teal: colors.teal,
-            blue: colors.blue,
-            indigo: colors.indigo,
-            purple: colors.purple,
-            pink: colors.pink,
         },
         opacity: {
             '0': '0',
@@ -71,16 +47,27 @@ module.exports = {
                         fontFamily: theme('fontFamily.secondary'),
                         overflowWrap: 'break-word',
                     },
+                    a: {
+                        color: theme('colors.link'),
+                        textDecoration: 'none',
+                        '&:hover': {
+                            color: theme('colors.link.dark'),
+                            textDecoration: 'underline',
+                        },
+                    },
                 },
             },
         }),
         extend: {
+            colors: {
+                link: '#3182ce',
+                'link-dark': '#2c5282',
+            },
             spacing: {
                 28: '7rem',
                 '72': '18rem',
                 '84': '21rem',
                 '96': '24rem',
-                '220px': '220px',
                 '2px': '2px',
                 '3px': '3px',
                 '4px': '4px',
@@ -90,6 +77,13 @@ module.exports = {
                 '8px': '8px',
                 '9px': '9px',
                 '10px': '10px',
+                '11px': '11px',
+                '12px': '12px',
+                '13px': '13px',
+                '14px': '14px',
+                '15px': '15px',
+                '220px': '220px',
+                '390px': '390px',
             },
             fontSize: {
                 '2xs': '.65rem',
@@ -131,6 +125,7 @@ module.exports = {
                 '800px': '800px',
                 '900px': '900px',
             },
+            minHeight: theme => theme('height'),
             backgroundSize: {
                 'auto-100%': 'auto 100%',
             },
@@ -176,6 +171,9 @@ module.exports = {
     },
     variants: {
         translate: ['responsive', 'hover', 'group-hover'],
+        backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+        opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+        scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     },
     plugins: [require('@tailwindcss/typography'), 'tailwindcss', 'postcss-preset-env'],
 };

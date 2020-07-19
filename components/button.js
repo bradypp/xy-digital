@@ -6,18 +6,17 @@ import { Icon } from 'components';
 
 const Button = ({ children, className, href, icon, variant, ...props }) => {
     const btnClass = cn(
-        'flex justify-center items-center clickable font-tertiary transition-ease',
+        'flex justify-center items-center clickable font-tertiary transition-ease w-min-content',
         {
             [className]: !!className,
-            'rounded-3xl border border-white text-xs opacity-50 px-6 h-10 group hover:opacity-100':
+            'rounded-3xl border border-gray-800 text-xs opacity-70 px-6 h-10 group hover:opacity-100':
                 variant === 'primary',
-            classes: variant === 'secondary',
         },
     );
-    const textClass = cn('text-white w-max-content', {
+    const textClass = cn('w-max-content', {
         'pr-2': !!icon,
     });
-    const iconClass = cn('h-4 w-4 text-white', {
+    const iconClass = cn('h-4 w-4', {
         'transform transition-ease group-hover:translate-x-1': variant === 'primary',
     });
 
@@ -25,7 +24,7 @@ const Button = ({ children, className, href, icon, variant, ...props }) => {
         <Link href={href}>
             <a {...props} className={btnClass}>
                 <span className={textClass}>{children}</span>
-                <Icon className={iconClass} name={icon} />
+                {icon && <Icon className={iconClass} name={icon} />}
             </a>
         </Link>
     );

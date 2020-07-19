@@ -1,5 +1,7 @@
 export { default as Hero } from './home/hero';
 export { default as Slideshow } from './home/slideshow';
+export { default as Projects } from './home/projects';
+export { default as Team } from './home/team';
 
 export { default as Layout } from './layout';
 export { default as Meta } from './meta';

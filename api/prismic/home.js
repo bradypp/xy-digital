@@ -31,7 +31,7 @@ export const getProjectData = async previewData => {
     const data = await fetchPrismicAPI(
         `
         query {
-            allProjects {
+            allProjects(sortBy:meta_firstPublicationDate_DESC) {
                 edges {
                     node {
                       featured_image
@@ -52,4 +52,35 @@ export const getProjectData = async previewData => {
     );
 
     return data?.allProjects?.edges;
+};
+
+export const getTeamData = async previewData => {
+    const data = await fetchPrismicAPI(
+        `
+        query {
+            allTeam_members {
+                edges {
+                  node {
+                    name
+                    image
+                    role
+                    projects {
+                      project {
+                        ... on Project {
+                          title
+                          _meta{
+                            uid
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        }
+        `,
+        { previewData },
+    );
+
+    return data?.allTeam_members?.edges;
 };
