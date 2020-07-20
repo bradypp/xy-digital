@@ -8,12 +8,12 @@ import { motion, AnimatePresence, useTransform, useAnimation } from 'framer-moti
 const slideshowVariants = {
     enter: {
         opacity: 0,
-        scale: 1.15,
+        scale: 1.2,
     },
     center: {
         zIndex: 1,
         opacity: 1,
-        scale: 1.13,
+        scale: 1.18,
         transition: {
             delay: 0.6,
             opacity: {
@@ -28,7 +28,7 @@ const slideshowVariants = {
         zIndex: 0,
         opacity: 0,
         z: 1,
-        scale: 1.15,
+        scale: 1.2,
         transition: {
             opacity: {
                 duration: 1,
@@ -66,7 +66,7 @@ const Slideshow = ({ data, scrollY }) => {
     const imgY = useTransform(
         scrollY,
         [slideshowOffsetTop - 1100, slideshowOffsetTop + 1100],
-        ['-12%', '12%'],
+        ['-15%', '15%'],
     );
 
     const timerSequence = useCallback(async () => {

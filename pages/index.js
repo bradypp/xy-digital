@@ -2,19 +2,17 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useViewportScroll } from 'framer-motion';
 
-import { getHeroData, getProjectData, getTeamData } from 'api/prismic/home';
+import { getHomeData } from 'api/prismic/home';
 import { Layout, Hero, Slideshow, Projects, Team } from 'components';
 
 export async function getStaticProps({ preview = false, previewData }) {
-    const heroData = await getHeroData(previewData);
-    const projectData = await getProjectData(previewData);
-    const teamData = await getTeamData(previewData);
+    const data = await getHomeData(previewData);
     return {
         props: {
             preview,
-            heroData,
-            projectData,
-            teamData,
+            heroData: data?._allDocuments?.edges,
+            projectData: data?.allProjects?.edges,
+            teamData: data?.allTeam_members?.edges,
         },
     };
 }

@@ -29,54 +29,6 @@ const titleChildrenVariants = {
         },
     },
 };
-const aboutVariants = {
-    hidden: {
-        opacity: 0,
-        y: 50,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: 'tween',
-            delay: 1.5,
-            duration: 0.8,
-            ease: 'easeOut',
-        },
-    },
-};
-const rightImageVariants = {
-    hidden: {
-        opacity: 0,
-        y: 50,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: 'tween',
-            delay: 1.7,
-            duration: 0.8,
-            ease: 'easeOut',
-        },
-    },
-};
-const navVariants = {
-    hidden: {
-        opacity: 0,
-        y: -50,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: 'tween',
-            delay: 2,
-            duration: 0.8,
-            ease: 'easeOut',
-        },
-    },
-};
 
 // TODO: change all images
 // TODO: replace image placeholder with video
@@ -170,7 +122,7 @@ const Hero = ({ data, scrollY }) => {
                         </span>
                     </motion.h1>
 
-                    {/* Scroll Section */}
+                    {/* TODO: Scroll Section */}
                     <motion.div
                         className="px-24 pt-32 pb-4 text-white mb-4"
                         initial={{ x: '-100%' }}
@@ -183,33 +135,41 @@ const Hero = ({ data, scrollY }) => {
                         scroll
                     </motion.div>
 
-                    {/* Video Section */}
                     <motion.div
-                        className="home__hero__video px-24 z-20 mb-4"
-                        initial="hidden"
-                        animate="visible"
-                        variants={aboutVariants}>
-                        <motion.div
-                            ref={vidRef}
-                            initial={{ y: -8 }}
-                            style={{ y: vidElY }}
-                            // eslint-disable-next-line react/no-danger
-                            dangerouslySetInnerHTML={{ __html: featured_video.html }}
-                        />
-                    </motion.div>
-
-                    {/* About Section */}
-                    <motion.div
-                        className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 "
-                        initial="hidden"
-                        animate="visible"
-                        variants={aboutVariants}>
-                        <div className="prose max-w-none sm:prose-sm mb-6">
-                            <RichText render={about} />
+                        initial={{
+                            opacity: 0,
+                            y: 50,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                                type: 'tween',
+                                delay: 1.5,
+                                duration: 0.8,
+                                ease: 'easeOut',
+                            },
+                        }}>
+                        {/* Video Section */}
+                        <div className="home__hero__video px-24 z-20 mb-4">
+                            <motion.div
+                                ref={vidRef}
+                                initial={{ y: -8 }}
+                                style={{ y: vidElY }}
+                                // eslint-disable-next-line react/no-danger
+                                dangerouslySetInnerHTML={{ __html: featured_video.html }}
+                            />
                         </div>
-                        <Button href="#contact-us" icon="arrow-right">
-                            Get In Touch
-                        </Button>
+
+                        {/* About Section */}
+                        <div className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 ">
+                            <div className="prose max-w-none sm:prose-sm mb-6">
+                                <RichText render={about} />
+                            </div>
+                            <Button href="#contact-us" icon="arrow-right">
+                                Get In Touch
+                            </Button>
+                        </div>
                     </motion.div>
                 </motion.div>
 
@@ -221,9 +181,20 @@ const Hero = ({ data, scrollY }) => {
                     style={{ y: rightElY }}>
                     <motion.div
                         className="flex flex-col justify-end h-510px bg-pink-600 relative mb-390px"
-                        initial="hidden"
-                        animate="visible"
-                        variants={navVariants}>
+                        initial={{
+                            opacity: 0,
+                            y: -50,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                                type: 'tween',
+                                delay: 2,
+                                duration: 0.8,
+                                ease: 'easeOut',
+                            },
+                        }}>
                         <nav className="absolute bottom-100px left-80px">
                             <ul className="text-3xl text-white font-bold uppercase leading-snug">
                                 <li>About Us</li>
@@ -238,9 +209,20 @@ const Hero = ({ data, scrollY }) => {
                     {/* Blog section */}
                     <motion.div
                         className="h-510px bg-yellow-400"
-                        initial="hidden"
-                        animate="visible"
-                        variants={rightImageVariants}
+                        initial={{
+                            opacity: 0,
+                            y: 50,
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                                type: 'tween',
+                                delay: 1.7,
+                                duration: 0.8,
+                                ease: 'easeOut',
+                            },
+                        }}
                     />
                 </motion.div>
             </div>

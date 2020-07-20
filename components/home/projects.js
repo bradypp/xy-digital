@@ -5,33 +5,34 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, useTransform } from 'framer-motion';
 
-const Projects = ({ data, scrollY }) => {
-    const colors = [
-        'blue-700',
-        'pink-700',
-        'red-700',
-        'teal-700',
-        'yellow-700',
-        'purple-700',
-        'indigo-700',
-        'green-700',
-    ];
-    const gridAreas = [
-        'col-start-1 col-end-3',
-        'col-start-3 col-end-4',
-        'col-start-4 col-end-5',
-        'col-start-1 col-end-2 row-start-2 row-end-4',
-        'col-start-2 col-end-4',
-        'col-start-4 col-end-5',
-        'col-start-2 col-end-3',
-        'col-start-3 col-end-4',
-        'col-start-4 col-end-5 row-start-3 row-end-5',
-        'col-start-1 col-end-2',
-        'col-start-2 col-end-4',
-        'col-start-1 col-end-3',
-        'col-start-3 col-end-5',
-    ];
+const colors = [
+    'blue-700',
+    'pink-700',
+    'red-700',
+    'teal-700',
+    'yellow-700',
+    'purple-700',
+    'indigo-700',
+    'green-700',
+];
 
+const gridAreas = [
+    'col-start-1 col-end-3',
+    'col-start-3 col-end-4',
+    'col-start-4 col-end-5',
+    'col-start-1 col-end-2 row-start-2 row-end-4',
+    'col-start-2 col-end-4',
+    'col-start-4 col-end-5',
+    'col-start-2 col-end-3',
+    'col-start-3 col-end-4',
+    'col-start-4 col-end-5 row-start-3 row-end-5',
+    'col-start-1 col-end-2',
+    'col-start-2 col-end-4',
+    'col-start-1 col-end-3',
+    'col-start-3 col-end-5',
+];
+
+const Projects = ({ data, scrollY }) => {
     const projectsRef = useRef();
     const [projectsOffsetTop, setProjectsOffsetTop] = useState(0);
     const projectsY = useTransform(
@@ -68,7 +69,7 @@ const Projects = ({ data, scrollY }) => {
                             <a className={containerClassName}>
                                 <div className={backgroundClassName} />
                                 <img
-                                    className="engulf object-cover transform scale-110 group-hover:translate-x-3 group-hover:scale-105 transition-ease group-hover:opacity-50 origin-bottom-right"
+                                    className="engulf object-cover transform scale-105 group-hover:translate-x-3  transition-ease group-hover:opacity-50"
                                     src={el.node.featured_image.url}
                                     alt={el.node.featured_image.alt}
                                 />

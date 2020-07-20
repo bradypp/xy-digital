@@ -24,7 +24,7 @@ const Team = ({ data }) => (
                         <ul>
                             {el.node.projects.map(el => (
                                 <li key={uuidv4()} className="pb-1 flex items-center">
-                                    <Icon className="w-5 h-5 mr-2" name="arrow-right" />
+                                    <Icon className="w-4 h-4 mr-2" name="arrow-right" />
                                     <Link href={el.project._meta.uid}>
                                         <a className="inline-link font-tertiary text-sm text-blue-400">
                                             {el.project.title[0].text}
