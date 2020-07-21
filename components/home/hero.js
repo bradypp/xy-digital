@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useTransform, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 
 import { Button } from 'components';
+import { useParallaxScroll } from 'hooks';
 
 const titleContainerVariants = {
     visible: {
@@ -37,39 +37,14 @@ const titleChildrenVariants = {
 // TODO: nav functionality and animation
 // TODO: tweak parallax so it's greater than + 500
 // TODO: overlap slideshow slightly
+// TODO: change video
 const Hero = ({ data, scrollY }) => {
-    const { about, background_image, featured_video } = data[0].node;
+    const { about, background_image, featured_video } = data;
 
-    const bgRef = useRef();
-    const [bgElOffsetTop, setBgElOffsetTop] = useState(0);
-    const bgElY = useTransform(scrollY, [bgElOffsetTop, bgElOffsetTop + 1200], ['0%', '16%']);
-
-    const leftRef = useRef();
-    const [leftElOffsetTop, setLeftElOffsetTop] = useState(0);
-    const leftElY = useTransform(
-        scrollY,
-        [leftElOffsetTop, leftElOffsetTop + 1200],
-        ['0%', '-16%'],
-    );
-
-    const vidRef = useRef();
-    const [vidElOffsetTop, setVidElOffsetTop] = useState(0);
-    const vidElY = useTransform(scrollY, [vidElOffsetTop, vidElOffsetTop + 1200], ['-8px', '22%']);
-
-    const rightRef = useRef();
-    const [rightElOffsetTop, setRightElOffsetTop] = useState(0);
-    const rightElY = useTransform(
-        scrollY,
-        [rightElOffsetTop, rightElOffsetTop + 1200],
-        ['0%', '-28%'],
-    );
-
-    useEffect(() => {
-        setBgElOffsetTop(bgRef.current.offsetTop);
-        setLeftElOffsetTop(leftRef.current.offsetTop);
-        setVidElOffsetTop(vidRef.current.offsetTop);
-        setRightElOffsetTop(rightRef.current.offsetTop);
-    }, []);
+    const [bgRef, bgElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '16%');
+    const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
+    const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
+    const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
     return (
         <section id="#hero" className="relative -mb-16">
@@ -135,6 +110,7 @@ const Hero = ({ data, scrollY }) => {
                         scroll
                     </motion.div>
 
+                    {/* About Section */}
                     <motion.div
                         initial={{
                             opacity: 0,
@@ -150,7 +126,6 @@ const Hero = ({ data, scrollY }) => {
                                 ease: 'easeOut',
                             },
                         }}>
-                        {/* Video Section */}
                         <div className="home__hero__video px-24 z-20 mb-4">
                             <motion.div
                                 ref={vidRef}
@@ -160,8 +135,6 @@ const Hero = ({ data, scrollY }) => {
                                 dangerouslySetInnerHTML={{ __html: featured_video.html }}
                             />
                         </div>
-
-                        {/* About Section */}
                         <div className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 ">
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <RichText render={about} />
@@ -231,7 +204,7 @@ const Hero = ({ data, scrollY }) => {
 };
 
 Hero.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
     scrollY: PropTypes.object.isRequired,
 };
 

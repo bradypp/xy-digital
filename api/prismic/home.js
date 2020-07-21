@@ -5,21 +5,17 @@ export const getHomeData = async previewData => {
     const data = await fetchPrismicAPI(
         `
         query {
-          _allDocuments {
-            edges {
-              node {
-                ... on Home {
-                  background_image
-                  featured_video
-                  video_url
-                  about
-                }
-              }
+            home(uid:"home",lang:"en-gb") {
+              background_image
+              featured_video
+              video_url
+              about
+              team_image
             }
-          }
           allProjects(sortBy: meta_firstPublicationDate_DESC) {
             edges {
               node {
+                is_featured
                 featured_image
                 title
                 subtitle
@@ -28,25 +24,6 @@ export const getHomeData = async previewData => {
                 }
                 _meta {
                   uid
-                }
-              }
-            }
-          }
-          allTeam_members {
-            edges {
-              node {
-                name
-                image
-                role
-                projects {
-                  project {
-                    ... on Project {
-                      title
-                      _meta {
-                        uid
-                      }
-                    }
-                  }
                 }
               }
             }

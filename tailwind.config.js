@@ -1,5 +1,7 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
@@ -169,11 +171,31 @@ module.exports = {
             },
         },
     },
+    // Enable to allow all variants for each utitlity class
+    // Make sure file sizes are controlled first https://tailwindcss.com/docs/controlling-file-size/
+    // variants: {
+    //     variants: ['important', 'responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled']
+    // }
     variants: {
         translate: ['responsive', 'hover', 'group-hover'],
         backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
         opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-        scale: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+        scale: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'important'],
     },
-    plugins: [require('@tailwindcss/typography'), 'tailwindcss', 'postcss-preset-env'],
+    plugins: [
+        require('@tailwindcss/typography'),
+        // Add the important variant. Prefix classes with ! to use
+        plugin(function ({ addVariant }) {
+            addVariant('important', ({ container }) => {
+                container.walkRules(rule => {
+                    rule.selector = `.\\!${rule.selector.slice(1)}`;
+                    rule.walkDecls(decl => {
+                        decl.important = true;
+                    });
+                });
+            });
+        }),
+        'tailwindcss',
+        'postcss-preset-env',
+    ],
 };

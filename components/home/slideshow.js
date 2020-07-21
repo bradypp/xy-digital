@@ -1,9 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
-import { motion, AnimatePresence, useTransform, useAnimation } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+
+import { ParallaxImage } from 'components';
+import { useParallaxScroll } from 'hooks';
 
 const slideshowVariants = {
     enter: {
@@ -44,13 +47,13 @@ const timerVariants = {
     hidden: {
         y: '-100%',
         transition: {
-            duration: 0.8,
+            duration: 0.6,
         },
     },
     animated: {
         y: 0,
         transition: {
-            duration: 7,
+            duration: 7.2,
             ease: 'easeOut',
         },
     },
@@ -59,15 +62,7 @@ const timerVariants = {
 const Slideshow = ({ data, scrollY }) => {
     const [page, setPage] = useState(0);
     const timerControls = useAnimation();
-
-    const slideshowRef = useRef();
-    const [slideshowOffsetTop, setSlideshowOffsetTop] = useState(0);
-
-    const imgY = useTransform(
-        scrollY,
-        [slideshowOffsetTop - 1100, slideshowOffsetTop + 1100],
-        ['-15%', '15%'],
-    );
+    const [slideshowRef, imgY] = useParallaxScroll(scrollY);
 
     const timerSequence = useCallback(async () => {
         await timerControls.start('hidden');
@@ -92,13 +87,7 @@ const Slideshow = ({ data, scrollY }) => {
         return () => clearTimeout(interval);
     }, [page, paginate, timerControls]);
 
-    useEffect(() => {
-        setSlideshowOffsetTop(slideshowRef.current.offsetTop);
-    }, []);
-
-    const colors = ['blue-500', 'pink-500', 'purple-500', 'red-500', 'teal-500', 'yellow-500'];
-
-    const timerClass = cn(`absolute top-0 left-0 w-2 h-full z-10 bg-${[colors[page]]}`);
+    const timerClass = cn(`absolute top-0 left-0 w-2 h-full z-10 bg-blue-500`);
 
     return (
         <section
@@ -109,10 +98,9 @@ const Slideshow = ({ data, scrollY }) => {
             <div className="absolute top-0 left-20px z-10 flex flex-col justify-center items-center h-full">
                 {data.map((el, i) => {
                     const paginationClass = cn(
-                        'w-14px h-14px mb-6px border-2 border-white rounded-full clickable transition-ease',
+                        'w-14px h-14px mb-6px border-2 border-white rounded-full clickable transition-ease opacity-70 hover:opacity-100',
                         {
-                            [`opacity-100 bg-${[colors[page]]} border-${[colors[page]]}`]:
-                                page === i,
+                            [`opacity-100 bg-blue-500 border-blue-500`]: page === i,
                         },
                     );
                     return (
@@ -140,7 +128,7 @@ const Slideshow = ({ data, scrollY }) => {
                                 alt={data[page].node.featured_image.alt}
                                 style={{ y: imgY }}
                             />
-                            <div className="engulf bg-gray-900 opacity-50 z-10" />
+                            <div className="engulf bg-gray-900 opacity-40 z-10" />
                             <h3 className="title-primary text-5xl text-white mb-8 z-20">
                                 {data[page].node.title[0].text}
                             </h3>
