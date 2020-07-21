@@ -33,7 +33,7 @@
 }
 
 .title-section {
-    @apply title-secondary text-4xl uppercase text-gray-500;
+    @apply title-secondary text-4xl uppercase text-grey-cool-500;
 }
 
 .bg-image {

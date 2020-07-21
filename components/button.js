@@ -9,7 +9,7 @@ const Button = ({ children, className, href, icon, variant, ...props }) => {
         'flex justify-center items-center clickable font-tertiary transition-ease w-min-content',
         {
             [className]: !!className,
-            'rounded-3xl border border-gray-800 text-xs opacity-70 px-6 h-10 group hover:opacity-100':
+            'rounded-3xl border border-grey-cool-800 text-xs opacity-70 px-6 h-10 group hover:opacity-100':
                 variant === 'primary',
         },
     );

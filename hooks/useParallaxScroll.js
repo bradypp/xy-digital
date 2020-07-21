@@ -3,8 +3,8 @@ import { useTransform } from 'framer-motion';
 
 const useParallaxScroll = (
     scrollY,
-    scrollStartOffset = -1000,
-    scrollEndOffset = 1000,
+    scrollStartOffset = -1200,
+    scrollEndOffset = 1200,
     initialPosition = '-15%',
     endPosition = '15%',
 ) => {

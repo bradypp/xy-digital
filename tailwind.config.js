@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable global-require */
 /* eslint-disable import/no-extraneous-dependencies */
+const { colors } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
@@ -24,6 +25,32 @@ module.exports = {
             secondary: 'Domine, Georgia, Cambria, "Times New Roman", Times, serif',
             tertiary:
                 'Open Sans, -apple-system, "Helvetica Neue", "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+        },
+        colors: {
+            black: colors.black,
+            white: colors.white,
+            grey: {
+                '100': '#f5f5f5',
+                '200': '#eeeeee',
+                '300': '#e0e0e0',
+                '400': '#bdbdbd',
+                '500': '#9e9e9e',
+                '600': '#757575',
+                '700': '#616161',
+                '800': '#424242',
+                '900': '#212121',
+            },
+            'grey-cool': colors.gray,
+            red: colors.red,
+            yellow: colors.yellow,
+            orange: colors.orange,
+            green: colors.green,
+            blue: colors.blue,
+            indigo: colors.indigo,
+            teal: colors.teal,
+            pink: colors.pink,
+            link: '#3182ce',
+            'link-dark': '#2c5282',
         },
         opacity: {
             '0': '0',
@@ -61,10 +88,6 @@ module.exports = {
             },
         }),
         extend: {
-            colors: {
-                link: '#3182ce',
-                'link-dark': '#2c5282',
-            },
             spacing: {
                 28: '7rem',
                 '72': '18rem',
@@ -171,7 +194,7 @@ module.exports = {
             },
         },
     },
-    // Enable to allow all variants for each utitlity class
+    // Enable to allow all variants for each utility class
     // Make sure file sizes are controlled first https://tailwindcss.com/docs/controlling-file-size/
     // variants: {
     //     variants: ['important', 'responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled']

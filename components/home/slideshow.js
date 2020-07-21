@@ -5,7 +5,6 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 
-import { ParallaxImage } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const slideshowVariants = {
@@ -126,9 +125,9 @@ const Slideshow = ({ data, scrollY }) => {
                                 className="engulf object-cover"
                                 src={data[page].node.featured_image.url}
                                 alt={data[page].node.featured_image.alt}
-                                style={{ y: imgY }}
+                                style={{ y: imgY, scale: 1.15 }}
                             />
-                            <div className="engulf bg-gray-900 opacity-40 z-10" />
+                            <div className="engulf bg-grey-cool-900 opacity-40 z-10" />
                             <h3 className="title-primary text-5xl text-white mb-8 z-20">
                                 {data[page].node.title[0].text}
                             </h3>

@@ -22,19 +22,19 @@ const gridAreas = [
 ];
 
 const Projects = ({ data, scrollY }) => {
-    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -500, 0, 0, -100);
+    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -1000, 0, 100, -200);
 
     return (
         <motion.section
             id="projects"
             ref={projectsRef}
-            className="flex items-center flex-col container-inner bg-white z-10 relative"
+            className="flex items-center flex-col container-inner bg-white z-10 relative -mb-40"
             style={{ y: projectsY }}>
             <h2 className="title-section p-12">Our Work</h2>
             <div className="grid grid-cols-4 gap-1">
                 {data.map((el, i) => {
                     const containerClassName = cn(
-                        `relative min-h-84 overflow-hidden group flex flex-col justify-start p-8 bg-gray-900 ${
+                        `relative min-h-84 overflow-hidden group flex flex-col justify-start p-8 bg-grey-cool-900 ${
                             gridAreas[i % 13]
                         }`,
                     );

@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { ParallaxImage } from 'components';
 
 const Team = ({ image, scrollY }) => {
-    return <ParallaxImage scrollY={scrollY} src={image.url} alt={image.alt} />;
+    return (
+        <section>
+            <ParallaxImage scrollY={scrollY} src={image.url} alt={image.alt} />
+        </section>
+    );
 };
 
 Team.propTypes = {

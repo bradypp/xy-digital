@@ -1,5 +1,5 @@
 body {
-    @apply min-h-screen antialiased overflow-x-hidden text-md text-gray-900 font-primary bg-gray-200;
+    @apply min-h-screen antialiased overflow-x-hidden text-md text-grey-cool-900 font-primary bg-grey-cool-200;
 }
 
 svg {

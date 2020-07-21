@@ -38,6 +38,7 @@ const titleChildrenVariants = {
 // TODO: tweak parallax so it's greater than + 500
 // TODO: overlap slideshow slightly
 // TODO: change video
+// TODO: extract nav links into a config file
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data;
 
@@ -47,14 +48,18 @@ const Hero = ({ data, scrollY }) => {
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
     return (
-        <section id="#hero" className="relative -mb-16">
+        <section id="#hero" className="relative -mb-24">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
                 ref={bgRef}
                 initial={{ y: 0 }}
                 style={{ y: bgElY }}>
-                <img className="engulf" src={background_image.url} alt={background_image.alt} />
+                <img
+                    className="engulf object-cover"
+                    src={background_image.url}
+                    alt={background_image.alt}
+                />
             </motion.div>
 
             {/*  Content */}
