@@ -5,3 +5,11 @@ body {
 svg {
     @apply w-full h-full inline-block leading-none;
 }
+
+blockquote {
+    @apply m-0 pl-6;
+
+    p {
+        @apply italic text-2xl font-secondary;
+    }
+}

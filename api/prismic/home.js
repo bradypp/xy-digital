@@ -11,6 +11,7 @@ export const getHomeData = async previewData => {
               video_url
               about
               team_image
+              team_quote
             }
           allProjects(sortBy: meta_firstPublicationDate_DESC) {
             edges {

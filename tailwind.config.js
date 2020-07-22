@@ -151,6 +151,7 @@ module.exports = {
                 '900px': '900px',
             },
             minHeight: theme => theme('height'),
+            minWidth: theme => theme('width'),
             backgroundSize: {
                 'auto-100%': 'auto 100%',
             },
@@ -196,18 +197,32 @@ module.exports = {
     },
     // Enable to allow all variants for each utility class
     // Make sure file sizes are controlled first https://tailwindcss.com/docs/controlling-file-size/
-    // variants: {
-    //     variants: ['important', 'responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled']
-    // }
+    // variants: [
+    //     'responsive',
+    //     'group-hover',
+    //     'group-focus',
+    //     'focus-within',
+    //     'first',
+    //     'last',
+    //     'odd',
+    //     'even',
+    //     'hover',
+    //     'focus',
+    //     'active',
+    //     'visited',
+    //     'disabled',
+    //     'important',
+    // ],
     variants: {
-        translate: ['responsive', 'hover', 'group-hover'],
-        backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-        opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-        scale: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'important'],
+        translate: ['responsive', 'hover', 'focus', 'group-hover'],
+        backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+        opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+        scale: ['responsive', 'hover', 'focus', 'group-hover'],
+        fontSize: ['responsive', 'important'],
     },
     plugins: [
         require('@tailwindcss/typography'),
-        // Add the important variant. Prefix classes with ! to use
+        // Add the important variant. Prefix classes with ! and add to variants to use
         plugin(function ({ addVariant }) {
             addVariant('important', ({ container }) => {
                 container.walkRules(rule => {

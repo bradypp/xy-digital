@@ -29,13 +29,13 @@ const Home = ({ homeData, projectData }) => {
             <Hero data={homeData} scrollY={scrollY} />
             {slideshowData.length > 0 && <Slideshow data={slideshowData} scrollY={scrollY} />}
             {projectData.length > 0 && <Projects data={projectData} scrollY={scrollY} />}
-            <Team image={homeData.team_image} scrollY={scrollY} />
+            <Team image={homeData.team_image} quote={homeData.team_quote} scrollY={scrollY} />
         </Layout>
     );
 };
 
 Home.propTypes = {
-    homeData: PropTypes.array.isRequired,
+    homeData: PropTypes.object.isRequired,
     projectData: PropTypes.array.isRequired,
 };
 

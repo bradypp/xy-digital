@@ -4,10 +4,12 @@ import cn from 'classnames';
 
 import { useParallaxScroll } from 'hooks';
 
-const ParallaxImage = ({ scrollY, src, alt, className }) => {
+const ParallaxImage = ({ scrollY, src, alt, className, variant }) => {
     const [imgRef, imgY] = useParallaxScroll(scrollY);
 
-    const newClassName = cn('relative overflow-hidden w-full h-800px', className);
+    const newClassName = cn('overflow-hidden w-full absolute', className, {
+        'h-800px': variant === 'large',
+    });
 
     return (
         <div ref={imgRef} className={newClassName}>
@@ -26,11 +28,13 @@ ParallaxImage.propTypes = {
     scrollY: PropTypes.object.isRequired,
     alt: PropTypes.string,
     className: PropTypes.string,
+    variant: PropTypes.oneOf(['large']),
 };
 
 ParallaxImage.defaultProps = {
     alt: '',
     className: undefined,
+    variant: 'large',
 };
 
 export default ParallaxImage;
