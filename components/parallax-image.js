@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import cn from 'classnames';
 
 import { useParallaxScroll } from 'hooks';
-
+// TODO: delete/fix?
 const ParallaxImage = ({ scrollY, src, alt, className, variant }) => {
     const [imgRef, imgY] = useParallaxScroll(scrollY);
 
