@@ -41,5 +41,5 @@ export const getAllProjects = async previewData => {
         { previewData },
     );
 
-    return data?._allDocuments?.edges;
+    return data;
 };

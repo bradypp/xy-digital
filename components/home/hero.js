@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 
-import { Button } from 'components';
+import { Button, Blog } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const titleContainerVariants = {
@@ -38,9 +38,9 @@ const titleChildrenVariants = {
 // TODO: tweak parallax so it's greater than + 500
 // TODO: overlap slideshow slightly
 // TODO: change video
-// TODO: extract nav links into a config file
+// TODO: extract nav links from config file
 const Hero = ({ data, scrollY }) => {
-    const { about, background_image, featured_video } = data;
+    const { about, background_image, featured_video } = data.homeData;
 
     const [bgRef, bgElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '16%');
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
@@ -116,7 +116,7 @@ const Hero = ({ data, scrollY }) => {
                     </motion.div>
 
                     {/* About Section */}
-                    <motion.div
+                    <motion.section
                         initial={{
                             opacity: 0,
                             y: 50,
@@ -148,7 +148,7 @@ const Hero = ({ data, scrollY }) => {
                                 Get In Touch
                             </Button>
                         </div>
-                    </motion.div>
+                    </motion.section>
                 </motion.div>
 
                 {/* Nav Section */}
@@ -177,7 +177,6 @@ const Hero = ({ data, scrollY }) => {
                             <ul className="text-3xl text-white font-bold uppercase leading-snug">
                                 <li>About Us</li>
                                 <li>Our Work</li>
-                                <li>Team</li>
                                 <li>Blog</li>
                                 <li>Contact Us</li>
                             </ul>
@@ -185,8 +184,8 @@ const Hero = ({ data, scrollY }) => {
                     </motion.div>
 
                     {/* Blog section */}
-                    <motion.div
-                        className="h-510px bg-yellow-400"
+                    <motion.section
+                        className="bg-grey-cool-300 p-8"
                         initial={{
                             opacity: 0,
                             y: 50,
@@ -200,8 +199,9 @@ const Hero = ({ data, scrollY }) => {
                                 duration: 0.8,
                                 ease: 'easeOut',
                             },
-                        }}
-                    />
+                        }}>
+                        <Blog data={data.blogData} />
+                    </motion.section>
                 </motion.div>
             </div>
         </section>

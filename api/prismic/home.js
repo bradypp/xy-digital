@@ -29,6 +29,17 @@ export const getHomeData = async previewData => {
               }
             }
           }
+          allBlog_posts(sortBy: meta_firstPublicationDate_DESC, first:5) {
+            edges {
+              node {
+                title
+                featured_image
+                _meta {
+                  uid
+                }
+              }
+            }
+          }
         }
         `,
         { previewData },

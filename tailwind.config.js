@@ -42,10 +42,22 @@ module.exports = {
             '95': '.95',
             '100': '1',
         },
+        borderRadius: {
+            0: '0',
+            sm: '0.125rem',
+            default: '0.25rem',
+            md: '0.375rem',
+            lg: '0.5rem',
+            xl: '0.75rem',
+            '2xl': '1rem',
+            '3xl': '1.25rem',
+            full: '9999px',
+            '50%': '50%',
+        },
         typography: theme => ({
             default: {
                 css: {
-                    color: theme('colors.grey.900'),
+                    color: theme('colors.grey.cool.900'),
                     p: {
                         fontFamily: theme('fontFamily.secondary'),
                         overflowWrap: 'break-word',
@@ -162,17 +174,6 @@ module.exports = {
                 '1/2': '50%',
                 '2/3': '66%',
                 '3/4': '75%',
-            },
-            borderRadius: {
-                0: '0',
-                sm: '0.125rem',
-                default: '0.25rem',
-                md: '0.375rem',
-                lg: '0.5rem',
-                xl: '0.75rem',
-                '2xl': '1rem',
-                '3xl': '1.25rem',
-                full: '9999px',
             },
             transitionDuration: {
                 '0': '0ms',

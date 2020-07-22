@@ -13,11 +13,12 @@ export async function getStaticProps({ preview = false, previewData }) {
             preview,
             homeData: data?.home,
             projectData: data?.allProjects?.edges,
+            blogData: data?.allBlog_posts?.edges,
         },
     };
 }
 
-const Home = ({ homeData, projectData }) => {
+const Home = ({ homeData, projectData, blogData }) => {
     const slideshowData = projectData.filter(el => el.node.is_featured).slice(0, 8);
     const { scrollY } = useViewportScroll();
 
@@ -26,9 +27,9 @@ const Home = ({ homeData, projectData }) => {
             <Head>
                 <title>Digital Agency</title>
             </Head>
-            <Hero data={homeData} scrollY={scrollY} />
-            {slideshowData.length > 0 && <Slideshow data={slideshowData} scrollY={scrollY} />}
-            {projectData.length > 0 && <Projects data={projectData} scrollY={scrollY} />}
+            <Hero data={{ homeData, blogData }} scrollY={scrollY} />
+            <Slideshow data={slideshowData} scrollY={scrollY} />
+            <Projects data={projectData} scrollY={scrollY} />
             <Team image={homeData.team_image} quote={homeData.team_quote} scrollY={scrollY} />
         </Layout>
     );
@@ -37,6 +38,7 @@ const Home = ({ homeData, projectData }) => {
 Home.propTypes = {
     homeData: PropTypes.object.isRequired,
     projectData: PropTypes.array.isRequired,
+    blogData: PropTypes.array.isRequired,
 };
 
 export default Home;
