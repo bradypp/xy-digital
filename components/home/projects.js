@@ -23,7 +23,7 @@ const gridAreas = [
 ];
 
 const Projects = ({ data, scrollY }) => {
-    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -1000, 0, 50, -150);
+    const [projectsRef, projectsY, projectsTop] = useParallaxScroll(scrollY, -1000, 0, 50, -150);
 
     return (
         <motion.section
@@ -32,7 +32,9 @@ const Projects = ({ data, scrollY }) => {
             className="container-inner bg-white z-20 -mb-24"
             style={{ y: projectsY }}>
             <FadeUp className="flex items-center flex-col relative">
-                <SectionHeading>Our Work</SectionHeading>
+                <SectionHeading scrollY={scrollY} elementTop={projectsTop}>
+                    Our Work
+                </SectionHeading>
                 <motion.div className="grid grid-cols-4 gap-1">
                     {[...data, ...data, ...data, ...data, ...data, ...data].map((el, i) => {
                         const containerClassName = cn(

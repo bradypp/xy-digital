@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaDribbble } from 'react-icons/fa';
+import { IoIosArrowDown } from 'react-icons/io';
 
 import { ArrowRight, QuoteLeft } from './icons';
 
@@ -12,6 +13,7 @@ const Icon = ({ name, ...props }) => {
         Instagram: <FaInstagram {...props} />,
         GitHub: <FaGithub {...props} />,
         Dribbble: <FaDribbble {...props} />,
+        'arrow-down': <IoIosArrowDown {...props} />,
     };
     return icons[name];
 };

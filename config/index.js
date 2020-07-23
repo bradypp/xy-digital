@@ -1,6 +1,6 @@
 // TODO: update, add site name, add url
 module.exports = {
-    siteTitle: '',
+    siteTitle: 'XY Digital',
     siteDescription: '',
     siteKeywords: 'digital agency, web dev, freelance, marketing',
     siteUrl: '',

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 
-import { Button, Blog, Nav } from 'components';
+import { Button, Blog, Nav, Logo } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const titleContainerVariants = {
@@ -42,7 +42,7 @@ const Hero = ({ data, scrollY }) => {
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
     return (
-        <section id="#hero" className="relative -mb-24">
+        <section id="#hero" className="relative -mb-32">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
@@ -55,6 +55,10 @@ const Hero = ({ data, scrollY }) => {
                     alt={background_image.alt}
                 />
             </motion.div>
+
+            <div className="absolute top-20px left-20px flex justify-center items-center uppercase text-2xl font-bold">
+                <Logo />
+            </div>
 
             {/*  Content */}
             <div className="container-inner flex">
@@ -69,27 +73,27 @@ const Hero = ({ data, scrollY }) => {
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
-                        <span className="inline-block overflow-hidden mb-4">
+                        <span className="inline-block overflow-hidden pb-4">
                             <motion.span
                                 className="inline-block pr-6"
                                 variants={titleChildrenVariants}>
                                 Level
                             </motion.span>
                         </span>
-                        <span className="inline-block overflow-hidden mb-4">
+                        <span className="inline-block overflow-hidden pb-4">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
                                 Up
                             </motion.span>
                         </span>
                         <br />
-                        <span className="inline-block overflow-hidden mb-4">
+                        <span className="inline-block overflow-hidden pb-4">
                             <motion.span
                                 className="inline-block pr-6"
                                 variants={titleChildrenVariants}>
                                 Your
                             </motion.span>
                         </span>
-                        <span className="inline-block overflow-hidden mb-4">
+                        <span className="inline-block overflow-hidden pb-4">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
                                 Brand
                             </motion.span>
