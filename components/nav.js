@@ -33,7 +33,7 @@ const variants = {
     },
 };
 
-const linkBackground = '#6a6a6a';
+const linkColor = '#fff';
 
 const Nav = () => {
     const controls = useAnimation();
@@ -51,8 +51,8 @@ const Nav = () => {
                     {navLinks.map((el, i) => (
                         <motion.li
                             key={uuidv4()}
-                            className="opacity-80 transition-ease nav-list-item w-max-content flex flex-col"
-                            style={{ color: linkBackground, mixBlendMode: 'color-burn' }}
+                            className="opacity-90 transition-ease nav-list-item w-max-content flex flex-col"
+                            style={{ color: linkColor }}
                             onHoverStart={() =>
                                 controls.start({
                                     '--nav-background-color-1': colors[i + 1][0],
@@ -94,14 +94,14 @@ const Nav = () => {
                     content: '';
                     width: 0%;
                     height: 3px;
-                    background: ${linkBackground};
+                    background: ${linkColor};
                 }
                 .nav-list-item:hover::after {
                     transition: all 250ms ease-out;
                     content: '';
                     width: 100%;
                     height: 3px;
-                    background: ${linkBackground};
+                    background: ${linkColor};
                 }
             `}</style>
         </motion.div>

@@ -20,12 +20,8 @@
     @apply font-bold leading-tight tracking-tight;
 }
 
-.title-heading {
+.title-main {
     @apply title font-primary text-title text-white;
-}
-
-.title-section {
-    @apply title font-tertiary uppercase text-grey-cool-800;
 }
 
 .bg-image {

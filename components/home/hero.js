@@ -32,13 +32,7 @@ const titleChildrenVariants = {
 
 // TODO: change all images
 // TODO: replace image placeholder with video
-// TODO: add/edit scroll svg
-// TODO: alt text
-// TODO: nav functionality and animation
-// TODO: tweak parallax so it's greater than + 500
-// TODO: overlap slideshow slightly
 // TODO: change video
-// TODO: extract nav links from config file
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
 
@@ -71,7 +65,7 @@ const Hero = ({ data, scrollY }) => {
                     style={{ y: leftElY }}>
                     {/* Title Section */}
                     <motion.h1
-                        className="title-heading px-24 pt-220px relative mb-48 leading-none"
+                        className="title-main px-24 pt-220px relative mb-48 leading-none"
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
@@ -158,7 +152,7 @@ const Hero = ({ data, scrollY }) => {
                             y: 0,
                             transition: {
                                 type: 'tween',
-                                delay: 1.9,
+                                delay: 1.8,
                                 duration: 0.8,
                                 ease: 'easeOut',
                             },

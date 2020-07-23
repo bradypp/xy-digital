@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 
+import { FadeUp } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const slideshowVariants = {
@@ -89,10 +90,11 @@ const Slideshow = ({ data, scrollY }) => {
     const timerClass = cn(`absolute top-0 left-0 w-2 h-full z-10 bg-blue-500`);
 
     return (
-        <section
+        <FadeUp
+            ref={slideshowRef}
+            as="section"
             id="slideshow"
-            className="flex relative overflow-hidden h-800px bg-black"
-            ref={slideshowRef}>
+            className="flex relative overflow-hidden h-800px bg-black">
             <motion.div className={timerClass} animate={timerControls} variants={timerVariants} />
             <div className="absolute top-0 left-20px z-10 flex flex-col justify-center items-center h-full">
                 {data.map((el, i) => {
@@ -128,7 +130,7 @@ const Slideshow = ({ data, scrollY }) => {
                                 style={{ y: imgY, scale: 1.15 }}
                             />
                             <div className="engulf bg-grey-cool-900 opacity-40 z-10" />
-                            <h3 className="title-heading text-5xl text-white mb-8 z-20">
+                            <h3 className="title-main text-5xl text-white mb-8 z-20">
                                 {data[page].node.title[0].text}
                             </h3>
                             <p className="text-white text-2xl font-secondary mb-8 z-20">
@@ -145,7 +147,7 @@ const Slideshow = ({ data, scrollY }) => {
                     </AnimatePresence>
                 </a>
             </Link>
-        </section>
+        </FadeUp>
     );
 };
 

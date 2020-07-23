@@ -3,7 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Blog = ({ data }) => (
     <>
-        <h2 className="title-section text-xl font-bold">Latest Posts</h2>
+        <h2 className="title font-tertiary uppercase text-grey-cool-800 text-xl font-bold">
+            Latest Posts
+        </h2>
         {data.map(el => {
             const {
                 title,
@@ -12,7 +14,7 @@ const Blog = ({ data }) => (
             } = el.node;
             return (
                 <Link key={uuidv4()} href={`/blog/${uid}`}>
-                    <a className="flex justify-center items-center my-4 text-grey-cool-800">
+                    <a className="flex justify-start items-center my-4 text-grey-cool-800">
                         <img
                             className="object-cover object-center rounded-50% w-16 h-16 mr-4 shadow"
                             src={featured_image.url}
