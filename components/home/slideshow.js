@@ -128,7 +128,7 @@ const Slideshow = ({ data, scrollY }) => {
                                 style={{ y: imgY, scale: 1.15 }}
                             />
                             <div className="engulf bg-grey-cool-900 opacity-40 z-10" />
-                            <h3 className="title-primary text-5xl text-white mb-8 z-20">
+                            <h3 className="title-heading text-5xl text-white mb-8 z-20">
                                 {data[page].node.title[0].text}
                             </h3>
                             <p className="text-white text-2xl font-secondary mb-8 z-20">

@@ -30,7 +30,7 @@ const Projects = ({ data, scrollY }) => {
             ref={projectsRef}
             className="flex items-center flex-col container-inner bg-white z-10 relative -mb-24"
             style={{ y: projectsY }}>
-            <h2 className="title-section p-12">Our Work</h2>
+            <h2 className="title-section text-4xl p-12">Our Work</h2>
             <div className="grid grid-cols-4 gap-1">
                 {[...data, ...data, ...data, ...data, ...data, ...data].map((el, i) => {
                     const containerClassName = cn(
@@ -46,7 +46,7 @@ const Projects = ({ data, scrollY }) => {
                                     src={el.node.featured_image.url}
                                     alt={el.node.featured_image.alt}
                                 />
-                                <h3 className="title-primary text-4xl text-white z-10 group-hover:translate-y-4 mb-3">
+                                <h3 className="title-heading text-4xl text-white z-10 group-hover:translate-y-4 mb-3">
                                     {el.node.title[0].text}
                                 </h3>
                                 <ul className="flex justify-start items-center z-10">

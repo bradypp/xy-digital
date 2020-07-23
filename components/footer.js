@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import cn from 'classnames';
+import { v4 as uuidv4 } from 'uuid';
 
 import { socials, navLinks } from 'config';
 import { Icon } from 'components';
@@ -15,29 +16,29 @@ const Footer = () => {
     ];
     return (
         <footer className="p-16 w-screen bg-footer font-tertiary flex flex-col items-center justify-center text-sm text-grey-cool-300">
-            <div className="flex pb-6">
+            <ul className="flex pb-8">
                 {navLinks.map(el => (
-                    <Link href={el.url}>
-                        <a className="w-6 h-6 mx-3 min-w-max-content text-base inline-link text-grey-cool-300">
-                            {el.name}
-                        </a>
-                    </Link>
+                    <li
+                        key={uuidv4()}
+                        className="w-6 h-6 mx-3 min-w-max-content text-base inline-link text-grey-cool-300">
+                        <Link href={el.url}>
+                            <a>{el.name}</a>
+                        </Link>
+                    </li>
                 ))}
-            </div>
-            <div className="flex pb-6">
+            </ul>
+            <ul className="flex pb-8">
                 {socials.map((el, i) => {
-                    const iconClassName = cn(`group-hover:${colors[i]}`);
+                    const iconClassName = cn(`transition-ease group-hover:${colors[i]}`);
                     return (
-                        <a
-                            className="w-6 h-6 mx-3 group"
-                            rel="noreferrer noopener nofollow"
-                            target="_blank"
-                            href={el.url}>
-                            <Icon className={iconClassName} name={el.name} />
-                        </a>
+                        <li key={uuidv4()} className="w-6 h-6 mx-3 group">
+                            <a rel="noreferrer noopener nofollow" target="_blank" href={el.url}>
+                                <Icon className={iconClassName} name={el.name} />
+                            </a>
+                        </li>
                     );
                 })}
-            </div>
+            </ul>
             <p className="pb-2">&copy; Digital Agency, Inc. All rights reserved.</p>
             <p>
                 Designed and developed by{' '}

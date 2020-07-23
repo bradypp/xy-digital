@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 
-import { Button, Blog } from 'components';
+import { Button, Blog, Nav } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const titleContainerVariants = {
     visible: {
         transition: {
-            delayChildren: 0.6,
-            staggerChildren: 0.1,
+            delayChildren: 0.7,
+            staggerChildren: 0.12,
             duration: 1,
         },
     },
@@ -71,49 +71,36 @@ const Hero = ({ data, scrollY }) => {
                     style={{ y: leftElY }}>
                     {/* Title Section */}
                     <motion.h1
-                        className="title-heading px-24 pt-220px relative"
+                        className="title-heading px-24 pt-220px relative mb-48 leading-none"
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
-                        <span className="inline-block overflow-hidden">
+                        <span className="inline-block overflow-hidden mb-4">
                             <motion.span
                                 className="inline-block pr-6"
                                 variants={titleChildrenVariants}>
                                 Level
                             </motion.span>
                         </span>
-                        <span className="inline-block overflow-hidden">
+                        <span className="inline-block overflow-hidden mb-4">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
                                 Up
                             </motion.span>
                         </span>
                         <br />
-                        <span className="inline-block overflow-hidden">
+                        <span className="inline-block overflow-hidden mb-4">
                             <motion.span
                                 className="inline-block pr-6"
                                 variants={titleChildrenVariants}>
                                 Your
                             </motion.span>
                         </span>
-                        <span className="inline-block overflow-hidden">
+                        <span className="inline-block overflow-hidden mb-4">
                             <motion.span className="inline-block" variants={titleChildrenVariants}>
-                                Business
+                                Brand
                             </motion.span>
                         </span>
                     </motion.h1>
-
-                    {/* TODO: Scroll Section */}
-                    <motion.div
-                        className="px-24 pt-32 pb-4 text-white mb-4"
-                        initial={{ x: '-100%' }}
-                        animate={{ x: 0 }}
-                        transition={{
-                            type: 'spring',
-                            delay: 1.6,
-                            damping: 300,
-                        }}>
-                        scroll
-                    </motion.div>
 
                     {/* About Section */}
                     <motion.section
@@ -126,7 +113,7 @@ const Hero = ({ data, scrollY }) => {
                             y: 0,
                             transition: {
                                 type: 'tween',
-                                delay: 1.5,
+                                delay: 1.6,
                                 duration: 0.8,
                                 ease: 'easeOut',
                             },
@@ -157,31 +144,7 @@ const Hero = ({ data, scrollY }) => {
                     ref={rightRef}
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>
-                    <motion.div
-                        className="flex flex-col justify-end h-510px bg-pink-600 relative mb-390px"
-                        initial={{
-                            opacity: 0,
-                            y: -50,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                                type: 'tween',
-                                delay: 2,
-                                duration: 0.8,
-                                ease: 'easeOut',
-                            },
-                        }}>
-                        <nav className="absolute bottom-100px left-80px">
-                            <ul className="text-3xl text-white font-bold uppercase leading-snug">
-                                <li>About Us</li>
-                                <li>Our Work</li>
-                                <li>Blog</li>
-                                <li>Contact Us</li>
-                            </ul>
-                        </nav>
-                    </motion.div>
+                    <Nav />
 
                     {/* Blog section */}
                     <motion.section
@@ -195,7 +158,7 @@ const Hero = ({ data, scrollY }) => {
                             y: 0,
                             transition: {
                                 type: 'tween',
-                                delay: 1.7,
+                                delay: 1.9,
                                 duration: 0.8,
                                 ease: 'easeOut',
                             },

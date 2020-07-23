@@ -17,23 +17,15 @@
 }
 
 .title {
-    @apply font-bold leading-tight;
-}
-
-.title-primary {
-    @apply title tracking-tight font-primary;
-}
-
-.title-secondary {
-    @apply title font-tertiary;
+    @apply font-bold leading-tight tracking-tight;
 }
 
 .title-heading {
-    @apply title-primary text-title text-white;
+    @apply title font-primary text-title text-white;
 }
 
 .title-section {
-    @apply title-secondary text-4xl uppercase text-grey-cool-500;
+    @apply title font-tertiary uppercase text-grey-cool-800;
 }
 
 .bg-image {

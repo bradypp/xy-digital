@@ -12,10 +12,6 @@ module.exports = {
     mainThemeColor: '#fff',
     navLinks: [
         {
-            name: 'Home',
-            url: '/',
-        },
-        {
             name: 'About Us',
             url: '/#about-us',
         },

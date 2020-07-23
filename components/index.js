@@ -10,4 +10,5 @@ export { default as Date } from './date';
 export { default as Icon } from './icon';
 export { default as Button } from './button';
 export { default as ParallaxImage } from './parallax-image';
+export { default as Nav } from './nav';
 export { default as Footer } from './footer';

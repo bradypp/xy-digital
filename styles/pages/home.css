@@ -8,7 +8,7 @@
         }
         &__about {
             h2 {
-                @apply title-primary uppercase;
+                @apply title-section text-2xl;
             }
 
             p {
