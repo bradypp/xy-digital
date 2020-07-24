@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
+import cn from 'classnames';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from 'tailwind.config.js';
 
@@ -35,11 +36,52 @@ const variants = {
 
 const linkColor = '#fff';
 
-const Nav = () => {
+const Nav = ({ isHeader, className }) => {
     const controls = useAnimation();
     useEffect(() => {
         controls.start('visible');
     }, [controls]);
+
+    if (isHeader) {
+        const navClassName = cn('nav-container flex justify-center items-center', className);
+        return (
+            <motion.nav className={navClassName} animate={controls}>
+                <ul className="text-lg text-white font-bold uppercase leading-none  flex justify-end items-center w-full p-8 pr-16">
+                    {navLinks.map((el, i) => (
+                        <motion.li
+                            key={uuidv4()}
+                            className="opacity-90 transition-ease nav-list-item w-max-content flex flex-col ml-6"
+                            style={{ color: linkColor }}
+                            onHoverStart={() =>
+                                controls.start({
+                                    '--nav-background-color-1': colors[i + 1][0],
+                                    '--nav-background-color-2': colors[i + 1][1],
+                                    transition: {
+                                        duration: 0.25,
+                                        ease: 'easeOut',
+                                    },
+                                })
+                            }
+                            onHoverEnd={() =>
+                                controls.start({
+                                    '--nav-background-color-1': colors[0][0],
+                                    '--nav-background-color-2': colors[0][1],
+                                    transition: {
+                                        duration: 0.25,
+                                        ease: 'easeOut',
+                                    },
+                                })
+                            }>
+                            <Link href={el.url}>
+                                <a>{el.name}</a>
+                            </Link>
+                        </motion.li>
+                    ))}
+                </ul>
+            </motion.nav>
+        );
+    }
+
     return (
         <motion.div
             className="nav-container flex flex-col justify-end h-510px relative mb-390px"
@@ -108,5 +150,8 @@ const Nav = () => {
     );
 };
 
+Nav.propsTypes = {
+    isHeader: false,
+};
+
 export default Nav;
-// transition: --nav-background-color-1 200ms ease, --nav-background-color-2 200ms ease;

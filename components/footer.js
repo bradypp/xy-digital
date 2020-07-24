@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { socials, navLinks } from 'config';
-import { Icon } from 'components';
+import { Icon, Logo } from 'components';
 
 // TODO: add logo, change name
 const Footer = () => {
@@ -16,6 +16,7 @@ const Footer = () => {
     ];
     return (
         <footer className="p-16 w-screen bg-footer font-tertiary flex flex-col items-center justify-center text-sm text-grey-cool-300">
+            <Logo className="pb-12" />
             <ul className="flex pb-8">
                 {navLinks.map(el => (
                     <li

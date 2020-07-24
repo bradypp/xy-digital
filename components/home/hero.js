@@ -56,9 +56,21 @@ const Hero = ({ data, scrollY }) => {
                 />
             </motion.div>
 
-            <div className="absolute top-20px left-20px flex justify-center items-center uppercase text-2xl font-bold">
-                <Logo />
-            </div>
+            <motion.div
+                initial={{
+                    opacity: 0,
+                }}
+                animate={{
+                    opacity: 1,
+                    transition: {
+                        type: 'tween',
+                        delay: 2.2,
+                        duration: 0.8,
+                        ease: 'easeOut',
+                    },
+                }}>
+                <Logo className="absolute top-20px left-20px" />
+            </motion.div>
 
             {/*  Content */}
             <div className="container-inner flex">

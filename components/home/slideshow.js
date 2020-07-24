@@ -97,7 +97,7 @@ const Slideshow = ({ data, scrollY }) => {
             className="flex relative overflow-hidden h-800px bg-black">
             <motion.div className={timerClass} animate={timerControls} variants={timerVariants} />
             <div className="absolute top-0 left-20px z-10 flex flex-col justify-center items-center h-full">
-                {data.map((el, i) => {
+                {[...data, ...data, ...data, ...data, ...data].map((el, i) => {
                     const paginationClass = cn(
                         'w-14px h-14px mb-6px border-2 border-white rounded-full clickable transition-ease opacity-70 hover:opacity-100',
                         {

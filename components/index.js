@@ -12,6 +12,7 @@ export { default as Icon } from './icon';
 export { default as Button } from './button';
 export { default as ParallaxImage } from './parallax-image';
 export { default as Nav } from './nav';
+export { default as Header } from './header';
 export { default as Footer } from './footer';
 export { default as Logo } from './logo';
 export { default as FadeUp } from './fade-up';
