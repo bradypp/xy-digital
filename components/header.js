@@ -33,16 +33,10 @@ const Header = () => {
         };
     }, [isHeaderDown]);
 
-    // const { scrollY } = useViewportScroll();
-    // const headerY = useTransform(scrollY, scrollY => {
-    //     if (scrollY > distanceFromTopRequired) return 0;
-    //     return '-100%';
-    // });
-
     return (
         <header className={className}>
-            <Logo className="w-2/7 h-full bg-grey-900" />
-            <Nav className="w-5/7 h-full justify-end" isHeader />
+            <Logo className="w-1/6 h-full bg-navy flex pl-8" />
+            <Nav className="w-5/6 h-full justify-end" isHeader />
         </header>
     );
 };

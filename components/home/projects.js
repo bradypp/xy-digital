@@ -11,12 +11,9 @@ const gridAreas = [
     'col-start-1 col-end-3',
     'col-start-3 col-end-4',
     'col-start-4 col-end-5',
-    'col-start-1 col-end-2 row-start-2 row-end-4',
+    'col-start-1 col-end-2',
     'col-start-2 col-end-4',
-    'col-start-4 col-end-5',
-    'col-start-2 col-end-3',
-    'col-start-3 col-end-4',
-    'col-start-4 col-end-5',
+    'col-start-4 col-end-5 ',
     'col-start-1 col-end-2',
     'col-start-2 col-end-3',
     'col-start-3 col-end-5',
@@ -36,10 +33,10 @@ const Projects = ({ data, scrollY }) => {
                     Our Work
                 </SectionHeading>
                 <motion.div className="grid grid-cols-4 gap-1">
-                    {[...data, ...data, ...data, ...data, ...data, ...data].map((el, i) => {
+                    {data.map((el, i) => {
                         const containerClassName = cn(
                             `relative overflow-hidden min-h-84 h-84 group flex flex-col justify-start p-8 bg-grey-cool-900 clickable ${
-                                gridAreas[i % 12]
+                                gridAreas[i % 9]
                             }`,
                         );
                         return (

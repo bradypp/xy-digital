@@ -8,7 +8,6 @@ export const getHomeData = async previewData => {
             home(uid:"home",lang:"en-gb") {
               background_image
               featured_video
-              video_url
               about
               team_image
               team_quote

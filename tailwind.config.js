@@ -87,7 +87,7 @@ module.exports = {
                     '900': '#212121',
                 },
                 'grey-cool': colors.gray,
-                footer: '#090916',
+                navy: '#090916',
                 link: '#3182ce',
                 'link-dark': '#2c5282',
             },

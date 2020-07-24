@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import Link from 'next/link';
 
 const Logo = ({ className }) => {
     const newClassName = cn(
@@ -7,12 +8,14 @@ const Logo = ({ className }) => {
         className,
     );
     return (
-        <div className={newClassName}>
-            <span className="text-grey-cool-900 rounded-50% h-10 w-10  bg-white flex justify-center items-center mr-2">
-                XY
-            </span>
-            <span className="text-3xl text-white"> Digital</span>
-        </div>
+        <Link href="/">
+            <a className={newClassName}>
+                <span className="text-grey-cool-900 rounded-50% h-10 w-10  bg-white flex justify-center items-center mr-2">
+                    XY
+                </span>
+                <span className="text-3xl text-white"> Digital</span>
+            </a>
+        </Link>
     );
 };
 

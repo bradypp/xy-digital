@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
+import ReactPlayer from 'react-player/vimeo';
 
 import { Button, Blog, Nav, Logo } from 'components';
 import { useParallaxScroll } from 'hooks';
@@ -41,14 +43,26 @@ const Hero = ({ data, scrollY }) => {
     const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
+    // useEffect(() => {
+    //     const video = new Vimeo.Player(vidRef.current.firstChild);
+    // });
+
     return (
         <section id="#hero" className="relative -mb-32">
             {/* Background Image */}
             <motion.div
                 className="absolute overflow-hidden w-full h-900px"
                 ref={bgRef}
-                initial={{ y: 0 }}
+                initial={{ y: 0, opacity: 0 }}
+                animate={{
+                    opacity: 1,
+                    transition: {
+                        type: 'tween',
+                        duration: 0.6,
+                    },
+                }}
                 style={{ y: bgElY }}>
+                <div className="absolute bg-grey-900 opacity-40 w-full h-full z-10" />
                 <img
                     className="engulf object-cover"
                     src={background_image.url}
@@ -129,13 +143,16 @@ const Hero = ({ data, scrollY }) => {
                             },
                         }}>
                         <div className="home__hero__video px-24 z-20 mb-4">
-                            <motion.div
-                                ref={vidRef}
-                                initial={{ y: -8 }}
-                                style={{ y: vidElY }}
-                                // eslint-disable-next-line react/no-danger
-                                dangerouslySetInnerHTML={{ __html: featured_video.html }}
-                            />
+                            <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
+                                <ReactPlayer
+                                    url={featured_video.embed_url}
+                                    width={560}
+                                    volume={0}
+                                    muted
+                                    playing
+                                    loop
+                                />
+                            </motion.div>
                         </div>
                         <div className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 ">
                             <div className="prose max-w-none sm:prose-sm mb-6">
