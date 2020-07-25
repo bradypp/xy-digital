@@ -4,8 +4,11 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 
-import { FadeUp, SectionHeading } from 'components';
+import { FadeUp } from 'components';
+import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
+
+import { linkResolver, hrefResolver } from 'utils/prismic';
 
 const gridAreas = [
     'col-start-1 col-end-3',
@@ -34,31 +37,36 @@ const Projects = ({ data, scrollY }) => {
                 </SectionHeading>
                 <motion.div className="grid grid-cols-4 gap-1">
                     {data.map((el, i) => {
+                        const { _meta, featured_image, title, tags, subtitle } = el.node;
                         const containerClassName = cn(
                             `relative overflow-hidden min-h-84 h-84 group flex flex-col justify-start p-8 bg-grey-cool-900 clickable ${
                                 gridAreas[i % 9]
                             }`,
                         );
+
                         return (
-                            <Link key={uuidv4()} href={`/projects/${el.node._meta.uid}`}>
+                            <Link
+                                key={uuidv4()}
+                                as={linkResolver(_meta)}
+                                href={hrefResolver(_meta)}>
                                 <FadeUp as="a" delay={(i % 3) * 0.3} className={containerClassName}>
                                     <img
                                         className="engulf object-cover transform  scale-105 group-hover:translate-x-3 opacity-70 transition-ease group-hover:opacity-50 origin-right"
-                                        src={el.node.featured_image.url}
-                                        alt={el.node.featured_image.alt}
+                                        src={featured_image.url}
+                                        alt={featured_image.alt}
                                     />
                                     <h3 className="title-main text-4xl text-white z-10 group-hover:translate-y-4 mb-3">
-                                        {el.node.title[0].text}
+                                        {title[0].text}
                                     </h3>
                                     <ul className="flex justify-start items-center z-10">
-                                        {el.node.tags.map(el => (
+                                        {tags.map(el => (
                                             <li key={uuidv4()} className="tag">
                                                 {el.tag}
                                             </li>
                                         ))}
                                     </ul>
                                     <p className="z-10 font-secondary text-sm text-white mt-auto transform opacity-0 -translate-x-10 group-hover:translate-x-0 group-hover:opacity-100 transition-ease">
-                                        {el.node.subtitle}
+                                        {subtitle}
                                     </p>
                                 </FadeUp>
                             </Link>

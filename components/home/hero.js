@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
-import { Button, Blog, Nav, Logo } from 'components';
+import { linkResolver, customLink } from 'utils/prismic';
+import { Button, Nav, Logo } from 'components';
+import { Blog } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
 const titleContainerVariants = {
@@ -156,7 +157,12 @@ const Hero = ({ data, scrollY }) => {
                         </div>
                         <div className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 ">
                             <div className="prose max-w-none sm:prose-sm mb-6">
-                                <RichText render={about} />
+                                <RichText
+                                    render={about}
+                                    linkResolver={linkResolver}
+                                    serializeHyperlink={customLink}
+                                />
+                                {/* <RichText render={about} /> */}
                             </div>
                             <Button href="#contact-us" icon="arrow-right">
                                 Get In Touch

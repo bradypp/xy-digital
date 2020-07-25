@@ -1,16 +1,22 @@
 import Prismic from 'prismic-javascript';
 
 const REPOSITORY = process.env.PRISMIC_REPOSITORY_NAME;
+
+// Prismic API endpoint
 const REF_API_URL = `https://${REPOSITORY}.prismic.io/api/v2`;
 const GRAPHQL_API_URL = `https://${REPOSITORY}.prismic.io/graphql`;
 // export const API_URL = 'https://${REPOSITORY}.cdn.prismic.io/api/v2'
+
+// Access Token if the repository is not public
 export const API_TOKEN = process.env.PRISMIC_API_TOKEN;
 export const API_LOCALE = process.env.PRISMIC_REPOSITORY_LOCALE;
 
+// Client method to query documents from the Prismic repo
 export const PrismicClient = Prismic.client(REF_API_URL, {
     accessToken: API_TOKEN,
 });
 
+// Used to query the prismic API using GraphQL
 export const fetchPrismicAPI = async (query, { previewData, variables } = {}) => {
     const prismicAPI = await PrismicClient.getApi();
     const res = await fetch(

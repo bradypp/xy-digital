@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { useViewportScroll } from 'framer-motion';
 
 import { getHomeData } from 'api/prismic/home';
-import { Layout, Hero, Slideshow, Projects, Team } from 'components';
+import { Layout } from 'components';
+import { Hero, Slideshow, Projects, Team } from 'components/home';
 
 export async function getStaticProps({ preview = false, previewData }) {
     const data = await getHomeData(previewData);

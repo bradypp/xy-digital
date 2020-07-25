@@ -53,7 +53,7 @@ const timerVariants = {
     animated: {
         y: 0,
         transition: {
-            duration: 7.2,
+            duration: 6.2,
             ease: 'easeOut',
         },
     },
@@ -83,7 +83,7 @@ const Slideshow = ({ data, scrollY }) => {
     useEffect(() => {
         const interval = setTimeout(() => {
             paginate();
-        }, 8000);
+        }, 7000);
         return () => clearTimeout(interval);
     }, [page, paginate, timerControls]);
 

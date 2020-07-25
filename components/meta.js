@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 // TODO: add more meta tags (twitter, og images etc.)
+// TODO: edit title
 const Meta = () => (
     <Head>
         <title>Digital Agency</title>

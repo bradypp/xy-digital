@@ -1,20 +1,12 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
-import { Logo, Nav } from 'components';
-import { js } from 'utils';
+import { Nav } from 'components';
+import { throttle } from 'utils/javascript';
 
 const Header = () => {
     const [isHeaderDown, setIsHeaderDown] = useState(false);
     const distanceFromTopRequired = 800;
-
-    const className = cn(
-        'w-screen h-16 fixed top-0 left-0 z-30 flex items-center transform transition-ease',
-        {
-            'translate-y-0': isHeaderDown,
-            '-translate-y-full': !isHeaderDown,
-        },
-    );
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,17 +18,24 @@ const Header = () => {
             }
         };
 
-        window.addEventListener('scroll', () => js.throttle(handleScroll(), 100));
+        window.addEventListener('scroll', () => throttle(handleScroll(), 100));
 
         return () => {
-            window.removeEventListener('scroll', () => js.throttle(handleScroll(), 100));
+            window.removeEventListener('scroll', () => throttle(handleScroll(), 100));
         };
     }, [isHeaderDown]);
 
+    const className = cn(
+        'w-screen h-16 fixed top-0 left-0 z-30 flex items-center transform transition-ease',
+        {
+            'translate-y-0': isHeaderDown,
+            '-translate-y-full': !isHeaderDown,
+        },
+    );
+
     return (
         <header className={className}>
-            <Logo className="w-1/6 h-full bg-navy flex pl-8" />
-            <Nav className="w-5/6 h-full justify-end" isHeader />
+            <Nav isHeader />
         </header>
     );
 };

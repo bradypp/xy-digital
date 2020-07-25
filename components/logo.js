@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Logo = ({ className }) => {
     const newClassName = cn(
-        'flex justify-center items-center uppercase text-2xl font-bold',
+        'flex justify-center items-center uppercase text-2xl font-bold clickable z-10',
         className,
     );
     return (

@@ -7,6 +7,7 @@ import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from 'tailwind.config.js';
 
 import { navLinks } from 'config';
+import { Logo } from 'components';
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -43,10 +44,14 @@ const Nav = ({ isHeader, className }) => {
     }, [controls]);
 
     if (isHeader) {
-        const navClassName = cn('nav-container flex justify-center items-center', className);
+        const navClassName = cn(
+            'nav-container flex justify-center items-center w-full h-full',
+            className,
+        );
         return (
             <motion.nav className={navClassName} animate={controls}>
-                <ul className="text-lg text-white font-bold uppercase leading-none  flex justify-end items-center w-full p-8 pr-16">
+                <Logo className="ml-6" />
+                <ul className="text-lg text-white font-bold uppercase leading-none flex justify-end items-center w-full p-8 pr-12">
                     {navLinks.map((el, i) => (
                         <motion.li
                             key={uuidv4()}

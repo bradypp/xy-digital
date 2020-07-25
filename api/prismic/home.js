@@ -11,6 +11,9 @@ export const getHomeData = async previewData => {
               about
               team_image
               team_quote
+              _meta {
+                type
+              }
             }
           allProjects(sortBy: meta_firstPublicationDate_DESC) {
             edges {
@@ -24,6 +27,7 @@ export const getHomeData = async previewData => {
                 }
                 _meta {
                   uid
+                  type
                 }
               }
             }
@@ -35,6 +39,7 @@ export const getHomeData = async previewData => {
                 featured_image
                 _meta {
                   uid
+                  type
                 }
               }
             }

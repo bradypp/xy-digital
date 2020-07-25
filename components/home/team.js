@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import { motion, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Icon, FadeUp, SectionHeading } from 'components';
+import { Icon, FadeUp } from 'components';
+import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
 const blockQuoteVariants = {

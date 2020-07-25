@@ -3,13 +3,12 @@ import { motion } from 'framer-motion';
 import cn from 'classnames';
 
 import { useParallaxScroll } from 'hooks';
-// TODO: delete/fix?
-const ParallaxImage = ({ scrollY, src, alt, className, variant }) => {
+
+// TODO: styling
+const ParallaxImage = ({ scrollY, src, alt, className }) => {
     const [imgRef, imgY] = useParallaxScroll(scrollY);
 
-    const newClassName = cn('overflow-hidden w-full absolute', className, {
-        'h-800px': variant === 'large',
-    });
+    const newClassName = cn('overflow-hidden relative h-800px', className);
 
     return (
         <div ref={imgRef} className={newClassName}>
@@ -28,13 +27,11 @@ ParallaxImage.propTypes = {
     scrollY: PropTypes.object.isRequired,
     alt: PropTypes.string,
     className: PropTypes.string,
-    variant: PropTypes.oneOf(['large']),
 };
 
 ParallaxImage.defaultProps = {
     alt: '',
     className: undefined,
-    variant: 'large',
 };
 
 export default ParallaxImage;

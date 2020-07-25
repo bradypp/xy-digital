@@ -36,15 +36,6 @@ export const throttle = (func, wait = 100) => {
     };
 };
 
-const generateRandomInteger = (min, max) => {
+export const generateRandomInteger = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
-};
-
-export default {
-    moveItemWithinArray,
-    insertItemIntoArray,
-    updateArrayItemById,
-    sortByNewest,
-    throttle,
-    generateRandomInteger,
 };

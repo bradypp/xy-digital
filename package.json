@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@popmotion/popcorn": "^0.4.4",
     "classnames": "^2.2.6",
     "date-fns": "^2.14.0",
     "framer-motion": "^1.11.1",
