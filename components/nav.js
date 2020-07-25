@@ -80,7 +80,7 @@ const Nav = ({ isHeader, className, isHome }) => {
     });
 
     const navClassName = cn('nav-container flex', className, {
-        'justify-center items-center w-full h-full': isHeader,
+        'justify-between items-center w-full h-full': isHeader,
         'flex-col justify-end h-510px relative mb-390px': !isHeader,
     });
 
@@ -88,7 +88,7 @@ const Nav = ({ isHeader, className, isHome }) => {
         return (
             <motion.nav className={navClassName} animate={controls}>
                 <Logo className="ml-6" />
-                <ul className="text-lg text-white font-bold uppercase leading-none flex justify-end items-center w-full p-8 pr-12">
+                <ul className="text-lg text-white font-bold uppercase leading-none flex justify-end items-center p-8 pr-12">
                     {navLinkComponents}
                 </ul>
             </motion.nav>

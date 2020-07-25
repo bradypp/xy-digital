@@ -1,4 +1,4 @@
-export { default as Layout } from './layout';
+export { default as Layout } from './layouts/default-layout';
 export { default as Meta } from './meta';
 export { default as Date } from './date';
 export { default as Icon } from './icon';
@@ -10,3 +10,6 @@ export { default as Logo } from './logo';
 export { default as Tag } from './tag';
 export { default as FadeUp } from './fade-up';
 export { default as HeroImage } from './hero-image';
+export { default as PostContent } from './post-content';
+export { default as MorePosts } from './more-posts';
+export { default as ProjectItem } from './project-item';

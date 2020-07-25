@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import { RichText } from 'prismic-reactjs';
 
 import { FadeUp, Tag } from 'components';
 import { useParallaxScroll } from 'hooks';
+import { linkResolver, hrefResolver } from 'utils/prismic';
 
 const slideshowVariants = {
     enter: {
@@ -113,7 +115,9 @@ const Slideshow = ({ data, scrollY }) => {
                     );
                 })}
             </div>
-            <Link href={data[page].node._meta.uid}>
+            <Link
+                as={linkResolver(data[page].node._meta)}
+                href={hrefResolver(data[page].node._meta)}>
                 <a>
                     <AnimatePresence>
                         <motion.div
@@ -131,14 +135,14 @@ const Slideshow = ({ data, scrollY }) => {
                             />
                             <div className="engulf bg-grey-cool-900 opacity-40 z-10" />
                             <h3 className="title-main text-5xl text-white mb-8 z-20">
-                                {data[page].node.title[0].text}
+                                {RichText.asText(data[page].node.title)}
                             </h3>
                             <p className="text-white text-2xl font-secondary mb-8 z-20">
                                 {data[page].node.subtitle}
                             </p>
                             <ul className="flex justify-center items-center z-20">
                                 {data[page].node.tags.map(el => (
-                                    <Tag tag={el.tag} />
+                                    <Tag key={uuidv4()} tag={el.tag} />
                                 ))}
                             </ul>
                         </motion.div>

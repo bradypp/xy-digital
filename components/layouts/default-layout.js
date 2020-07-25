@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Meta, Footer, Header } from 'components';
 
-const Layout = ({ children }) => (
+const DefaultLayout = ({ children }) => (
     <>
         <Meta />
         <Header />
@@ -11,8 +11,8 @@ const Layout = ({ children }) => (
     </>
 );
 
-Layout.propTypes = {
+DefaultLayout.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export default DefaultLayout;

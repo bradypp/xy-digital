@@ -45,7 +45,9 @@ const Hero = ({ data, scrollY }) => {
             {/* Background Image */}
             <HeroImage scrollY={scrollY} src={background_image.url} alt={background_image.alt} />
 
+            {/* Logo */}
             <motion.div
+                className="z-20 relative"
                 initial={{
                     opacity: 0,
                 }}

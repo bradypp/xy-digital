@@ -4,39 +4,33 @@ import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-reactjs';
 
-import { getPostData, getAllPostsSlug } from 'api/prismic/posts';
+import { getProjectData, getAllProjectsSlug } from 'api/prismic/projects';
 import { PostContent } from 'components';
 import { PostLayout } from 'components/layouts';
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-    const data = await getPostData(params.uid, previewData);
+    const data = await getProjectData(params.uid, previewData);
 
     return {
         props: {
             preview,
-            blogPost: data?.blog_post ?? null,
-            morePosts: data?.morePosts ?? null,
+            project: data?.project ?? null,
+            moreProjects: data?.moreProjects ?? null,
         },
     };
 }
 
 export async function getStaticPaths() {
-    const data = await getAllPostsSlug();
+    const data = await getAllProjectsSlug();
     return {
-        paths: data?.allBlog_posts?.edges?.map(({ node }) => `/blog/${node._meta.uid}`) || [],
+        paths: data?.allProjects?.edges?.map(({ node }) => `/projects/${node._meta.uid}`) || [],
         fallback: true,
     };
 }
 
 // TODO: add spinner if router.isFallback is true?
-const BlogPost = ({ blogPost, morePosts }) => {
+const Project = ({ project, moreProjects }) => {
     const router = useRouter();
-
-    if (router.isFallback) return <h2>Loading...</h2>;
-    if (!router.isFallback && !blogPost?._meta?.uid) {
-        return <ErrorPage statusCode={404} />;
-    }
-
     const {
         title,
         body,
@@ -44,16 +38,20 @@ const BlogPost = ({ blogPost, morePosts }) => {
         featured_image,
         subtitle,
         tags,
-        author,
-    } = blogPost;
+    } = project;
+
+    if (router.isFallback) return <h2>Loading...</h2>;
+    if (!router.isFallback && !project?._meta?.uid) {
+        return <ErrorPage statusCode={404} />;
+    }
 
     const titleText = RichText.asText(title);
 
     return (
-        <PostLayout morePosts={morePosts}>
+        <PostLayout morePosts={moreProjects}>
             <Head>
                 <title>{titleText}</title>
-                <link rel="canonical" href={`/blog/${uid}`} />
+                <link rel="canonical" href={`/projects/${uid}`} />
             </Head>
             <PostContent
                 titleText={titleText}
@@ -62,19 +60,18 @@ const BlogPost = ({ blogPost, morePosts }) => {
                 featured_image={featured_image}
                 subtitle={subtitle}
                 tags={tags}
-                author={author}
             />
         </PostLayout>
     );
 };
 
-BlogPost.propTypes = {
-    blogPost: PropTypes.object.isRequired,
-    morePosts: PropTypes.object,
+Project.propTypes = {
+    project: PropTypes.object.isRequired,
+    moreProjects: PropTypes.array,
 };
 
-BlogPost.defaultProps = {
-    morePosts: undefined,
+Project.defaultProps = {
+    moreProjects: undefined,
 };
 
-export default BlogPost;
+export default Project;

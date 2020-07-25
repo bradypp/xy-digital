@@ -6,7 +6,9 @@ const SliceZone = ({ sliceZone, scrollY }) =>
     sliceZone.map((slice, i) => {
         switch (slice.__typename) {
             case 'Blog_postBodyText':
+            case 'ProjectBodyText':
                 return <Text key={`slice-${i}`} slice={slice} />;
+            case 'ProjectBodyParallax_image':
             case 'Blog_postBodyParallax_image': {
                 const { url, alt } = slice.primary.parallax_image;
                 return (

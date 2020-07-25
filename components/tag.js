@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 import cn from 'classnames';
 
 const Tag = ({ tag, variant }) => {
@@ -7,11 +6,7 @@ const Tag = ({ tag, variant }) => {
         'text-2xs': variant === 'small',
         'text-xs': variant === 'large',
     });
-    return (
-        <li key={uuidv4()} className={className}>
-            {tag}
-        </li>
-    );
+    return <li className={className}>{tag}</li>;
 };
 
 Tag.propTypes = {

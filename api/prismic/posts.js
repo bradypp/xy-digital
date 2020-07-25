@@ -48,11 +48,6 @@ export const getPostData = async (slug, previewData) => {
                   text
                 }
               }
-              ... on Blog_postBodyBlockquote {
-                primary {
-                  blockquote
-                }
-              }
               ... on Blog_postBodyParallax_image {
                 primary {
                   parallax_image
@@ -66,6 +61,23 @@ export const getPostData = async (slug, previewData) => {
               firstPublicationDate
             }
           }
+
+          morePosts: allBlog_posts(sortBy: meta_firstPublicationDate_DESC, first: 4) {
+            edges {
+              node {
+                title
+                featured_image
+                subtitle
+                tags {
+                  tag
+                }
+                _meta {
+                  type
+                  uid
+                }
+              }
+            }
+          }
         }
         `,
         {
@@ -76,6 +88,8 @@ export const getPostData = async (slug, previewData) => {
             },
         },
     );
+
+    data.morePosts = data.morePosts.edges.filter(({ node }) => node._meta.uid !== slug).slice(0, 3);
 
     return data;
 };
