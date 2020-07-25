@@ -1,14 +1,18 @@
 import { PrismicClient } from 'api/prismic';
-
 import { linkResolver } from 'utils/prismic';
 
+// Make sure you set the preview url in the Prismic.io settings
 const preview = async (req, res) => {
-    const ref = req.query.token;
+    const { token: ref, documentId } = req.query;
 
     // Check the token parameter against the Prismic SDK
-    const url = await PrismicClient.previewSession(ref, linkResolver, '/');
+    // const redirectUrl = await PrismicClient.previewSession(ref, linkResolver, '/');
+    const redirectUrl = await PrismicClient.getPreviewResolver(ref, documentId).resolve(
+        linkResolver,
+        '/',
+    );
 
-    if (!url) {
+    if (!redirectUrl) {
         return res.status(401).json({ message: 'Invalid token' });
     }
 
@@ -21,8 +25,8 @@ const preview = async (req, res) => {
     // necessary due to a Chrome bug:
     // https://bugs.chromium.org/p/chromium/issues/detail?id=696204
     res.write(
-        `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${url}" />
-    <script>window.location.href = '${url}'</script>
+        `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${redirectUrl}" />
+    <script>window.location.href = '${redirectUrl}'</script>
     </head>`,
     );
 

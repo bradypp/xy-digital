@@ -1,4 +1,4 @@
-// TODO: update, add site name, add url
+// TODO: update, add url etc
 module.exports = {
     siteTitle: 'XY Digital',
     siteDescription: '',

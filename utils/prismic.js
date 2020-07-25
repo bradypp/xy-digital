@@ -34,16 +34,13 @@ export const customLink = (type, element, content, children, index) => {
             </Link>
         );
     }
-    if (element.data.link_type === 'Web') {
-        return (
-            <a
-                href={element.data.url}
-                rel="nofollow noreferrer
+    return (
+        <a
+            href={element.data.url || null}
+            rel="nofollow noreferrer
             noopener"
-                target="_blank">
-                {content}
-            </a>
-        );
-    }
-    return null;
+            target="_blank">
+            {content}
+        </a>
+    );
 };

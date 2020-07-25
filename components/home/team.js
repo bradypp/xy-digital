@@ -42,7 +42,7 @@ const Team = ({ image, quote, scrollY }) => {
                     <div className="bg-grey-900 opacity-50 absolute w-full h-full z-10" />
                     <motion.blockquote
                         ref={blockQuoteRef}
-                        className="absolute z-10 top-50px left-30px flex w-3/7 text-white"
+                        className="absolute z-10 top-50px left-30px flex w-3/7 text-white m-0 pl-6"
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
                         variants={blockQuoteVariants}>
@@ -50,7 +50,7 @@ const Team = ({ image, quote, scrollY }) => {
                             className="w-8 h-8 min-h-8 min-w-8 mt-2 mr-3 fill-current"
                             name="quote-left"
                         />
-                        <p className="text-4xl">{quote}</p>
+                        <p className="italic font-secondary text-4xl">{quote}</p>
                     </motion.blockquote>
                     <motion.img
                         className="engulf object-cover"

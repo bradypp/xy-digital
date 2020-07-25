@@ -54,19 +54,47 @@ module.exports = {
             full: '9999px',
             '50%': '50%',
         },
+        colors: {
+            black: colors.black,
+            white: colors.white,
+            grey: {
+                '100': '#f5f5f5',
+                '200': '#eeeeee',
+                '300': '#e0e0e0',
+                '400': '#bdbdbd',
+                '500': '#9e9e9e',
+                '600': '#757575',
+                '700': '#616161',
+                '800': '#424242',
+                '900': '#212121',
+            },
+            'grey-cool': colors.gray,
+            teal: colors.teal,
+            green: colors.green,
+            blue: colors.blue,
+            indigo: colors.indigo,
+            purple: colors.purple,
+            yellow: colors.yellow,
+            orange: colors.orange,
+            red: colors.red,
+            pink: colors.pink,
+            link: '#3182ce',
+            'link-dark': '#2c5282',
+            navy: '#090916',
+        },
         typography: theme => ({
             default: {
                 css: {
-                    color: theme('colors.grey.cool.900'),
+                    color: theme('colors.[grey-cool].900'),
                     p: {
+                        color: theme('colors[grey-cool].800'),
                         fontFamily: theme('fontFamily.secondary'),
-                        overflowWrap: 'break-word',
                     },
                     a: {
                         color: theme('colors.link'),
                         textDecoration: 'none',
                         '&:hover': {
-                            color: theme('colors.link.dark'),
+                            color: theme('colors[link-dark]'),
                             textDecoration: 'underline',
                         },
                     },
@@ -74,23 +102,6 @@ module.exports = {
             },
         }),
         extend: {
-            colors: {
-                grey: {
-                    '100': '#f5f5f5',
-                    '200': '#eeeeee',
-                    '300': '#e0e0e0',
-                    '400': '#bdbdbd',
-                    '500': '#9e9e9e',
-                    '600': '#757575',
-                    '700': '#616161',
-                    '800': '#424242',
-                    '900': '#212121',
-                },
-                'grey-cool': colors.gray,
-                navy: '#090916',
-                link: '#3182ce',
-                'link-dark': '#2c5282',
-            },
             spacing: {
                 28: '7rem',
                 '72': '18rem',
@@ -147,6 +158,7 @@ module.exports = {
                 'min-content': 'min-content',
                 'max-content': 'max-content',
                 '10px': '10px',
+                '1500px': '1500px',
             },
             height: {
                 '510px': '510px',

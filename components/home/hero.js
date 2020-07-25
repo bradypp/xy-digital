@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo } from 'components';
+import { Button, Nav, Logo, HeroImage } from 'components';
 import { Blog } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
@@ -33,43 +33,17 @@ const titleChildrenVariants = {
     },
 };
 
-// TODO: change all images
-// TODO: replace image placeholder with video
-// TODO: change video
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
 
-    const [bgRef, bgElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '16%');
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
     const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
-    // useEffect(() => {
-    //     const video = new Vimeo.Player(vidRef.current.firstChild);
-    // });
-
     return (
-        <section id="#hero" className="relative -mb-32">
+        <section id="hero" className="relative -mb-32">
             {/* Background Image */}
-            <motion.div
-                className="absolute overflow-hidden w-full h-900px"
-                ref={bgRef}
-                initial={{ y: 0, opacity: 0 }}
-                animate={{
-                    opacity: 1,
-                    transition: {
-                        type: 'tween',
-                        duration: 0.6,
-                    },
-                }}
-                style={{ y: bgElY }}>
-                <div className="absolute bg-grey-900 opacity-40 w-full h-full z-10" />
-                <img
-                    className="engulf object-cover"
-                    src={background_image.url}
-                    alt={background_image.alt}
-                />
-            </motion.div>
+            <HeroImage scrollY={scrollY} src={background_image.url} alt={background_image.alt} />
 
             <motion.div
                 initial={{
@@ -84,7 +58,7 @@ const Hero = ({ data, scrollY }) => {
                         ease: 'easeOut',
                     },
                 }}>
-                <Logo className="absolute top-20px left-20px" />
+                <Logo className="absolute top-30px left-80px" />
             </motion.div>
 
             {/*  Content */}
@@ -143,7 +117,7 @@ const Hero = ({ data, scrollY }) => {
                                 ease: 'easeOut',
                             },
                         }}>
-                        <div className="home__hero__video px-24 z-20 mb-4">
+                        <div className="hero-video px-24 z-20 mb-4">
                             <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
@@ -155,14 +129,16 @@ const Hero = ({ data, scrollY }) => {
                                 />
                             </motion.div>
                         </div>
-                        <div className="home__hero__about bg-white px-24 pb-24 pt-64 -mt-56 ">
+                        <div className="bg-white px-24 pb-24 pt-64 -mt-56 ">
                             <div className="prose max-w-none sm:prose-sm mb-6">
+                                <h2 className="title font-tertiary uppercase text-grey-cool-800">
+                                    About Us
+                                </h2>
                                 <RichText
                                     render={about}
                                     linkResolver={linkResolver}
                                     serializeHyperlink={customLink}
                                 />
-                                {/* <RichText render={about} /> */}
                             </div>
                             <Button href="#contact-us" icon="arrow-right">
                                 Get In Touch
@@ -177,7 +153,7 @@ const Hero = ({ data, scrollY }) => {
                     ref={rightRef}
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>
-                    <Nav />
+                    <Nav isHome />
 
                     {/* Blog section */}
                     <motion.section

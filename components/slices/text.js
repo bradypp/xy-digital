@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import { RichText } from 'prismic-reactjs';
 
 import { linkResolver, customLink } from 'utils/prismic';
 
-// TODO: styling
 const Text = ({ slice }) => (
-    <div className="">
+    <div className="container-inner prose bg-white z-20 p-32 relative">
         <RichText
             render={slice.primary.text}
             linkResolver={linkResolver}
@@ -12,5 +12,9 @@ const Text = ({ slice }) => (
         />
     </div>
 );
+
+Text.propTypes = {
+    slice: PropTypes.object.isRequired,
+};
 
 export default Text;

@@ -8,7 +8,6 @@
 @import 'tailwindcss/components';
 
 /* Custom Components  */
-@import './pages/index.css';
 @import './components.css';
 
 @import 'tailwindcss/utilities';

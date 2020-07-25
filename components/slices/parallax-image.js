@@ -4,11 +4,10 @@ import cn from 'classnames';
 
 import { useParallaxScroll } from 'hooks';
 
-// TODO: styling
 const ParallaxImage = ({ scrollY, src, alt, className }) => {
     const [imgRef, imgY] = useParallaxScroll(scrollY);
 
-    const newClassName = cn('overflow-hidden relative h-800px', className);
+    const newClassName = cn('overflow-hidden relative z-10', className);
 
     return (
         <div ref={imgRef} className={newClassName}>

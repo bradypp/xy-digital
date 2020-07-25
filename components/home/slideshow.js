@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 
-import { FadeUp } from 'components';
+import { FadeUp, Tag } from 'components';
 import { useParallaxScroll } from 'hooks';
 
 const slideshowVariants = {
@@ -138,9 +138,7 @@ const Slideshow = ({ data, scrollY }) => {
                             </p>
                             <ul className="flex justify-center items-center z-20">
                                 {data[page].node.tags.map(el => (
-                                    <li key={uuidv4()} className="tag">
-                                        {el.tag}
-                                    </li>
+                                    <Tag tag={el.tag} />
                                 ))}
                             </ul>
                         </motion.div>

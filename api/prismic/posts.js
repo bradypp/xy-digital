@@ -80,7 +80,7 @@ export const getPostData = async (slug, previewData) => {
     return data;
 };
 
-export async function getAllPostsWithSlug() {
+export async function getAllPostsSlug() {
     const data = await fetchPrismicAPI(`
         {
           allBlog_posts {

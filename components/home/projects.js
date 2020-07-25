@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 
-import { FadeUp } from 'components';
+import { FadeUp, Tag } from 'components';
 import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
@@ -60,9 +60,7 @@ const Projects = ({ data, scrollY }) => {
                                     </h3>
                                     <ul className="flex justify-start items-center z-10">
                                         {tags.map(el => (
-                                            <li key={uuidv4()} className="tag">
-                                                {el.tag}
-                                            </li>
+                                            <Tag tag={el.tag} />
                                         ))}
                                     </ul>
                                     <p className="z-10 font-secondary text-sm text-white mt-auto transform opacity-0 -translate-x-10 group-hover:translate-x-0 group-hover:opacity-100 transition-ease">

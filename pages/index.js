@@ -5,6 +5,7 @@ import { useViewportScroll } from 'framer-motion';
 import { getHomeData } from 'api/prismic/home';
 import { Layout } from 'components';
 import { Hero, Slideshow, Projects, Team } from 'components/home';
+import { siteTitle } from 'config';
 
 export async function getStaticProps({ preview = false, previewData }) {
     const data = await getHomeData(previewData);
@@ -26,7 +27,7 @@ const Home = ({ homeData, projectData, blogData }) => {
     return (
         <Layout>
             <Head>
-                <title>Digital Agency</title>
+                <title>{siteTitle}</title>
             </Head>
             <Hero data={{ homeData, blogData }} scrollY={scrollY} />
             <Slideshow data={slideshowData} scrollY={scrollY} />
