@@ -24,9 +24,9 @@ const PostContent = ({
         <article>
             <div id="hero" className="relative h-900px -mb-32">
                 <HeroImage scrollY={scrollY} src={featured_image.url} alt={featured_image.alt} />
-                <div className="container-inner flex overflow-hidden">
+                <div className="container-inner flex">
                     <motion.div
-                        className="flex flex-col relative w-2/3 z-10  pr-24"
+                        className="flex flex-col relative w-2/3 z-10 pr-24"
                         initial={{
                             opacity: 0,
                             x: -50,

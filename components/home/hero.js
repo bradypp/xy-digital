@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo, HeroImage } from 'components';
+import { Button, Nav, Logo, HeroImage, Media } from 'components';
 import { Blog } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
@@ -60,7 +60,7 @@ const Hero = ({ data, scrollY }) => {
                         ease: 'easeOut',
                     },
                 }}>
-                <Logo className="absolute top-30px left-80px" />
+                <Logo className="absolute top-30px left-80px xl:top-0px" />
             </motion.div>
 
             {/*  Content */}
@@ -119,7 +119,7 @@ const Hero = ({ data, scrollY }) => {
                                 ease: 'easeOut',
                             },
                         }}>
-                        <div className="hero-video px-24 z-20 mb-4">
+                        <div className="hero-video px-24 z-20 mb-4 relative">
                             <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
@@ -131,7 +131,8 @@ const Hero = ({ data, scrollY }) => {
                                 />
                             </motion.div>
                         </div>
-                        <div className="bg-white px-24 pb-24 pt-64 -mt-56 ">
+                        <div className="bg-white px-24 pb-24 pt-64 -mt-56 relative">
+                            <div id="about-us" className="absolute -mt-40" />
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <h2 className="title font-tertiary uppercase text-grey-cool-800">
                                     About Us

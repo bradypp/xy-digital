@@ -9,6 +9,7 @@
 
 /* Custom Components  */
 @import './components.css';
+@import './media.css';
 
 @import 'tailwindcss/utilities';
 

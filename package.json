@@ -26,6 +26,7 @@
     "react-icons": "^3.10.0",
     "react-intersection-observer": "^8.26.2",
     "react-player": "^2.6.0",
+    "react-responsive": "^8.1.0",
     "react-textarea-autosize": "^8.2.0",
     "tailwindcss": "^1.4.6",
     "uuid": "^8.2.0",

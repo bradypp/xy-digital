@@ -1,0 +1,35 @@
+@screen 2xl {
+    .container-inner {
+        @apply max-w-1070px;
+    }
+}
+
+@screen xl {
+    .container-inner {
+        @apply max-w-full mx-32;
+    }
+}
+
+@screen lg {
+    .container-inner {
+        @apply mx-24;
+    }
+}
+
+@screen md {
+    .container-inner {
+        @apply mx-16;
+    }
+}
+
+@screen md {
+    .container-inner {
+        @apply mx-8;
+    }
+}
+
+@screen xs {
+    .container-inner {
+        @apply mx-4;
+    }
+}

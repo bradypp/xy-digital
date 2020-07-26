@@ -1,12 +1,29 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import cn from 'classnames';
 
 import { Meta, Footer, Header, MorePosts } from 'components';
 
 const Layout = ({ children, morePosts, isHeaderDown }) => {
+    const { asPath } = useRouter();
+    const locationHashArr = asPath.match(/#.+/gi);
+
+    useEffect(() => {
+        if (locationHashArr) {
+            const id = locationHashArr[0].substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView();
+                el.focus();
+            }
+        }
+    }, [locationHashArr]);
+
     const className = cn('container-outer', {
-        'pt-24 pb-12': isHeaderDown,
+        'py-28': isHeaderDown,
     });
+
     return (
         <>
             <Meta />

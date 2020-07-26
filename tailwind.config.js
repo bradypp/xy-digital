@@ -3,6 +3,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { colors } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
+const media = require('./utils/media');
 
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
@@ -11,13 +12,13 @@ module.exports = {
             container: false,
         },
         screens: {
-            '2xl': { max: '1440px' },
-            xl: { max: '1280px' },
-            lg: { max: '1024px' },
-            md: { max: '768px' },
-            sm: { max: '640px' },
-            xs: { max: '440px' },
-            '2xs': { max: '384px' },
+            '2xl': { max: `${media['2xl']}px` },
+            xl: { max: `${media.xl}px` },
+            lg: { max: `${media.lg}px` },
+            md: { max: `${media.md}px` },
+            sm: { max: `${media.sm}px` },
+            xs: { max: `${media.xs}px` },
+            '2xs': { max: `${media['2xs']}px` },
         },
         fontFamily: {
             primary:
@@ -147,6 +148,8 @@ module.exports = {
                 '1500px': '1500px',
                 '1070px': '1070px',
                 '1340px': '1340px',
+                '800px': '800px',
+                '540px': '540px',
             },
             width: {
                 '1/7': '14.2857143%',
@@ -201,31 +204,16 @@ module.exports = {
     },
     // Enable to allow all variants for each utility class
     // Make sure file sizes are controlled first https://tailwindcss.com/docs/controlling-file-size/
-    // variants: [
-    //     'responsive',
-    //     'group-hover',
-    //     'group-focus',
-    //     'focus-within',
-    //     'first',
-    //     'last',
-    //     'odd',
-    //     'even',
-    //     'hover',
-    //     'focus',
-    //     'active',
-    //     'visited',
-    //     'disabled',
-    //     'important',
-    // ],
-    variants: {
-        translate: ['responsive', 'hover', 'focus', 'group-hover'],
-        backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
-        borderColor: ['responsive', 'hover', 'focus'],
-        opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-        scale: ['responsive', 'hover', 'focus', 'group-hover'],
-        fontSize: ['responsive', 'important'],
-        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    },
+    variants: ['responsive', 'group-hover', 'hover', 'focus', 'active', 'disabled', 'important'],
+    // variants: {
+    //     translate: ['responsive', 'hover', 'focus', 'group-hover'],
+    //     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    //     borderColor: ['responsive', 'hover', 'focus'],
+    //     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
+    //     scale: ['responsive', 'hover', 'focus', 'group-hover'],
+    //     fontSize: ['responsive', 'important'],
+    //     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    // },
     plugins: [
         require('@tailwindcss/typography'),
         // Add the important variant. Prefix classes with ! and add to variants to use

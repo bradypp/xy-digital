@@ -10,12 +10,6 @@
     @apply container-common max-w-1340px;
 }
 
-@screen 2xl {
-    .container-inner {
-        @apply max-w-1070px;
-    }
-}
-
 .title {
     @apply font-bold leading-tight tracking-tight;
 }
@@ -41,13 +35,6 @@
 
     &:hover {
         @apply underline;
-    }
-}
-
-.hero-video {
-    iframe {
-        height: 320px;
-        width: 568.88888889px;
     }
 }
 

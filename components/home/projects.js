@@ -27,10 +27,10 @@ const Projects = ({ data, scrollY }) => {
 
     return (
         <motion.section
-            id="projects"
             ref={projectsRef}
-            className="container-inner bg-white z-20 -mb-24"
+            className="container-inner bg-white z-20 -mb-24 relative"
             style={{ y: projectsY }}>
+            <div id="projects" className="absolute -mt-80" />
             <FadeUp className="flex items-center flex-col relative">
                 <SectionHeading scrollY={scrollY} elementTop={projectsTop}>
                     Our Work
