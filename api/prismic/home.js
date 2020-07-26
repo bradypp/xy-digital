@@ -1,6 +1,5 @@
 import { fetchPrismicAPI } from 'api/prismic';
 
-// TODO: put all into one query
 export const getHomeData = async previewData => {
     const data = await fetchPrismicAPI(
         `

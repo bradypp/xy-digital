@@ -142,7 +142,7 @@ const Hero = ({ data, scrollY }) => {
                                     serializeHyperlink={customLink}
                                 />
                             </div>
-                            <Button href="#contact-us" icon="arrow-right">
+                            <Button href="/contact-us" icon="arrow-right">
                                 Get In Touch
                             </Button>
                         </div>

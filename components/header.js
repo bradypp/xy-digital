@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import { Nav } from 'components';
 import { throttle } from 'utils/javascript';
 
-const Header = () => {
-    const [isHeaderDown, setIsHeaderDown] = useState(false);
+const Header = ({ isAlwaysDown }) => {
+    const [isHeaderDown, setIsHeaderDown] = useState(isAlwaysDown);
     const distanceFromTopRequired = 800;
 
     useEffect(() => {
@@ -18,12 +19,15 @@ const Header = () => {
             }
         };
 
-        window.addEventListener('scroll', () => throttle(handleScroll(), 100));
+        window.addEventListener('scroll', () => !isAlwaysDown && throttle(handleScroll(), 100));
 
         return () => {
-            window.removeEventListener('scroll', () => throttle(handleScroll(), 100));
+            window.removeEventListener(
+                'scroll',
+                () => !isAlwaysDown && throttle(handleScroll(), 100),
+            );
         };
-    }, [isHeaderDown]);
+    }, [isAlwaysDown, isHeaderDown]);
 
     const className = cn(
         'w-screen h-16 fixed top-0 left-0 z-30 flex items-center transform transition-ease',
@@ -38,6 +42,14 @@ const Header = () => {
             <Nav isHeader />
         </header>
     );
+};
+
+Header.propTypes = {
+    isAlwaysDown: PropTypes.bool,
+};
+
+Header.defaultProps = {
+    isAlwaysDown: false,
 };
 
 export default Header;

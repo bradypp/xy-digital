@@ -5,6 +5,10 @@ export const getAllPosts = async previewData => {
         `
         query {
           allBlog_posts(sortBy: meta_firstPublicationDate_DESC) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
             edges {
               node {
                 title
@@ -25,6 +29,45 @@ export const getAllPosts = async previewData => {
         }
         `,
         { previewData },
+    );
+
+    return data;
+};
+
+export const getPostsNextPage = async (cursor, previewData) => {
+    const data = await fetchPrismicAPI(
+        `
+        query PostsNextPage($cursor: String!) {
+          allBlog_posts(sortBy: meta_firstPublicationDate_DESC, after: $cursor) {
+            pageInfo {
+              hasNextPage
+              endCursor
+            }
+            edges {
+              node {
+                title
+                author
+                featured_image
+                subtitle
+                tags {
+                  tag
+                }
+                _meta {
+                  type
+                  uid
+                  firstPublicationDate
+                }
+              }
+            }
+          }
+        }
+        `,
+        {
+            previewData,
+            variables: {
+                cursor,
+            },
+        },
     );
 
     return data;

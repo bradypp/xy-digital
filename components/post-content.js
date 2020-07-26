@@ -15,13 +15,11 @@ const PostContent = ({
     featured_image,
     tags,
     body,
-    morePosts,
 }) => {
     const { scrollY } = useViewportScroll();
-
     const [navRef, navY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
-    console.log(morePosts);
+
     return (
         <article>
             <div id="hero" className="relative h-900px -mb-32">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useViewportScroll } from 'framer-motion';
 
 import { getHomeData } from 'api/prismic/home';
-import { DefaultLayout } from 'components/layouts';
+import { Layout } from 'components';
 import { Hero, Slideshow, Projects, Team } from 'components/home';
 import { siteTitle } from 'config';
 
@@ -25,15 +25,16 @@ const Home = ({ homeData, projectData, blogData }) => {
     const { scrollY } = useViewportScroll();
 
     return (
-        <DefaultLayout>
+        <Layout>
             <Head>
                 <title>{siteTitle}</title>
+                <link rel="canonical" href="/" />
             </Head>
             <Hero data={{ homeData, blogData }} scrollY={scrollY} />
             <Slideshow data={slideshowData} scrollY={scrollY} />
             <Projects data={projectData} scrollY={scrollY} />
             <Team image={homeData.team_image} quote={homeData.team_quote} scrollY={scrollY} />
-        </DefaultLayout>
+        </Layout>
     );
 };
 

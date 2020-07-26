@@ -5,8 +5,7 @@ import { useRouter } from 'next/router';
 import { RichText } from 'prismic-reactjs';
 
 import { getProjectData, getAllProjectsSlug } from 'api/prismic/projects';
-import { PostContent } from 'components';
-import { PostLayout } from 'components/layouts';
+import { PostContent, Layout } from 'components';
 
 export async function getStaticProps({ params, preview = false, previewData }) {
     const data = await getProjectData(params.uid, previewData);
@@ -48,7 +47,7 @@ const Project = ({ project, moreProjects }) => {
     const titleText = RichText.asText(title);
 
     return (
-        <PostLayout morePosts={moreProjects}>
+        <Layout morePosts={moreProjects}>
             <Head>
                 <title>{titleText}</title>
                 <link rel="canonical" href={`/projects/${uid}`} />
@@ -61,7 +60,7 @@ const Project = ({ project, moreProjects }) => {
                 subtitle={subtitle}
                 tags={tags}
             />
-        </PostLayout>
+        </Layout>
     );
 };
 

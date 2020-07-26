@@ -220,6 +220,7 @@ module.exports = {
     variants: {
         translate: ['responsive', 'hover', 'focus', 'group-hover'],
         backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+        borderColor: ['responsive', 'hover', 'focus'],
         opacity: ['responsive', 'hover', 'focus', 'group-hover'],
         scale: ['responsive', 'hover', 'focus', 'group-hover'],
         fontSize: ['responsive', 'important'],

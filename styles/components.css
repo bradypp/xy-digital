@@ -75,3 +75,11 @@
     height: 3px;
     background: theme(colors.white);
 }
+
+.field {
+    @apply bg-white w-full rounded-lg overflow-hidden border-solid border border-grey-cool-400;
+}
+
+.field:active {
+    @apply transition-ease bg-grey-cool-300;
+}
