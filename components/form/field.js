@@ -36,8 +36,10 @@ const generateField = FormComponent => {
                         error={error}
                         type={type}>
                         <FormComponent
-                            {...field}
                             {...props}
+                            name={name}
+                            value={field.value}
+                            onBlur={field.onBlur}
                             type={type}
                             id={fieldId}
                             invalid={error && touched}

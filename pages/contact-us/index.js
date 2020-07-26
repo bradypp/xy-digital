@@ -59,6 +59,7 @@ const ContactUs = ({ contactData }) => {
                         onSubmit={async (values, form) => {
                             try {
                                 form.setSubmitting(true);
+                                setSubmitText('Sending Message');
                                 await axios.post('/api/send-email', values);
                                 form.setSubmitting(false);
                                 setSubmitText('Message Sent!');
@@ -79,19 +80,20 @@ const ContactUs = ({ contactData }) => {
                                     <div className="flex items-start justify-center">
                                         <Form.Field.Input
                                             className="mr-4"
-                                            label="First Name"
+                                            label="First Name*"
                                             name="first_name"
                                         />
-                                        <Form.Field.Input label="Last Name" name="last_name" />
+                                        <Form.Field.Input label="Last Name*" name="last_name" />
                                     </div>
-                                    <Form.Field.Input label="Email" name="email" />
+                                    <Form.Field.Input label="Email*" name="email" />
                                     <Form.Field.Input label="Company" name="company" />
                                     <Form.Field.Input label="Phone" name="phone" />
                                     <Form.Field.Input label="Subject" name="subject" />
-                                    <Form.Field.TextArea label="Message" name="message" />
+                                    <Form.Field.TextArea label="Message*" name="message" />
                                     <Form.Buttons
                                         isSubmitting={isSubmitting}
                                         submitText={submitText}
+                                        withReset
                                     />
                                 </Form.Element>
                             </>
@@ -106,9 +108,15 @@ const ContactUs = ({ contactData }) => {
                     <h3 className="text-md font-tertiary font-semibold tracking-tight">Address</h3>
                     <p className="font-tertiary text-sm mb-4">{address}</p>
                     <h3 className="text-md font-tertiary font-semibold tracking-tight">Email</h3>
-                    <p className="font-tertiary text-sm mb-4">{email}</p>
-                    <h3 className="text-md font-tertiary font-semibold tracking-tight">Phone</h3>
-                    <p className="font-tertiary text-sm mb-4">{phone}</p>
+                    <a href={`mailto:${email}`} className="font-tertiary text-sm inline-link">
+                        {email}
+                    </a>
+                    <h3 className="text-md font-tertiary font-semibold tracking-tight mt-4">
+                        Phone
+                    </h3>
+                    <a href={`tel:${phone}`} className="font-tertiary text-sm inline-link">
+                        {phone}
+                    </a>
                 </section>
             </div>
         </Layout>

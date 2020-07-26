@@ -2,12 +2,14 @@ import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-const Input = forwardRef(({ className, onChange, id }, ref) => {
+const Input = forwardRef(({ className, onChange, id, onBlur, value }, ref) => {
     const newClassName = cn('field h-8', className);
     return (
         <div className={newClassName}>
             <input
                 id={id}
+                onBlur={onBlur}
+                value={value}
                 className="h-8 w-full font-tertiary px-2 text-sm rounded-lg"
                 onChange={event => onChange(event.target.value, event)}
                 ref={ref}
@@ -23,6 +25,7 @@ Input.propTypes = {
     type: PropTypes.string,
     invalid: PropTypes.bool,
     onChange: PropTypes.func,
+    onBlur: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -31,6 +34,7 @@ Input.defaultProps = {
     type: 'text',
     invalid: false,
     onChange: () => {},
+    onBlur: undefined,
 };
 
 export default Input;

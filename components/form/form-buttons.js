@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-const FormButtons = ({ withSubmit, withReset, submitText, resetText, className }) => {
+const FormButtons = ({ withSubmit, withReset, submitText, resetText, className, isSubmitting }) => {
     const newClassName = cn('flex', className);
 
     return (
         <div className={newClassName}>
             {withSubmit && (
                 <button
-                    className="font-tertiary px-4 h-10 font-semibold bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 transition-ease"
+                    className="font-tertiary px-4 h-10 font-semibold bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 transition-ease disabled:opacity-50"
+                    disabled={isSubmitting}
                     type="submit">
                     {submitText}
                 </button>
@@ -31,6 +32,7 @@ FormButtons.propTypes = {
     withReset: PropTypes.bool,
     submitText: PropTypes.string,
     resetText: PropTypes.string,
+    isSubmitting: PropTypes.bool,
 };
 
 FormButtons.defaultProps = {
@@ -39,6 +41,7 @@ FormButtons.defaultProps = {
     withReset: false,
     submitText: 'Submit',
     resetText: 'Reset',
+    isSubmitting: false,
 };
 
 export default FormButtons;
