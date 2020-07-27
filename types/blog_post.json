@@ -1,0 +1,118 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "Slug",
+        "placeholder": "Slug"
+      }
+    },
+    "author": {
+      "type": "Text",
+      "config": {
+        "label": "Author"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Subtitle"
+      }
+    },
+    "featured_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Featured Image"
+      }
+    },
+    "tags": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "tag": {
+            "type": "Text",
+            "config": {
+              "label": "Tag"
+            }
+          }
+        },
+        "label": "Tags"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "blockquote": [],
+          "text": [],
+          "image": [],
+          "parallax_image": []
+        },
+        "choices": {
+          "blockquote": {
+            "type": "Slice",
+            "fieldset": "Blockquote",
+            "description": "Blockquote",
+            "icon": "format_quote",
+            "display": "list",
+            "non-repeat": {
+              "blockquote": {
+                "type": "Text",
+                "config": {
+                  "label": "Blockquote"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "text": {
+            "type": "Slice",
+            "fieldset": "Text",
+            "description": "Rich Text Section",
+            "icon": "text_fields",
+            "non-repeat": {
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, preformatted, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label": "Text",
+                  "placeholder": "Your content here"
+                }
+              }
+            },
+            "repeat": {},
+            "display": "list"
+          },
+          "parallax_image": {
+            "type": "Slice",
+            "fieldset": "Parallax Image",
+            "description": "Parallax Image",
+            "icon": "image",
+            "display": "list",
+            "non-repeat": {
+              "parallax_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Parallax Image"
+                }
+              }
+            },
+            "repeat": {}
+          }
+        }
+      }
+    }
+  }
+}

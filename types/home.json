@@ -1,0 +1,49 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID"
+      }
+    },
+    "background_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1500,
+          "height": 900
+        },
+        "thumbnails": [],
+        "label": "Background Image"
+      }
+    },
+    "featured_video": {
+      "type": "Embed",
+      "config": {
+        "label": "Featured Video"
+      }
+    },
+    "about": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "allowTargetBlank": true,
+        "label": "About"
+      }
+    },
+    "team_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Team Image"
+      }
+    },
+    "team_quote": {
+      "type": "Text",
+      "config": {
+        "label": "Team Quote"
+      }
+    }
+  }
+}
