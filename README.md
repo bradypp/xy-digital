@@ -2,10 +2,10 @@
   XY Digital
 </h1>
 <p align="center">
-  A slick, modern website that would be perfect for any digital agency.
+  A slick, modern website that any digital agency would be proud of.
 </p>
 <p align="center">
-  Found at <a href="https://xy-digital.vercel.app" target="_blank">xy-digital.vercel.app.dev</a>, built with <a href="https://nextjs.org/" target="_blank">Next.js</a>, <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>, <a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a>, <a href="https://graphql.org/" target="_blank">GraphQL</a>, <a href="https://prismic.io/" target="_blank">Prismic.io</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
+  Found at <a href="https://xy-digital.vercel.app" target="_blank">xy-digital.vercel.app</a>, built with <a href="https://nextjs.org/" target="_blank">Next.js</a>, <a href="https://graphql.org/" target="_blank">GraphQL</a>, <a href="https://prismic.io/" target="_blank">Prismic.io</a>, <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>, <a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>.
 </p>
 <a href="https://xy-digital.vercel.app" target="_blank">
   <img src="https://raw.githubusercontent.com/bradypp/xy-digital/master/public/img/demo.png" alt="repo demo">

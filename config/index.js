@@ -1,6 +1,6 @@
 module.exports = {
     siteTitle: 'XY Digital',
-    siteDescription: 'A slick, modern website that would be perfect for any digital agency.',
+    siteDescription: 'A slick, modern website that any digital agency would be proud of.',
     siteKeywords: 'digital agency, web dev, freelance, marketing',
     siteUrl: 'https://xy-digital.vercel.app',
     siteLanguage: 'en',
