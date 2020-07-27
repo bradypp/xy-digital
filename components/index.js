@@ -15,3 +15,4 @@ export { default as MorePosts } from './more-posts';
 export { default as Map } from './map';
 export { default as ProjectItem } from './project-item';
 export { default as Media } from './media';
+export { default as BurgerMenu } from './burger-menu';

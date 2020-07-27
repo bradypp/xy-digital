@@ -41,7 +41,7 @@ const ContactUs = ({ contactData }) => {
                 <title>Contact Us</title>
                 <link rel="canonical" href="/contact-us" />
             </Head>
-            <div className="container-inner grid grid-cols-2 grid-rows-2 gap-16">
+            <div className="container-inner grid grid-cols-2 grid-rows-2 md:flex md:flex-col gap-16 md:px-6 xs:px-4">
                 <section className="col-start-1 col-end-2 row-start-1 row-end-3">
                     <h1 className="title mb-6 font-tertiary text-4xl">{titleText}</h1>
                     <p className="font-secondary mb-6 text-grey-cool-800">{content}</p>
@@ -100,7 +100,7 @@ const ContactUs = ({ contactData }) => {
                         )}
                     </Form>
                 </section>
-                <section className="mt-8">
+                <section className="mt-8 md:mt-0 md:w-full md:h-84">
                     <Map address={address} location_coordinates={location_coordinates} />
                 </section>
                 <section>

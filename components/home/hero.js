@@ -4,9 +4,9 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo, HeroImage, Media } from 'components';
+import { Button, Nav, Logo, HeroImage, BurgerMenu } from 'components';
 import { Blog } from 'components/home';
-import { useParallaxScroll } from 'hooks';
+import { useParallaxScroll, useMedia } from 'hooks';
 
 const titleContainerVariants = {
     visible: {
@@ -36,6 +36,15 @@ const titleChildrenVariants = {
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
 
+    const { min2xl, minlgMaxxl, minsmMaxmd, maxmd } = useMedia();
+
+    const videoWidth = () => {
+        if (min2xl) return 560;
+        if (minlgMaxxl) return 440;
+        if (minsmMaxmd) return 500;
+        return 'auto';
+    };
+
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
     const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
@@ -60,19 +69,19 @@ const Hero = ({ data, scrollY }) => {
                         ease: 'easeOut',
                     },
                 }}>
-                <Logo className="absolute top-30px left-80px xl:top-0px" />
+                <Logo className="absolute top-30px left-80px md:top-20px md:left-40px" />
             </motion.div>
 
             {/*  Content */}
             <div className="container-inner flex">
                 <motion.div
-                    className="flex flex-col w-2/3 z-10"
+                    className="flex flex-col w-2/3 z-10 md:w-full lg:w-4/7"
                     ref={leftRef}
                     initial={{ y: 0 }}
                     style={{ y: leftElY }}>
                     {/* Title Section */}
                     <motion.h1
-                        className="title-main px-24 pt-220px relative mb-48 leading-none"
+                        className="title-main px-24 pt-220px relative mb-48 leading-none xl:px-12 lg:px-6 md:px-12"
                         initial="hidden"
                         animate="visible"
                         variants={titleContainerVariants}>
@@ -105,6 +114,7 @@ const Hero = ({ data, scrollY }) => {
 
                     {/* About Section */}
                     <motion.section
+                        className="xl:-mt-40"
                         initial={{
                             opacity: 0,
                             y: 50,
@@ -119,11 +129,11 @@ const Hero = ({ data, scrollY }) => {
                                 ease: 'easeOut',
                             },
                         }}>
-                        <div className="hero-video px-24 z-20 mb-4 relative">
+                        <div className="hero-video px-24 xl:px-12 z-20 mb-4 relative md:pt-24">
                             <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
-                                    width={560}
+                                    width={videoWidth()}
                                     volume={0}
                                     muted
                                     playing
@@ -131,7 +141,7 @@ const Hero = ({ data, scrollY }) => {
                                 />
                             </motion.div>
                         </div>
-                        <div className="bg-white px-24 pb-24 pt-64 -mt-56 relative">
+                        <div className="bg-white px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 pt-64 -mt-56 relative xl:-mt-48 xl:pt-40 lg:pt-32 md:pt-48 xs:-mt-48 xs:pt-32">
                             <div id="about-us" className="absolute -mt-40" />
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <h2 className="title font-tertiary uppercase text-grey-cool-800">
@@ -150,9 +160,10 @@ const Hero = ({ data, scrollY }) => {
                     </motion.section>
                 </motion.div>
 
+                {maxmd && <BurgerMenu />}
                 {/* Nav Section */}
                 <motion.div
-                    className="w-1/3 z-10"
+                    className="w-1/3 z-10 md:hidden lg:w-3/7"
                     ref={rightRef}
                     initial={{ y: 0 }}
                     style={{ y: rightElY }}>

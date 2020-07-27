@@ -15,7 +15,7 @@ const Footer = () => {
         'text-pink-500',
     ];
     return (
-        <footer className="p-16 w-screen bg-navy font-tertiary flex flex-col items-center justify-center text-sm text-grey-cool-300">
+        <footer className="py-16 w-screen bg-navy font-tertiary flex flex-col items-center justify-center text-sm text-grey-cool-300">
             <Logo className="pb-10" />
             <ul className="flex pb-10">
                 {navLinks.map(el => (
@@ -40,7 +40,7 @@ const Footer = () => {
                     );
                 })}
             </ul>
-            <p className="pb-2">&copy; Digital Agency, Inc. All rights reserved.</p>
+            <p className="pb-2">&copy; XY Digital, Inc. All rights reserved.</p>
             <p>
                 Designed and developed by{' '}
                 <a

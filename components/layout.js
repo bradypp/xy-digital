@@ -21,7 +21,7 @@ const Layout = ({ children, morePosts, isHeaderDown }) => {
     }, [locationHashArr]);
 
     const className = cn('container-outer', {
-        'py-28': isHeaderDown,
+        'py-28 md:py-20': isHeaderDown,
     });
 
     return (

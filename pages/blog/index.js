@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
@@ -13,7 +12,7 @@ export async function getStaticProps({ preview = false, previewData }) {
     const initialPosts = data?.allBlog_posts?.edges;
     const { hasNextPage, endCursor } = data?.allBlog_posts?.pageInfo;
 
-    // Pagination gets all posts past the 20 doc api limit
+    // Recursive pagination gets all posts past the 20 doc api limit
     const getMorePosts = async (isMorePosts = false, cursor = null) => {
         if (isMorePosts) {
             const data = await getPostsNextPage(cursor);
@@ -38,8 +37,10 @@ const Blog = ({ posts }) => {
     return (
         <Layout isHeaderDown>
             <div className="container-inner">
-                <h1 className="title mb-8 font-tertiary uppercase text-4xl">Latest Blog Posts</h1>
-                <section className="grid grid-cols-3 gap-3">
+                <h1 className="title mb-8 font-tertiary uppercase text-4xl md:px-3">
+                    Latest Blog Posts
+                </h1>
+                <section className="grid grid-cols-3 gap-3 lg:grid-cols-2 md:px-3 sm:grid-cols-1">
                     {posts.map((el, i) => {
                         const { title, featured_image, subtitle, tags, _meta } = el.node;
                         const titleText = RichText.asText(title);

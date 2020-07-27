@@ -30,7 +30,7 @@ const Header = ({ isAlwaysDown }) => {
     }, [isAlwaysDown, isHeaderDown]);
 
     const className = cn(
-        'w-screen h-16 fixed top-0 left-0 z-30 flex items-center transform transition-ease',
+        'w-screen h-16 fixed top-0 left-0 z-40 flex items-center transform transition-ease',
         {
             'translate-y-0': isHeaderDown,
             '-translate-y-full': !isHeaderDown,

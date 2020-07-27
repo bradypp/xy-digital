@@ -14,7 +14,7 @@ const SliceZone = ({ sliceZone, scrollY }) =>
                 return (
                     <ParallaxImage
                         key={`slice-${i}`}
-                        className="h-800px -my-16"
+                        className="h-800px -my-16 xl:h-650px"
                         src={url}
                         alt={alt}
                         scrollY={scrollY}

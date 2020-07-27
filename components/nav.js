@@ -7,7 +7,8 @@ import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from 'tailwind.config.js';
 
 import { navLinks } from 'config';
-import { Logo } from 'components';
+import { Logo, BurgerMenu } from 'components';
+import { useMedia } from 'hooks';
 
 const fullConfig = resolveConfig(tailwindConfig);
 
@@ -19,8 +20,9 @@ const colors = [
     [fullConfig.theme.colors.green[300], fullConfig.theme.colors.green[600]],
 ];
 
-const Nav = ({ isHeader, className, isHome }) => {
+const Nav = ({ isHeader, className, isHome, isSideNav }) => {
     const controls = useAnimation();
+    const { maxmd } = useMedia();
 
     const variants = {
         hidden: {
@@ -40,18 +42,34 @@ const Nav = ({ isHeader, className, isHome }) => {
     };
 
     useEffect(() => {
-        controls.start('visible');
-    }, [controls]);
+        if (!isHeader && !isSideNav) {
+            controls.start('visible');
+        }
+    }, [controls, isHeader, isSideNav]);
+
+    const navClassName = cn('nav-container flex', className, {
+        'justify-between items-center w-full h-full': isHeader,
+        'flex flex-col items-center w-full h-full': isSideNav,
+        'flex-col justify-end h-510px xl:h-400px relative mb-390px': !isHeader && !isSideNav,
+    });
+
+    const linksContainerClassName = cn('text-white font-bold uppercase ', {
+        'text-lg leading-none flex justify-end items-center p-8 pr-12': isHeader,
+        'text-lg leading-none flex flex-col justify-center items-center h-full': isSideNav,
+        'text-3xl xl:text-2xl leading-snug': !isHeader && !isSideNav,
+    });
 
     const navLinkComponents = navLinks.map((el, i) => {
         const navLinkClassName = cn(
             'opacity-90 transition-ease nav-list-item w-max-content flex flex-col text-white',
-            { 'ml-6': isHeader },
+            {
+                'ml-6': isHeader,
+                'mb-4 text-2xl p-4': isSideNav,
+            },
         );
         return (
             <motion.li
                 key={uuidv4()}
-                className={navLinkClassName}
                 onHoverStart={() =>
                     controls.start({
                         '--nav-background-color-1': colors[i + 1][0],
@@ -73,25 +91,30 @@ const Nav = ({ isHeader, className, isHome }) => {
                     })
                 }>
                 <Link href={el.url}>
-                    <a>{el.name}</a>
+                    <a className={navLinkClassName}>{el.name}</a>
                 </Link>
             </motion.li>
         );
     });
 
-    const navClassName = cn('nav-container flex', className, {
-        'justify-between items-center w-full h-full': isHeader,
-        'flex-col justify-end h-510px relative mb-390px': !isHeader,
-    });
+    if (isSideNav) {
+        return (
+            <motion.nav className={navClassName} animate={controls}>
+                <ul className={linksContainerClassName}>{navLinkComponents}</ul>
+            </motion.nav>
+        );
+    }
 
     if (isHeader) {
         return (
-            <motion.nav className={navClassName} animate={controls}>
+            <nav className={navClassName}>
                 <Logo className="ml-6" />
-                <ul className="text-lg text-white font-bold uppercase leading-none flex justify-end items-center p-8 pr-12">
-                    {navLinkComponents}
-                </ul>
-            </motion.nav>
+                {maxmd ? (
+                    <BurgerMenu isHeader />
+                ) : (
+                    <ul className={linksContainerClassName}>{navLinkComponents}</ul>
+                )}
+            </nav>
         );
     }
 
@@ -101,10 +124,8 @@ const Nav = ({ isHeader, className, isHome }) => {
             initial="hidden"
             animate={controls}
             variants={variants}>
-            <nav className="absolute bottom-100px left-80px">
-                <ul className="text-3xl text-white font-bold uppercase leading-snug">
-                    {navLinkComponents}
-                </ul>
+            <nav className="absolute bottom-100px left-80px xl:left-60px xl:bottom-80px lg:left-70px lg:bottom-80px">
+                <ul className={linksContainerClassName}>{navLinkComponents}</ul>
             </nav>
         </motion.div>
     );
@@ -113,6 +134,7 @@ const Nav = ({ isHeader, className, isHome }) => {
 Nav.propsTypes = {
     isHeader: false,
     isHome: false,
+    isSideNav: false,
 };
 
 export default Nav;

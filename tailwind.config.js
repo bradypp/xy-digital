@@ -5,6 +5,38 @@ const { colors } = require('tailwindcss/defaultTheme');
 const plugin = require('tailwindcss/plugin');
 const media = require('./utils/media');
 
+const heightAndWidths = {
+    '1/7': '14.2857143%',
+    '2/7': '28.5714286%',
+    '3/7': '42.8571429%',
+    '4/7': '57.1428571%',
+    '5/7': '71.4285714%',
+    '6/7': '85.7142857%',
+    'min-content': 'min-content',
+    'max-content': 'max-content',
+    '10px': '10px',
+    '20px': '20px',
+    '30px': '30px',
+    '40px': '40px',
+    '50px': '50px',
+    '60px': '60px',
+    '70px': '70px',
+    '80px': '80px',
+    '90px': '90px',
+    '100px': '100px',
+    '200px': '200px',
+    '300px': '300px',
+    '400px': '400px',
+    '500px': '500px',
+    '510px': '510px',
+    '650px': '650px',
+    '700px': '700px',
+    '800px': '800px',
+    '900px': '900px',
+    '1000px': '1000px',
+    '1500px': '1500px',
+};
+
 module.exports = {
     purge: ['./components/**/*.js', './pages/**/*.js'],
     theme: {
@@ -138,7 +170,9 @@ module.exports = {
                 '5xl': '2.25rem',
                 '6xl': '2.75rem',
                 '7xl': '3.25rem',
-                title: '6rem',
+                '8xl': '4rem',
+                '9xl': '5rem',
+                '10xl': '6rem',
             },
             boxShadow: {
                 small: '0 5px 10px rgba(0, 0, 0, 0.12)',
@@ -152,21 +186,10 @@ module.exports = {
                 '540px': '540px',
             },
             width: {
-                '1/7': '14.2857143%',
-                '2/7': '28.5714286%',
-                '3/7': '42.8571429%',
-                '4/7': '57.1428571%',
-                '5/7': '71.4285714%',
-                '6/7': '85.7142857%',
-                'min-content': 'min-content',
-                'max-content': 'max-content',
-                '10px': '10px',
-                '1500px': '1500px',
+                ...heightAndWidths,
             },
             height: {
-                '510px': '510px',
-                '800px': '800px',
-                '900px': '900px',
+                ...heightAndWidths,
             },
             minHeight: theme => theme('height'),
             minWidth: theme => theme('width'),
@@ -202,18 +225,17 @@ module.exports = {
             },
         },
     },
-    // Enable to allow all variants for each utility class
     // Make sure file sizes are controlled first https://tailwindcss.com/docs/controlling-file-size/
-    variants: ['responsive', 'group-hover', 'hover', 'focus', 'active', 'disabled', 'important'],
-    // variants: {
-    //     translate: ['responsive', 'hover', 'focus', 'group-hover'],
-    //     backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    //     borderColor: ['responsive', 'hover', 'focus'],
-    //     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
-    //     scale: ['responsive', 'hover', 'focus', 'group-hover'],
-    //     fontSize: ['responsive', 'important'],
-    //     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    // },
+    // variants: ['responsive', 'group-hover', 'hover', 'focus', 'active', 'disabled', 'important'],
+    variants: {
+        translate: ['responsive', 'hover', 'focus', 'group-hover'],
+        backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+        borderColor: ['responsive', 'hover', 'focus'],
+        opacity: ['responsive', 'hover', 'focus', 'disabled', 'group-hover'],
+        scale: ['responsive', 'hover', 'focus', 'group-hover'],
+        fontSize: ['responsive', 'important'],
+        textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    },
     plugins: [
         require('@tailwindcss/typography'),
         // Add the important variant. Prefix classes with ! and add to variants to use

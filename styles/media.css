@@ -6,30 +6,33 @@
 
 @screen xl {
     .container-inner {
-        @apply max-w-full mx-32;
+        @apply max-w-full mx-24;
     }
 }
 
 @screen lg {
     .container-inner {
-        @apply mx-24;
+        @apply mx-12;
+    }
+    .title-main {
+        @apply text-9xl;
     }
 }
 
 @screen md {
     .container-inner {
-        @apply mx-16;
+        @apply mx-0;
     }
 }
 
-@screen md {
-    .container-inner {
-        @apply mx-8;
+@screen sm {
+    .title-main {
+        @apply text-8xl;
     }
 }
 
 @screen xs {
-    .container-inner {
-        @apply mx-4;
+    .title-main {
+        @apply text-7xl;
     }
 }

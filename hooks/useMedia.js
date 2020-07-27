@@ -1,13 +1,52 @@
 import { useMediaQuery } from 'react-responsive';
 import media from 'utils/media';
 
-const useMedia = (minWidth = '2xl', maxWidth) => {
-    const isInWidth = useMediaQuery({
-        minWidth: media[minWidth],
-        maxWidth: media[maxWidth],
+const useMedia = () => {
+    const min2xl = useMediaQuery({
+        minWidth: media['2xl'],
+    });
+    const minxlMax2xl = useMediaQuery({
+        minWidth: media.xl,
+        maxWidth: media['2xl'],
+    });
+    const minlgMaxxl = useMediaQuery({
+        minWidth: media.lg,
+        maxWidth: media.xl,
+    });
+    const minmdMaxlg = useMediaQuery({
+        minWidth: media.md,
+        maxWidth: media.lg,
+    });
+    const maxmd = useMediaQuery({
+        maxWidth: media.md,
+    });
+    const minsmMaxmd = useMediaQuery({
+        minWidth: media.sm,
+        maxWidth: media.md,
+    });
+    const minxsMaxsm = useMediaQuery({
+        minWidth: media.xs,
+        maxWidth: media.sm,
+    });
+    const min2xsMaxxs = useMediaQuery({
+        minWidth: media['2xs'],
+        maxWidth: media.xs,
+    });
+    const max2xs = useMediaQuery({
+        maxWidth: media['2xs'],
     });
 
-    return isInWidth;
+    return {
+        min2xl,
+        minxlMax2xl,
+        minlgMaxxl,
+        minmdMaxlg,
+        maxmd,
+        minsmMaxmd,
+        minxsMaxsm,
+        min2xsMaxxs,
+        max2xs,
+    };
 };
 
 export default useMedia;

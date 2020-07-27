@@ -69,7 +69,7 @@ const BlogPost = ({ blogPost, morePosts }) => {
 
 BlogPost.propTypes = {
     blogPost: PropTypes.object.isRequired,
-    morePosts: PropTypes.object,
+    morePosts: PropTypes.array,
 };
 
 BlogPost.defaultProps = {

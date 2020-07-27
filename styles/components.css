@@ -15,7 +15,7 @@
 }
 
 .title-main {
-    @apply title font-primary text-title text-white;
+    @apply title font-primary text-10xl text-white;
 }
 
 .bg-image {

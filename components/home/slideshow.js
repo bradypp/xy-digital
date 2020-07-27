@@ -96,7 +96,7 @@ const Slideshow = ({ data, scrollY }) => {
             ref={slideshowRef}
             as="section"
             id="slideshow"
-            className="flex relative overflow-hidden h-800px bg-black">
+            className="flex relative overflow-hidden h-800px bg-black xl:h-650px md:h-500px">
             <motion.div className={timerClass} animate={timerControls} variants={timerVariants} />
             <div className="absolute top-0 left-20px z-10 flex flex-col justify-center items-center h-full">
                 {data.map((el, i) => {
@@ -134,17 +134,19 @@ const Slideshow = ({ data, scrollY }) => {
                                 style={{ y: imgY, scale: 1.15 }}
                             />
                             <div className="engulf bg-grey-cool-900 opacity-40 z-10" />
-                            <h3 className="title-main text-5xl text-white mb-8 z-20">
-                                {RichText.asText(data[page].node.title)}
-                            </h3>
-                            <p className="text-white text-2xl font-secondary mb-8 z-20">
-                                {data[page].node.subtitle}
-                            </p>
-                            <ul className="flex justify-center items-center z-20">
-                                {data[page].node.tags.map(el => (
-                                    <Tag key={uuidv4()} tag={el.tag} />
-                                ))}
-                            </ul>
+                            <div className="flex flex-col justify-center items-center w-full h-full p-32 lg:p-24 sm:p-16 text-center">
+                                <h3 className="title-main text-5xl text-white mb-8 z-20">
+                                    {RichText.asText(data[page].node.title)}
+                                </h3>
+                                <p className="text-white text-2xl font-secondary mb-8 z-20 lg:text-xl md:text-lg sm:text-base">
+                                    {data[page].node.subtitle}
+                                </p>
+                                <ul className="flex justify-center items-center z-20">
+                                    {data[page].node.tags.map(el => (
+                                        <Tag key={uuidv4()} tag={el.tag} />
+                                    ))}
+                                </ul>
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                 </a>
