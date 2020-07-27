@@ -62,9 +62,9 @@ const Projects = ({ data, scrollY }) => {
                         };
                         const containerClassName = cn(
                             `relative overflow-hidden min-h-84 h-84 lg:min-h-64 lg:h-64 group flex flex-col justify-start p-8 bg-grey-cool-900 clickable ${
-                                min2xl || minxlMax2xl || minlgMaxxl
+                                min2xl || minxlMax2xl
                                     ? gridAreas1[i % 9]
-                                    : minmdMaxlg
+                                    : minmdMaxlg || minlgMaxxl
                                     ? gridAreas2[i % 6]
                                     : minsmMaxmd
                                     ? gridAreas3[i % 2]

@@ -32,10 +32,10 @@ const BurgerMenu = ({ isHeader = false }) => {
     });
 
     const navContainerClassName = cn(
-        'fixed top-0 right-0 h-screen w-3/4 z-40 xs:w-5/6 transform transition-ease',
+        'fixed top-0 right-0 h-screen w-3/4 z-40 xs:w-5/6 transform duration-400 ease-linear',
         {
-            'translate-x-0': isSideNavOpen,
-            ' translate-x-full': !isSideNavOpen,
+            'translate-x-0 opacity-1': isSideNavOpen,
+            ' translate-x-full opacity-0': !isSideNavOpen,
         },
     );
 
@@ -64,7 +64,7 @@ BurgerMenu.propTypes = {
     isHeader: PropTypes.bool,
 };
 
-BurgerMenu.propTypes = {
+BurgerMenu.defaultProps = {
     isHeader: false,
 };
 

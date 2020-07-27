@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
@@ -36,14 +37,24 @@ const titleChildrenVariants = {
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
 
-    const { min2xl, minlgMaxxl, minsmMaxmd, maxmd } = useMedia();
+    const [videoWidth, setVideoWidth] = useState('auto');
+    const {
+        min2xl,
+        minlgMaxxl,
+        minsmMaxmd,
+        maxmd,
+        min2xsMaxxs,
+        minmdMaxlg,
+        minxlMax2xl,
+        minxsMaxsm,
+    } = useMedia();
 
-    const videoWidth = () => {
-        if (min2xl) return 560;
-        if (minlgMaxxl) return 440;
-        if (minsmMaxmd) return 500;
-        return 'auto';
-    };
+    useEffect(() => {
+        if (min2xl) setVideoWidth(560);
+        if (minlgMaxxl) setVideoWidth(440);
+        if (minsmMaxmd) setVideoWidth(500);
+        if (min2xsMaxxs || minmdMaxlg || minxlMax2xl || minxsMaxsm) setVideoWidth('auto');
+    }, [min2xl, min2xsMaxxs, minlgMaxxl, minmdMaxlg, minsmMaxmd, minxlMax2xl, minxsMaxsm]);
 
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
     const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
@@ -133,7 +144,7 @@ const Hero = ({ data, scrollY }) => {
                             <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
-                                    width={videoWidth()}
+                                    width={videoWidth}
                                     volume={0}
                                     muted
                                     playing

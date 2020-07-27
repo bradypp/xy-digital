@@ -24,6 +24,9 @@ const useMedia = () => {
         minWidth: media.sm,
         maxWidth: media.md,
     });
+    const maxsm = useMediaQuery({
+        maxWidth: media.sm,
+    });
     const minxsMaxsm = useMediaQuery({
         minWidth: media.xs,
         maxWidth: media.sm,
@@ -43,6 +46,7 @@ const useMedia = () => {
         minmdMaxlg,
         maxmd,
         minsmMaxmd,
+        maxsm,
         minxsMaxsm,
         min2xsMaxxs,
         max2xs,

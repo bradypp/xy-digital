@@ -30,6 +30,12 @@ export async function getStaticPaths() {
 // TODO: add spinner if router.isFallback is true?
 const Project = ({ project, moreProjects }) => {
     const router = useRouter();
+
+    if (router.isFallback) return <h2>Loading...</h2>;
+    if (!router.isFallback && !project?._meta?.uid) {
+        return <ErrorPage statusCode={404} />;
+    }
+
     const {
         title,
         body,
@@ -38,11 +44,6 @@ const Project = ({ project, moreProjects }) => {
         subtitle,
         tags,
     } = project;
-
-    if (router.isFallback) return <h2>Loading...</h2>;
-    if (!router.isFallback && !project?._meta?.uid) {
-        return <ErrorPage statusCode={404} />;
-    }
 
     const titleText = RichText.asText(title);
 

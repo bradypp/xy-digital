@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-import { useParallaxScroll, useMedia } from 'hooks';
+import { useParallaxScroll } from 'hooks';
 
 const HeroImage = ({ scrollY, src, alt }) => {
     const [bgRef, bgElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '16%');
