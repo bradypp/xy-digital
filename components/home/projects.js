@@ -47,7 +47,7 @@ const Projects = ({ data, scrollY }) => {
             ref={projectsRef}
             className="container-inner bg-white z-20 -mb-24 md:mb-0 relative"
             style={{ y: projectsY }}>
-            <div id="projects" className="absolute -mt-80" />
+            <div id="projects" className="absolute -mt-64" />
             <FadeUp className="flex items-center flex-col relative">
                 <SectionHeading scrollY={scrollY} elementTop={projectsTop}>
                     Our Work
