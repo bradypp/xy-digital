@@ -70,7 +70,15 @@ const Nav = ({ isHeader, className, isHome, isSideNav }) => {
         return (
             <motion.li
                 key={uuidv4()}
-                onHoverStart={() =>
+                whileHover={{
+                    '--nav-background-color-1': colors[i + 1][0],
+                    '--nav-background-color-2': colors[i + 1][1],
+                    transition: {
+                        duration: 0.25,
+                        ease: 'easeOut',
+                    },
+                }}
+                onHoverStart={() => {
                     controls.start({
                         '--nav-background-color-1': colors[i + 1][0],
                         '--nav-background-color-2': colors[i + 1][1],
@@ -78,8 +86,8 @@ const Nav = ({ isHeader, className, isHome, isSideNav }) => {
                             duration: 0.25,
                             ease: 'easeOut',
                         },
-                    })
-                }
+                    });
+                }}
                 onHoverEnd={() =>
                     controls.start({
                         '--nav-background-color-1': colors[0][0],

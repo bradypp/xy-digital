@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Head from 'next/head';
 import { v4 as uuidv4 } from 'uuid';
 import { RichText } from 'prismic-reactjs';
 
@@ -36,6 +37,10 @@ export async function getStaticProps({ preview = false, previewData }) {
 const Blog = ({ posts }) => {
     return (
         <Layout isHeaderDown>
+            <Head>
+                <title>Blog</title>
+                <link rel="canonical" href="/blog" />
+            </Head>
             <div className="container-inner">
                 <h1 className="title mb-8 font-tertiary uppercase text-4xl md:px-3">
                     Latest Blog Posts

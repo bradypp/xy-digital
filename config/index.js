@@ -1,11 +1,10 @@
-// TODO: update, add url etc
 module.exports = {
     siteTitle: 'XY Digital',
-    siteDescription: '',
+    siteDescription: 'A slick, modern website that would be perfect for any digital agency.',
     siteKeywords: 'digital agency, web dev, freelance, marketing',
-    siteUrl: '',
+    siteUrl: 'https://xy-digital.vercel.app',
     siteLanguage: 'en',
-    repo: 'https://github.com/bradypp/digital-agency',
+    repo: 'https://github.com/bradypp/xy-digital',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
     twitterHandle: '@bradypp',

@@ -27,7 +27,6 @@ const Home = ({ homeData, projectData, blogData }) => {
     return (
         <Layout>
             <Head>
-                <title>{siteTitle}</title>
                 <link rel="canonical" href="/" />
             </Head>
             <Hero data={{ homeData, blogData }} scrollY={scrollY} />
