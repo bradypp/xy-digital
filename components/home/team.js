@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { motion, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Icon, FadeUp, ClientOnly } from 'components';
+import { Icon, FadeUp } from 'components';
+import { ParallaxImage } from 'components/slices';
 import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
@@ -22,8 +23,7 @@ const blockQuoteVariants = {
 };
 
 const Team = ({ image, quote, scrollY }) => {
-    const [teamRef, imgY, teamTop] = useParallaxScroll(scrollY);
-    const teamY = useTransform(scrollY, [teamTop - 600, teamTop], [-10, 0]);
+    const [teamRef, teamY] = useParallaxScroll(scrollY, -600, 0, -10, 0);
 
     const [blockQuoteRef, inView] = useInView({
         threshold: 0.5,
@@ -31,13 +31,9 @@ const Team = ({ image, quote, scrollY }) => {
     });
 
     return (
-        <motion.section className="mb-16 bg-white" style={{ y: teamY }}>
-            <FadeUp
-                ref={teamRef}
-                className="flex flex-col justify-center items-center w-full h-full">
-                <SectionHeading scrollY={scrollY} elementTop={teamTop}>
-                    Our Team
-                </SectionHeading>
+        <motion.section ref={teamRef} className="mb-16 bg-white" style={{ y: teamY }}>
+            <FadeUp className="flex flex-col justify-center items-center w-full h-full">
+                <SectionHeading>Our Team</SectionHeading>
                 <div className="relative h-800px xl:h-650px md:h-500px overflow-hidden w-full">
                     <div className="bg-grey-900 opacity-50 absolute w-full h-full z-10" />
                     <motion.blockquote
@@ -52,12 +48,7 @@ const Team = ({ image, quote, scrollY }) => {
                         />
                         <p className="italic font-secondary text-4xl md:text-2xl">{quote}</p>
                     </motion.blockquote>
-                    <motion.img
-                        className="engulf object-cover"
-                        src={image.url}
-                        alt={image.alt}
-                        style={{ y: imgY, scale: 1.15 }}
-                    />
+                    <img className="engulf object-cover" src={image.url} alt={image.alt} />
                 </div>
             </FadeUp>
         </motion.section>

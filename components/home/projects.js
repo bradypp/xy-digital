@@ -13,13 +13,7 @@ import { linkResolver, hrefResolver } from 'utils/prismic';
 const Projects = ({ data, scrollY }) => {
     const { min2xl, minxlMax2xl, minlgMaxxl, maxmd, minmdMaxlg, minsmMaxmd } = useMedia();
 
-    const [projectsRef, projectsY, projectsTop] = useParallaxScroll(
-        scrollY,
-        -1000,
-        0,
-        50,
-        maxmd ? 0 : -150,
-    );
+    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -1000, 0, 50, maxmd ? 0 : -150);
 
     const gridAreas1 = [
         'col-start-1 col-end-3',
@@ -49,10 +43,8 @@ const Projects = ({ data, scrollY }) => {
             style={{ y: projectsY }}>
             <div id="projects" className="absolute -mt-64" />
             <FadeUp className="flex items-center flex-col relative">
-                <SectionHeading scrollY={scrollY} elementTop={projectsTop}>
-                    Our Work
-                </SectionHeading>
-                <motion.div className="grid grid-cols-4 xl:grid-cols-6 gap-1">
+                <SectionHeading>Our Work</SectionHeading>
+                <motion.div className="grid grid-cols-4 xl:grid-cols-6 gap-1 w-full">
                     {data.map((el, i) => {
                         const { _meta, featured_image, title, tags, subtitle } = el.node;
                         const titleText = RichText.asText(title);

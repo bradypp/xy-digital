@@ -21,7 +21,7 @@ const useParallaxScroll = (
         if (elementRef.current) {
             setElementTop(elementRef.current.offsetTop);
         }
-    }, []);
+    }, [elementRef]);
 
     return [elementRef, elementY, elementTop];
 };

@@ -70,14 +70,6 @@ const Nav = ({ isHeader, className, isHome, isSideNav }) => {
         return (
             <motion.li
                 key={uuidv4()}
-                whileHover={{
-                    '--nav-background-color-1': colors[i + 1][0],
-                    '--nav-background-color-2': colors[i + 1][1],
-                    transition: {
-                        duration: 0.25,
-                        ease: 'easeOut',
-                    },
-                }}
                 onHoverStart={() => {
                     controls.start({
                         '--nav-background-color-1': colors[i + 1][0],
@@ -115,14 +107,14 @@ const Nav = ({ isHeader, className, isHome, isSideNav }) => {
 
     if (isHeader) {
         return (
-            <nav className={navClassName}>
+            <motion.nav className={navClassName} animate={controls}>
                 <Logo className="ml-6" />
                 {maxmd ? (
                     <BurgerMenu isHeader />
                 ) : (
                     <ul className={linksContainerClassName}>{navLinkComponents}</ul>
                 )}
-            </nav>
+            </motion.nav>
         );
     }
 
