@@ -18,7 +18,9 @@ const useParallaxScroll = (
     );
 
     useEffect(() => {
-        setElementTop(elementRef.current.offsetTop);
+        if (elementRef.current) {
+            setElementTop(elementRef.current.offsetTop);
+        }
     }, []);
 
     return [elementRef, elementY, elementTop];

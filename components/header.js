@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Nav } from 'components';
+import { Nav, ClientOnly } from 'components';
 import { throttle } from 'utils/javascript';
 
 const Header = ({ isAlwaysDown }) => {
@@ -38,9 +38,11 @@ const Header = ({ isAlwaysDown }) => {
     );
 
     return (
-        <header className={className}>
-            <Nav isHeader />
-        </header>
+        <ClientOnly>
+            <header className={className}>
+                <Nav isHeader />
+            </header>
+        </ClientOnly>
     );
 };
 

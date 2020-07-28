@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { motion, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Icon, FadeUp } from 'components';
+import { Icon, FadeUp, ClientOnly } from 'components';
 import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
