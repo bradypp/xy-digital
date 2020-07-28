@@ -27,7 +27,6 @@ export async function getStaticPaths() {
     };
 }
 
-// TODO: add spinner if router.isFallback is true?
 const Project = ({ project, moreProjects }) => {
     const router = useRouter();
 

@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { socials, navLinks } from 'config';
 import { Icon, Logo } from 'components';
 
-// TODO: add logo, change name
 const Footer = () => {
     const colors = [
         'text-blue-500',

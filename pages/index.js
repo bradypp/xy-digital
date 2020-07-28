@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useViewportScroll } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 import { getHomeData } from 'api/prismic/home';
 import { Layout } from 'components';
 import { Hero, Slideshow, Projects, Team } from 'components/home';
-import { siteTitle } from 'config';
 
 export async function getStaticProps({ preview = false, previewData }) {
     const data = await getHomeData(previewData);
@@ -23,6 +23,10 @@ export async function getStaticProps({ preview = false, previewData }) {
 const Home = ({ homeData, projectData, blogData }) => {
     const slideshowData = projectData.filter(el => el.node.is_featured).slice(0, 8);
     const { scrollY } = useViewportScroll();
+
+    const router = useRouter();
+
+    if (router.isFallback) return <h2>Loading...</h2>;
 
     return (
         <Layout>
