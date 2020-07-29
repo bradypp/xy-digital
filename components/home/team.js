@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 import { Icon, FadeUp } from 'components';
 import { SectionHeading } from 'components/home';
-import { useParallaxScroll } from 'hooks';
+import { useParallaxScroll, useMedia } from 'hooks';
 
 const blockQuoteVariants = {
     hidden: {
@@ -22,7 +22,8 @@ const blockQuoteVariants = {
 };
 
 const Team = ({ image, quote, scrollY }) => {
-    const [teamRef, teamY] = useParallaxScroll(scrollY, -600, 0, -10, 0);
+    const { maxmd } = useMedia();
+    const [teamRef, teamY] = useParallaxScroll(scrollY, -600, 0, maxmd ? 100 : -10, 0);
 
     const [blockQuoteRef, inView] = useInView({
         threshold: 0.5,

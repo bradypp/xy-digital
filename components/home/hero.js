@@ -41,7 +41,6 @@ const Hero = ({ data, scrollY }) => {
         min2xl,
         minlgMaxxl,
         minsmMaxmd,
-        maxmd,
         min2xsMaxxs,
         minmdMaxlg,
         minxlMax2xl,
@@ -79,7 +78,7 @@ const Hero = ({ data, scrollY }) => {
                         ease: 'easeOut',
                     },
                 }}>
-                <Logo className="absolute top-30px left-80px md:top-20px md:left-40px" />
+                <Logo className="absolute top-30px left-80px md:top-20px md:left-20px" />
             </motion.div>
 
             {/*  Content */}

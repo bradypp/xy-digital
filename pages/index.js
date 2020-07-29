@@ -3,7 +3,7 @@ import { useViewportScroll } from 'framer-motion';
 import { useRouter } from 'next/router';
 
 import { getHomeData } from 'api/prismic/home';
-import { Layout, Media } from 'components';
+import { Layout, Media, ClientOnly } from 'components';
 import { Hero, Slideshow, Projects, Team } from 'components/home';
 
 export async function getStaticProps({ preview = false, previewData }) {
@@ -31,7 +31,9 @@ const Home = ({ homeData, projectData, blogData }) => {
         <Layout>
             <Hero data={{ homeData, blogData }} scrollY={scrollY} />
             <Media minWidth="sm">
-                <Slideshow data={slideshowData} scrollY={scrollY} />
+                <ClientOnly>
+                    <Slideshow data={slideshowData} scrollY={scrollY} />
+                </ClientOnly>
             </Media>
             <Projects data={projectData} scrollY={scrollY} />
             <Team image={homeData.team_image} quote={homeData.team_quote} scrollY={scrollY} />

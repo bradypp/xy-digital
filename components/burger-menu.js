@@ -1,9 +1,10 @@
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 import { useOnOutsideClick } from 'hooks';
-import { Nav } from 'components';
+import { Nav, ClientOnly } from 'components';
 
 const BurgerMenu = ({ isHeader = false }) => {
     const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -44,23 +45,35 @@ const BurgerMenu = ({ isHeader = false }) => {
     );
 
     const containerClassName = cn({
-        'absolute top-10px right-10px': !isHeader,
+        'absolute top-15px right-20px': !isHeader,
         'mb-1 mr-10px': isHeader,
     });
 
     return (
-        <div ref={navRef} className={containerClassName}>
-            <div
-                className="w-50px h-40px inline-flex flex-col justify-between p-10px clickable z-50 relative"
-                onClick={handleSideNavOpen}>
-                <span className={firstSpanClassName} />
-                <span className={secondSpanClassName} />
-                <span className={thirdSpanClassName} />
-            </div>
-            <div className={navContainerClassName}>
-                <Nav isSideNav />
-            </div>
-        </div>
+        <ClientOnly>
+            <motion.div
+                ref={navRef}
+                className={containerClassName}
+                initial={{ opacity: 0 }}
+                animate={{
+                    opacity: 1,
+                    transition: {
+                        type: 'tween',
+                        delay: 2.2,
+                    },
+                }}>
+                <div
+                    className="w-50px h-40px inline-flex flex-col justify-between p-10px clickable z-50 relative"
+                    onClick={handleSideNavOpen}>
+                    <span className={firstSpanClassName} />
+                    <span className={secondSpanClassName} />
+                    <span className={thirdSpanClassName} />
+                </div>
+                <div className={navContainerClassName}>
+                    <Nav isSideNav />
+                </div>
+            </motion.div>
+        </ClientOnly>
     );
 };
 

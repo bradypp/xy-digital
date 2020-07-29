@@ -13,7 +13,7 @@ import { linkResolver, hrefResolver } from 'utils/prismic';
 const Projects = ({ data, scrollY }) => {
     const { min2xl, minxlMax2xl, minlgMaxxl, maxmd, minmdMaxlg, minsmMaxmd } = useMedia();
 
-    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -1000, 0, 50, maxmd ? 0 : -150);
+    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -200, 400, 50, maxmd ? 0 : -150);
 
     const gridAreas1 = [
         'col-start-1 col-end-3',
@@ -41,7 +41,7 @@ const Projects = ({ data, scrollY }) => {
             ref={projectsRef}
             className="container-inner bg-white z-20 -mb-24 md:mb-0 relative"
             style={{ y: projectsY }}>
-            <div id="projects" className="absolute -mt-64" />
+            <div id="projects" className="absolute -mt-48" />
             <FadeUp className="flex items-center flex-col relative">
                 <SectionHeading>Our Work</SectionHeading>
                 <motion.div className="grid grid-cols-4 xl:grid-cols-6 gap-1 w-full">
