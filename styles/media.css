@@ -2,6 +2,9 @@
     .container-inner {
         @apply max-w-1070px;
     }
+    .title-main {
+        @apply text-8xl;
+    }
 }
 
 @screen xl {
@@ -15,7 +18,7 @@
         @apply mx-12;
     }
     .title-main {
-        @apply text-9xl;
+        @apply text-8xl;
     }
 }
 
@@ -26,12 +29,6 @@
 }
 
 @screen sm {
-    .title-main {
-        @apply text-8xl;
-    }
-}
-
-@screen xs {
     .title-main {
         @apply text-7xl;
     }

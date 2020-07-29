@@ -10,8 +10,12 @@ const BurgerMenu = ({ isHeader = false }) => {
     const navRef = useRef();
 
     const handleSideNavOpen = () => {
+        if (isSideNavOpen) {
+            document.body.classList.remove('overflow-y-hidden');
+        } else {
+            document.body.classList.add('overflow-y-hidden');
+        }
         setIsSideNavOpen(!isSideNavOpen);
-        document.body.classList.toggle('overflow-y-hidden');
     };
 
     useOnOutsideClick(navRef, isSideNavOpen, handleSideNavOpen);

@@ -5,7 +5,7 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo, HeroImage, BurgerMenu } from 'components';
+import { Button, Nav, Logo, HeroImage, BurgerMenu, Media } from 'components';
 import { Blog } from 'components/home';
 import { useParallaxScroll, useMedia } from 'hooks';
 
@@ -36,7 +36,6 @@ const titleChildrenVariants = {
 
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
-
     const [videoWidth, setVideoWidth] = useState('auto');
     const {
         min2xl,
@@ -125,7 +124,7 @@ const Hero = ({ data, scrollY }) => {
 
                     {/* About Section */}
                     <motion.section
-                        className="xl:-mt-40"
+                        className="xl:-mt-40 sm:-mt-48"
                         initial={{
                             opacity: 0,
                             y: 50,
@@ -171,7 +170,10 @@ const Hero = ({ data, scrollY }) => {
                     </motion.section>
                 </motion.div>
 
-                {maxmd && <BurgerMenu />}
+                <Media maxWidth="md">
+                    <BurgerMenu />
+                </Media>
+
                 {/* Nav Section */}
                 <motion.div
                     className="w-1/3 z-10 md:hidden lg:w-3/7"

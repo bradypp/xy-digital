@@ -3,9 +3,9 @@ import { motion, useViewportScroll } from 'framer-motion';
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 
-import { HeroImage, Nav, Tag, Logo, BurgerMenu } from 'components';
+import { HeroImage, Nav, Tag, Logo, BurgerMenu, Media } from 'components';
 import { SliceZone } from 'components/slices';
-import { useParallaxScroll, useMedia } from 'hooks';
+import { useParallaxScroll } from 'hooks';
 
 const PostContent = ({
     titleText,
@@ -19,13 +19,14 @@ const PostContent = ({
     const { scrollY } = useViewportScroll();
     const [navRef, navY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
     const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
-    const { maxmd } = useMedia();
 
     return (
         <article>
-            <div id="hero" className="relative h-900px -mb-32 xl:-mb-56">
+            <div className="relative h-900px -mb-32 xl:-mb-56">
                 <HeroImage scrollY={scrollY} src={featured_image.url} alt={featured_image.alt} />
-                {maxmd && <BurgerMenu />}
+                <Media maxWidth="md">
+                    <BurgerMenu />
+                </Media>
                 <div className="container-inner flex md:px-10 sm:px-8 xs:px-4">
                     <motion.div
                         className="flex flex-col relative w-2/3 md:w-full z-10 pr-24 xl:pr-16 md:pr-0"
@@ -46,7 +47,7 @@ const PostContent = ({
                         ref={leftRef}
                         style={{ y: leftElY }}>
                         <motion.div
-                            className="self-start pt-8 pb-16"
+                            className="self-start pt-8 pb-16 md:pt-4"
                             initial={{
                                 opacity: 0,
                             }}

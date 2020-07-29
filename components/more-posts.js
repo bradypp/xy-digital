@@ -11,7 +11,7 @@ import { useMedia } from 'hooks';
 const MorePosts = ({ morePosts }) => {
     const { minmdMaxlg, maxmd } = useMedia();
     const className = cn(
-        `w-screen bg-navy px-16 pt-16 pb-4 grid grid-cols-${morePosts?.length} lg:grid-cols-1 gap-6`,
+        `w-screen bg-navy px-16 pt-16 pb-4 grid grid-cols-${morePosts?.length} lg:grid-cols-1 gap-6 xl:px-10 md:px-6`,
     );
     return (
         <>
