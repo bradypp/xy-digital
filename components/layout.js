@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 import { Meta, Footer, Header, MorePosts } from 'components';
 
-const Layout = ({ children, morePosts, isHeaderDown }) => {
+const Layout = ({ children, morePosts, isHeaderDown, meta }) => {
     const { asPath } = useRouter();
     const locationHashArr = asPath.match(/#.+/gi);
 
@@ -26,7 +26,12 @@ const Layout = ({ children, morePosts, isHeaderDown }) => {
 
     return (
         <>
-            <Meta />
+            <Meta
+                title={meta.title}
+                description={meta.description}
+                keywords={meta.keywords}
+                ogImage={meta.ogImage}
+            />
             <Header isAlwaysDown={isHeaderDown} />
             <main className={className}>{children}</main>
             {morePosts?.length > 0 && <MorePosts morePosts={morePosts} />}
@@ -39,11 +44,13 @@ Layout.propTypes = {
     children: PropTypes.node.isRequired,
     morePosts: PropTypes.array,
     isHeaderDown: PropTypes.bool,
+    meta: PropTypes.object,
 };
 
 Layout.defaultProps = {
     morePosts: undefined,
     isHeaderDown: false,
+    meta: {},
 };
 
 export default Layout;

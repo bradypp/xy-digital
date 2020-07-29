@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import PropTypes from 'prop-types';
 import { useViewportScroll } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -30,9 +29,6 @@ const Home = ({ homeData, projectData, blogData }) => {
 
     return (
         <Layout>
-            <Head>
-                <link rel="canonical" href="/" />
-            </Head>
             <Hero data={{ homeData, blogData }} scrollY={scrollY} />
             <Slideshow data={slideshowData} scrollY={scrollY} />
             <Projects data={projectData} scrollY={scrollY} />

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Head from 'next/head';
 import ErrorPage from 'next/error';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-reactjs';
@@ -47,11 +46,9 @@ const Project = ({ project, moreProjects }) => {
     const titleText = RichText.asText(title);
 
     return (
-        <Layout morePosts={moreProjects}>
-            <Head>
-                <title>{titleText}</title>
-                <link rel="canonical" href={`/projects/${uid}`} />
-            </Head>
+        <Layout
+            morePosts={moreProjects}
+            meta={{ title: titleText, description: subtitle, relativeUrl: `/projects/${uid}` }}>
             <PostContent
                 titleText={titleText}
                 body={body}

@@ -48,11 +48,9 @@ const BlogPost = ({ blogPost, morePosts }) => {
     const titleText = RichText.asText(title);
 
     return (
-        <Layout morePosts={morePosts}>
-            <Head>
-                <title>{titleText}</title>
-                <link rel="canonical" href={`/blog/${uid}`} />
-            </Head>
+        <Layout
+            morePosts={morePosts}
+            meta={{ title: titleText, description: subtitle, relativeUrl: `/blog/${uid}` }}>
             <PostContent
                 titleText={titleText}
                 body={body}

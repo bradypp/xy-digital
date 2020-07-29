@@ -36,11 +36,9 @@ export async function getStaticProps({ preview = false, previewData }) {
 
 const Blog = ({ posts }) => {
     return (
-        <Layout isHeaderDown>
-            <Head>
-                <title>Blog</title>
-                <link rel="canonical" href="/blog" />
-            </Head>
+        <Layout
+            meta={{ title: 'Blog', description: 'Our latest blog posts', relativeUrl: '/blog' }}
+            isHeaderDown>
             <div className="container-inner">
                 <h1 className="title mb-8 font-tertiary uppercase text-4xl md:px-3">
                     Latest Blog Posts

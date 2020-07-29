@@ -36,11 +36,13 @@ const ContactUs = ({ contactData }) => {
         message: Yup.string().trim().required('Please enter your message'),
     });
     return (
-        <Layout isHeaderDown>
-            <Head>
-                <title>Contact Us</title>
-                <link rel="canonical" href="/contact-us" />
-            </Head>
+        <Layout
+            meta={{
+                title: 'Contact Us',
+                description: 'Get in touch with us!',
+                relativeUrl: '/contact-us',
+            }}
+            isHeaderDown>
             <div className="container-inner grid grid-cols-2 grid-rows-2 md:flex md:flex-col gap-16 md:px-6 xs:px-4">
                 <section className="col-start-1 col-end-2 row-start-1 row-end-3">
                     <h1 className="title mb-6 font-tertiary text-4xl">{titleText}</h1>
