@@ -51,6 +51,13 @@ const Meta = () => (
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+        {/* Allows Prismic.io preview using the /api/preview endpoint */}
+        <script
+            async
+            defer
+            src="https://static.cdn.prismic.io/prismic.js?repo=digital-agency&new=true"
+        />
     </Head>
 );
 

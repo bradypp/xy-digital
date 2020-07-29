@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import { Icon, FadeUp } from 'components';
-import { ParallaxImage } from 'components/slices';
 import { SectionHeading } from 'components/home';
 import { useParallaxScroll } from 'hooks';
 
