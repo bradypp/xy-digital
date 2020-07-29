@@ -2,7 +2,7 @@ import { FadeUp, Icon } from 'components';
 
 const SectionHeading = ({ children }) => (
     <FadeUp
-        className="title font-tertiary uppercase text-grey-cool-500 text-4xl mt-10 mx-12 mb-8 flex flex-col justify-center items-center"
+        className="title font-tertiary uppercase text-grey-cool-500 text-4xl mt-10 mx-12 mb-8 flex flex-col justify-center items-center xs:mt-8 xs:mb-6"
         y={0}
         duration={0.8}>
         <h2>{children}</h2>
