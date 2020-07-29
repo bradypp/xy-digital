@@ -59,7 +59,7 @@ const BurgerMenu = ({ isHeader = false }) => {
                     opacity: 1,
                     transition: {
                         type: 'tween',
-                        delay: 2.2,
+                        delay: 1.6,
                     },
                 }}>
                 <div

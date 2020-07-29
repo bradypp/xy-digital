@@ -42,6 +42,7 @@ const Hero = ({ data, scrollY }) => {
         minlgMaxxl,
         minsmMaxmd,
         min2xsMaxxs,
+        maxmd,
         minmdMaxlg,
         minxlMax2xl,
         minxsMaxsm,
@@ -54,8 +55,14 @@ const Hero = ({ data, scrollY }) => {
         if (min2xsMaxxs || minmdMaxlg || minxlMax2xl || minxsMaxsm) setVideoWidth('auto');
     }, [min2xl, min2xsMaxxs, minlgMaxxl, minmdMaxlg, minsmMaxmd, minxlMax2xl, minxsMaxsm]);
 
-    const [leftRef, leftElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-16%');
-    const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, 1200, '-8px', '22%');
+    const [leftRef, leftElY] = useParallaxScroll(
+        scrollY,
+        0,
+        maxmd ? 600 : 1200,
+        '0%',
+        maxmd ? '-10%' : '-16%',
+    );
+    const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, maxmd ? 1000 : 1200, '-8px', '22%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
     return (

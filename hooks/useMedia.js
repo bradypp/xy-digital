@@ -13,6 +13,7 @@ const useMedia = () => {
         minWidth: media.lg,
         maxWidth: media.xl,
     });
+
     const minmdMaxlg = useMediaQuery({
         minWidth: media.md,
         maxWidth: media.lg,
