@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
@@ -36,27 +35,7 @@ const titleChildrenVariants = {
 
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
-    const [videoWidth, setVideoWidth] = useState('auto');
-    const {
-        min2xl,
-        minlgMaxxl,
-        minsmMaxmd,
-        min2xsMaxxs,
-        maxmd,
-        minmdMaxlg,
-        minxlMax2xl,
-        minxsMaxsm,
-    } = useMedia();
-
-    useEffect(() => {
-        if (min2xl) setVideoWidth('560px');
-        if (minlgMaxxl) setVideoWidth('440px');
-        if (minmdMaxlg) setVideoWidth('360px');
-        if (minsmMaxmd) setVideoWidth('500px');
-        if (minsmMaxmd) setVideoWidth('500px');
-        if (minsmMaxmd) setVideoWidth('500px');
-        if (min2xsMaxxs || minxlMax2xl || minxsMaxsm) setVideoWidth('auto');
-    }, [min2xl, min2xsMaxxs, minlgMaxxl, minmdMaxlg, minsmMaxmd, minxlMax2xl, minxsMaxsm]);
+    const { maxmd } = useMedia();
 
     const [leftRef, leftElY] = useParallaxScroll(
         scrollY,
