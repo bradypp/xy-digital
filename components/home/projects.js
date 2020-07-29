@@ -13,7 +13,7 @@ import { linkResolver, hrefResolver } from 'utils/prismic';
 const Projects = ({ data, scrollY }) => {
     const { min2xl, minxlMax2xl, minlgMaxxl, maxmd, minmdMaxlg, minsmMaxmd } = useMedia();
 
-    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -200, 400, 50, maxmd ? 0 : -150);
+    const [projectsRef, projectsY] = useParallaxScroll(scrollY, -200, 800, 50, maxmd ? 0 : -150);
 
     const gridAreas1 = [
         'col-start-1 col-end-3',

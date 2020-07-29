@@ -2,14 +2,14 @@
     .container-inner {
         @apply max-w-1070px;
     }
-    .title-main {
-        @apply text-8xl;
-    }
 }
 
 @screen xl {
     .container-inner {
         @apply max-w-full mx-24;
+    }
+    .title-main {
+        @apply text-9xl;
     }
 }
 
@@ -17,19 +17,13 @@
     .container-inner {
         @apply mx-12;
     }
-    .title-main {
-        @apply text-8xl;
-    }
 }
 
 @screen md {
     .container-inner {
         @apply mx-0;
     }
-}
-
-@screen sm {
     .title-main {
-        @apply text-7xl;
+        @apply text-8xl;
     }
 }

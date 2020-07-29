@@ -23,7 +23,7 @@ const blockQuoteVariants = {
 
 const Team = ({ image, quote, scrollY }) => {
     const { maxmd } = useMedia();
-    const [teamRef, teamY] = useParallaxScroll(scrollY, -600, 0, maxmd ? 100 : -10, 0);
+    const [teamRef, teamY] = useParallaxScroll(scrollY, -600, 0, maxmd ? 50 : -10, maxmd ? 50 : 0);
 
     const [blockQuoteRef, inView] = useInView({
         threshold: 0.5,
