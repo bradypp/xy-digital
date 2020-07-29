@@ -49,8 +49,8 @@ const Projects = ({ data, scrollY }) => {
                         const { _meta, featured_image, title, tags, subtitle } = el.node;
                         const titleText = RichText.asText(title);
                         const delay = () => {
-                            if (min2xl || minxlMax2xl || minlgMaxxl) return (i % 3) * 0.3;
-                            if (minmdMaxlg || minsmMaxmd) return (i % 2) * 0.3;
+                            if (min2xl || minxlMax2xl) return (i % 3) * 0.3;
+                            if (minmdMaxlg || minsmMaxmd || minlgMaxxl) return (i % 2) * 0.3;
                         };
                         const containerClassName = cn(
                             `relative overflow-hidden min-h-84 h-84 lg:min-h-64 lg:h-64 group flex flex-col justify-start p-8 bg-grey-cool-900 clickable ${
