@@ -25,8 +25,11 @@ const heightAndWidths = {
     '90px': '90px',
     '100px': '100px',
     '200px': '200px',
+    '250px': '250px',
     '300px': '300px',
+    '350px': '350px',
     '400px': '400px',
+    '450px': '450px',
     '500px': '500px',
     '510px': '510px',
     '650px': '650px',
@@ -137,6 +140,7 @@ module.exports = {
         extend: {
             spacing: {
                 28: '7rem',
+                36: '9rem',
                 '72': '18rem',
                 '84': '21rem',
                 '96': '24rem',

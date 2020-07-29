@@ -49,10 +49,13 @@ const Hero = ({ data, scrollY }) => {
     } = useMedia();
 
     useEffect(() => {
-        if (min2xl) setVideoWidth(560);
-        if (minlgMaxxl) setVideoWidth(440);
-        if (minsmMaxmd) setVideoWidth(500);
-        if (min2xsMaxxs || minmdMaxlg || minxlMax2xl || minxsMaxsm) setVideoWidth('auto');
+        if (min2xl) setVideoWidth('560px');
+        if (minlgMaxxl) setVideoWidth('440px');
+        if (minmdMaxlg) setVideoWidth('360px');
+        if (minsmMaxmd) setVideoWidth('500px');
+        if (minsmMaxmd) setVideoWidth('500px');
+        if (minsmMaxmd) setVideoWidth('500px');
+        if (min2xsMaxxs || minxlMax2xl || minxsMaxsm) setVideoWidth('auto');
     }, [min2xl, min2xsMaxxs, minlgMaxxl, minmdMaxlg, minsmMaxmd, minxlMax2xl, minxsMaxsm]);
 
     const [leftRef, leftElY] = useParallaxScroll(
@@ -145,21 +148,25 @@ const Hero = ({ data, scrollY }) => {
                                 ease: 'easeOut',
                             },
                         }}>
-                        <div className="hero-video px-24 xl:px-12 z-20 mb-4 relative md:pt-24">
-                            <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
-                                <ClientOnly>
+                        <div className="px-24 xl:px-12 xs:px-6 z-20 mb-4 relative md:pt-24 ">
+                            <ClientOnly>
+                                <motion.div
+                                    className="w-500px 2xl:w-450px lg:w-300px md:w-500px sm:w-full"
+                                    ref={vidRef}
+                                    initial={{ y: -8 }}
+                                    style={{ y: vidElY }}>
                                     <ReactPlayer
                                         url={featured_video.embed_url}
-                                        width={videoWidth}
+                                        width="auto"
                                         volume={0}
                                         muted
                                         playing
                                         loop
                                     />
-                                </ClientOnly>
-                            </motion.div>
+                                </motion.div>
+                            </ClientOnly>
                         </div>
-                        <div className="bg-white px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 pt-64 -mt-56 relative xl:-mt-48 xl:pt-40 lg:pt-40 md:pt-48 xs:-mt-48 xs:pt-32">
+                        <div className="bg-white relative px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 -mt-56 xl:-mt-48 xs:-mt-48 pt-56 2xl:pt-48 xl:pt-36 lg:pt-28 md:pt-56 sm:pt-40 xs:pt-32">
                             <div id="about-us" className="absolute -mt-84" />
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <h2 className="title font-tertiary uppercase text-grey-cool-800">
