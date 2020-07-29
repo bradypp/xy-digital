@@ -22,7 +22,7 @@ const Meta = ({ title, description, keywords, ogImage, relativeUrl }) => (
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={siteUrl} />
-        <meta property="og:site_name" content={title} />
+        <meta property="og:site_name" content={siteTitle} />
         <meta property="og:image" content={`${siteUrl}${ogImage}`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
