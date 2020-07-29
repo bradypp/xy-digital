@@ -27,3 +27,15 @@
         @apply text-8xl;
     }
 }
+
+@screen sm {
+    .container-inner {
+        @apply mx-0;
+    }
+}
+
+@screen xs {
+    .title-main {
+        @apply text-7xl;
+    }
+}

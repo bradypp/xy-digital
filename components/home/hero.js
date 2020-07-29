@@ -5,7 +5,7 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo, HeroImage, BurgerMenu, Media } from 'components';
+import { Button, Nav, Logo, HeroImage, BurgerMenu, Media, ClientOnly } from 'components';
 import { Blog } from 'components/home';
 import { useParallaxScroll, useMedia } from 'hooks';
 
@@ -147,14 +147,16 @@ const Hero = ({ data, scrollY }) => {
                         }}>
                         <div className="hero-video px-24 xl:px-12 z-20 mb-4 relative md:pt-24">
                             <motion.div ref={vidRef} initial={{ y: -8 }} style={{ y: vidElY }}>
-                                <ReactPlayer
-                                    url={featured_video.embed_url}
-                                    width={videoWidth}
-                                    volume={0}
-                                    muted
-                                    playing
-                                    loop
-                                />
+                                <ClientOnly>
+                                    <ReactPlayer
+                                        url={featured_video.embed_url}
+                                        width={videoWidth}
+                                        volume={0}
+                                        muted
+                                        playing
+                                        loop
+                                    />
+                                </ClientOnly>
                             </motion.div>
                         </div>
                         <div className="bg-white px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 pt-64 -mt-56 relative xl:-mt-48 xl:pt-40 lg:pt-40 md:pt-48 xs:-mt-48 xs:pt-32">
