@@ -1,7 +1,7 @@
 module.exports = {
     siteTitle: 'XY Digital',
     siteDescription:
-        'A modern website built using Next.js that would be perfect for any digital agency to showcase their work and experience.',
+        'A modern website built with Next.js that would be perfect for any digital agency to showcase their work and experience.',
     siteKeywords: 'digital agency, web dev, freelance, marketing',
     siteUrl: 'https://xy-digital.vercel.app',
     siteLanguage: 'en',
