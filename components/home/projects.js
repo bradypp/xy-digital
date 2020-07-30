@@ -16,25 +16,25 @@ const Projects = ({ data, scrollY }) => {
     const [projectsRef, projectsY] = useParallaxScroll(scrollY, -200, 800, 50, maxmd ? 0 : -150);
 
     const gridAreas1 = [
-        'col-start-1 col-end-3',
-        'col-start-3 col-end-4',
-        'col-start-4 col-end-5',
-        'col-start-1 col-end-2',
-        'col-start-2 col-end-4',
-        'col-start-4 col-end-5',
-        'col-start-1 col-end-2',
-        'col-start-2 col-end-3',
-        'col-start-3 col-end-5',
-    ];
-    const gridAreas2 = [
-        'col-start-1 col-end-5',
-        'col-start-5 col-end-7',
+        'col-start-1 col-end-7',
+        'col-start-7 col-end-10',
+        'col-start-10 col-end-13',
+        'col-start-1 col-end-4',
+        'col-start-4 col-end-10',
+        'col-start-10 col-end-13',
         'col-start-1 col-end-4',
         'col-start-4 col-end-7',
-        'col-start-1 col-end-3',
-        'col-start-3 col-end-7',
+        'col-start-7 col-end-13',
     ];
-    const gridAreas3 = ['col-start-1 col-end-4', 'col-start-4 col-end-7'];
+    const gridAreas2 = [
+        'col-start-1 col-end-9',
+        'col-start-9 col-end-13',
+        'col-start-1 col-end-7',
+        'col-start-7 col-end-13',
+        'col-start-1 col-end-5',
+        'col-start-5 col-end-13',
+    ];
+    const gridAreas3 = ['col-start-1 col-end-7', 'col-start-7 col-end-13'];
 
     return (
         <motion.section
@@ -45,7 +45,7 @@ const Projects = ({ data, scrollY }) => {
             <FadeUp className="flex items-center flex-col relative">
                 <SectionHeading>Our Work</SectionHeading>
                 <ClientOnly>
-                    <motion.div className="grid grid-cols-4 xl:grid-cols-6 gap-1 w-full">
+                    <motion.div className="grid grid-cols-12 gap-1 w-full">
                         {data.map((el, i) => {
                             const { _meta, featured_image, title, tags, subtitle } = el.node;
                             const titleText = RichText.asText(title);
@@ -61,7 +61,7 @@ const Projects = ({ data, scrollY }) => {
                                         ? gridAreas2[i % 6]
                                         : minsmMaxmd
                                         ? gridAreas3[i % 2]
-                                        : 'col-start-1 col-end-7'
+                                        : 'col-start-1 col-end-13'
                                 }`,
                             );
                             return (

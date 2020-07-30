@@ -82,16 +82,16 @@ const ContactUs = ({ contactData }) => {
                                     <div className="flex items-start justify-center">
                                         <Form.Field.Input
                                             className="mr-4"
-                                            label="First Name*"
+                                            label="First Name *"
                                             name="first_name"
                                         />
-                                        <Form.Field.Input label="Last Name*" name="last_name" />
+                                        <Form.Field.Input label="Last Name *" name="last_name" />
                                     </div>
-                                    <Form.Field.Input label="Email*" name="email" />
+                                    <Form.Field.Input label="Email *" name="email" />
                                     <Form.Field.Input label="Company" name="company" />
                                     <Form.Field.Input label="Phone" name="phone" />
                                     <Form.Field.Input label="Subject" name="subject" />
-                                    <Form.Field.TextArea label="Message*" name="message" />
+                                    <Form.Field.TextArea label="Message *" name="message" />
                                     <Form.Buttons
                                         isSubmitting={isSubmitting}
                                         submitText={submitText}

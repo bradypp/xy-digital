@@ -27,7 +27,7 @@ const PostContent = ({
                 <Media maxWidth="md">
                     <BurgerMenu />
                 </Media>
-                <div className="container-inner flex md:px-10 sm:px-8 xs:px-4">
+                <div className="container-inner flex md:px-10 sm:px-8 xs:px-4 overflow-visible">
                     <motion.div
                         className="flex flex-col relative w-2/3 md:w-full z-10 pr-24 xl:pr-16 md:pr-0"
                         initial={{

@@ -4,7 +4,7 @@ import { RichText } from 'prismic-reactjs';
 import ReactPlayer from 'react-player/vimeo';
 
 import { linkResolver, customLink } from 'utils/prismic';
-import { Button, Nav, Logo, HeroImage, BurgerMenu, Media, ClientOnly } from 'components';
+import { Button, Nav, Logo, HeroImage, BurgerMenu, Media } from 'components';
 import { Blog } from 'components/home';
 import { useParallaxScroll, useMedia } from 'hooks';
 
@@ -128,24 +128,22 @@ const Hero = ({ data, scrollY }) => {
                             },
                         }}>
                         <div className="px-24 xl:px-12 xs:px-6 z-20 mb-4 relative md:pt-24 ">
-                            <ClientOnly>
-                                <motion.div
-                                    className="w-500px 2xl:w-450px lg:w-300px md:w-500px sm:w-full"
-                                    ref={vidRef}
-                                    initial={{ y: -8 }}
-                                    style={{ y: vidElY }}>
-                                    <ReactPlayer
-                                        url={featured_video.embed_url}
-                                        width="auto"
-                                        volume={0}
-                                        muted
-                                        playing
-                                        loop
-                                    />
-                                </motion.div>
-                            </ClientOnly>
+                            <motion.div
+                                className="w-500px 2xl:w-450px lg:w-300px md:w-500px sm:w-full"
+                                ref={vidRef}
+                                initial={{ y: -8 }}
+                                style={{ y: vidElY }}>
+                                <ReactPlayer
+                                    url={featured_video.embed_url}
+                                    width="auto"
+                                    volume={0}
+                                    muted
+                                    playing
+                                    loop
+                                />
+                            </motion.div>
                         </div>
-                        <div className="bg-white relative px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 -mt-56 xl:-mt-48 xs:-mt-48 pt-56 2xl:pt-48 xl:pt-36 lg:pt-28 md:pt-56 sm:pt-40 xs:pt-32">
+                        <div className="bg-white relative px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 -mt-56 xl:-mt-48 xs:-mt-48 pt-56 2xl:pt-52 xl:pt-40 lg:pt-28 md:pt-56 sm:pt-40 xs:pt-32">
                             <div id="about-us" className="absolute -mt-84" />
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <h2 className="title font-tertiary uppercase text-grey-cool-800">
