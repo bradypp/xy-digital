@@ -45,8 +45,8 @@ const BurgerMenu = ({ isHeader = false }) => {
     );
 
     const containerClassName = cn({
-        'absolute top-15px right-20px': !isHeader,
-        'mb-1 mr-10px': isHeader,
+        'absolute top-14px right-15px': !isHeader,
+        'mb-1 mr-15px': isHeader,
     });
 
     return (
