@@ -63,10 +63,19 @@
     background: theme(colors.white);
 }
 
-.field {
-    @apply bg-white w-full rounded-lg overflow-hidden border-solid border border-grey-cool-400;
+.field-container {
+    @apply w-full relative rounded-md;
 }
 
+.field {
+    @apply bg-grey-cool-200 w-full rounded-md overflow-hidden border-solid border border-grey-cool-400 font-tertiary text-sm transition-ease;
+}
+
+.field:hover {
+    @apply border-grey-cool-500;
+}
+
+.field:focus,
 .field:active {
-    @apply transition-ease bg-grey-cool-300;
+    @apply border-grey-cool-500 outline-none;
 }

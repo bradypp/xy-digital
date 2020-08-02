@@ -28,16 +28,18 @@ const Footer = () => {
                 ))}
             </ul>
             <ul className="flex pb-10 justify-center w-full">
-                {socials.map((el, i) => {
-                    const iconClassName = cn(`transition-ease group-hover:${colors[i]}`);
-                    return (
-                        <li key={uuidv4()} className="w-6 h-6 mx-3 group">
-                            <a rel="noreferrer noopener nofollow" target="_blank" href={el.url}>
-                                <Icon className={iconClassName} name={el.name} />
-                            </a>
-                        </li>
-                    );
-                })}
+                <ClientOnly>
+                    {socials.map((el, i) => {
+                        const iconClassName = cn(`transition-ease group-hover:${colors[i]}`);
+                        return (
+                            <li key={uuidv4()} className="w-6 h-6 mx-3 group">
+                                <a rel="noreferrer noopener nofollow" target="_blank" href={el.url}>
+                                    <Icon className={iconClassName} name={el.name} />
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ClientOnly>
             </ul>
             <p className="pb-2">&copy; XY Digital, Inc. All rights reserved.</p>
             <p>

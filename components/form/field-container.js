@@ -23,7 +23,7 @@ const FieldContainer = ({
             {...props}>
             {label && (
                 <label
-                    className="block pb-2 text-sm font-tertiary min-w-max-content font-semibold"
+                    className="block pb-2 text-sm font-tertiary w-max-content font-semibold"
                     htmlFor={htmlFor}>
                     {label}
                 </label>
