@@ -68,7 +68,7 @@
 }
 
 .field {
-    @apply bg-grey-cool-200 w-full rounded-md overflow-hidden border-solid border border-grey-cool-400 font-tertiary text-sm transition-ease;
+    @apply bg-grey-cool-100 w-full rounded-md overflow-hidden border-solid border border-grey-cool-400 font-tertiary text-sm transition-ease;
 }
 
 .field:hover {
