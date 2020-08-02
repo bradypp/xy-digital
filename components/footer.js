@@ -16,7 +16,7 @@ const Footer = () => {
     return (
         <footer className="py-16 w-screen bg-navy font-tertiary flex flex-col items-center justify-center text-sm text-grey-cool-300">
             <Logo className="pb-10" />
-            <ul className="flex pb-10">
+            <ul className="flex pb-10 justify-center w-full">
                 {navLinks.map(el => (
                     <li
                         key={uuidv4()}
@@ -27,7 +27,7 @@ const Footer = () => {
                     </li>
                 ))}
             </ul>
-            <ul className="flex pb-10">
+            <ul className="flex pb-10 justify-center w-full">
                 {socials.map((el, i) => {
                     const iconClassName = cn(`transition-ease group-hover:${colors[i]}`);
                     return (
