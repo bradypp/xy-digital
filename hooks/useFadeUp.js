@@ -2,7 +2,7 @@ import { useInView } from 'react-intersection-observer';
 
 import { useMergeInViewRef } from 'hooks';
 
-const useFadeUp = (ref, options = {}) => {
+const useFadeUp = (ref = undefined, options = {}) => {
     const { threshold, triggerOnce, delay, duration, y, ...otherOptions } = options;
 
     const variants = {

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Head from 'next/head';
 import { v4 as uuidv4 } from 'uuid';
 import { RichText } from 'prismic-reactjs';
 
