@@ -11,8 +11,8 @@ import { useParallaxScroll, useMedia } from 'hooks';
 const titleContainerVariants = {
     visible: {
         transition: {
-            delayChildren: 0.7,
-            staggerChildren: 0.12,
+            delayChildren: 1,
+            staggerChildren: 0.15,
             duration: 1,
         },
     },

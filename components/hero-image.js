@@ -16,7 +16,7 @@ const HeroImage = ({ scrollY, src, alt }) => {
                 opacity: 1,
                 transition: {
                     type: 'tween',
-                    duration: 0.6,
+                    duration: 0.75,
                 },
             }}
             style={{ y: bgElY }}>

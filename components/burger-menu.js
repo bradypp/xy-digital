@@ -11,10 +11,12 @@ const BurgerMenu = ({ isHeader = false }) => {
     const navRef = useRef();
 
     const handleSideNavOpen = () => {
-        if (isSideNavOpen) {
-            document.body.classList.remove('overflow-y-hidden');
-        } else {
+        if (!isSideNavOpen) {
             document.body.classList.add('overflow-y-hidden');
+            document.body.classList.remove('overflow-y-visible');
+        } else {
+            document.body.classList.add('overflow-y-visible');
+            document.body.classList.remove('overflow-y-hidden');
         }
         setIsSideNavOpen(!isSideNavOpen);
     };
@@ -63,7 +65,7 @@ const BurgerMenu = ({ isHeader = false }) => {
                     },
                 }}>
                 <div
-                    className="w-50px h-40px inline-flex flex-col justify-between p-10px clickable z-50 relative"
+                    className="w-50px h-40px inline-flex flex-col justify-between p-10px clickable z-50 relative overflow-y-"
                     onClick={handleSideNavOpen}>
                     <span className={firstSpanClassName} />
                     <span className={secondSpanClassName} />
