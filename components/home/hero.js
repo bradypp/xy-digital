@@ -143,7 +143,7 @@ const Hero = ({ data, scrollY }) => {
                                 />
                             </motion.div>
                         </div>
-                        <div className="bg-white relative px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 -mt-56 xl:-mt-48 xs:-mt-48 pt-56 2xl:pt-52 xl:pt-40 lg:pt-28 md:pt-56 sm:pt-40 xs:pt-32">
+                        <div className="bg-white relative px-24 xl:px-12 xs:px-6 pb-24 xl:pb-12 -mt-56 xl:-mt-48 xs:-mt-44 pt-56 2xl:pt-52 xl:pt-40 lg:pt-28 md:pt-56 sm:pt-40 xs:pt-32">
                             <div id="about-us" className="absolute -mt-84" />
                             <div className="prose max-w-none sm:prose-sm mb-6">
                                 <h2 className="title font-tertiary uppercase text-grey-cool-800">
