@@ -135,8 +135,8 @@ const Hero = ({ data, scrollY }) => {
                                 style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
-                                    width="640"
-                                    height="360"
+                                    width="640px"
+                                    height="360px"
                                     volume={0}
                                     muted
                                     playing
