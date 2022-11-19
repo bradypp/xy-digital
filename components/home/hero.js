@@ -44,7 +44,7 @@ const Hero = ({ data, scrollY }) => {
         '0%',
         maxmd ? '-10%' : '-16%',
     );
-    const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, maxmd ? 1000 : 1200, '-8px', '22%');
+    const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, maxmd ? 1000 : 1200, '-16px', '16%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
 
     return (
@@ -131,11 +131,12 @@ const Hero = ({ data, scrollY }) => {
                             <motion.div
                                 className="w-500px 2xl:w-450px lg:w-300px md:w-500px sm:w-full"
                                 ref={vidRef}
-                                initial={{ y: -8 }}
+                                initial={{ y: -16 }}
                                 style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
-                                    width="auto"
+                                    width="640"
+                                    height="360"
                                     volume={0}
                                     muted
                                     playing
