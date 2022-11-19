@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { RichText } from 'prismic-reactjs';
-import ReactPlayer from 'react-player/vimeo';
+import ReactPlayer from 'react-player';
 
 import { linkResolver, customLink } from 'utils/prismic';
 import { Button, Nav, Logo, HeroImage, BurgerMenu, Media } from 'components';
