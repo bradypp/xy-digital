@@ -35,7 +35,7 @@ const titleChildrenVariants = {
 
 const Hero = ({ data, scrollY }) => {
     const { about, background_image, featured_video } = data.homeData;
-    const { maxmd } = useMedia();
+    const { maxmd, maxsm } = useMedia();
 
     const [leftRef, leftElY] = useParallaxScroll(
         scrollY,
@@ -46,6 +46,10 @@ const Hero = ({ data, scrollY }) => {
     );
     const [vidRef, vidElY] = useParallaxScroll(scrollY, 0, maxmd ? 1000 : 1200, '-18px', '15%');
     const [rightRef, rightElY] = useParallaxScroll(scrollY, 0, 1200, '0%', '-28%');
+
+    // Set video size based on screen size
+    const videoWidth = maxsm ? '320px' : '640px';
+    const videoHeight = maxsm ? '180px' : '360px';
 
     return (
         <section id="hero" className="relative -mb-32">
@@ -135,8 +139,8 @@ const Hero = ({ data, scrollY }) => {
                                 style={{ y: vidElY }}>
                                 <ReactPlayer
                                     url={featured_video.embed_url}
-                                    width="640px"
-                                    height="360px"
+                                    width={videoWidth}
+                                    height={videoHeight}
                                     volume={0}
                                     muted
                                     playing

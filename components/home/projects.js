@@ -42,7 +42,7 @@ const Projects = ({ data, scrollY }) => {
             className="container-inner bg-white z-20 -mb-24 md:mb-0 relative"
             style={{ y: projectsY }}>
             <div id="projects" className="absolute -mt-48" />
-            <FadeUp className="flex items-center flex-col relative">
+            <FadeUp className="flex items-center flex-col relative" threshold={0}>
                 <SectionHeading>Our Work</SectionHeading>
                 <ClientOnly>
                     <motion.div className="grid grid-cols-12 gap-1 w-full">
